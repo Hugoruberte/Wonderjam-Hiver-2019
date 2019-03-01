@@ -9,7 +9,6 @@ namespace Interactive.Engine
 	{
 		public Transform myTransform { get; private set; }
 		protected Transform body;
-
 		protected Collider myCollider;
 
 
@@ -25,6 +24,8 @@ namespace Interactive.Engine
 		}
 		public ChemicalMaterialEntity material { get; protected set; } = ChemicalMaterialEntity.flesh;
 		
+
+
 		private float _life = 100f;
 		public float life {
 			get { return this._life; }
@@ -35,6 +36,10 @@ namespace Interactive.Engine
 		}
 
 		public bool isAlive { get { return (this.life > 0f); }}
+
+
+		protected delegate void SetOnElement(bool active);
+		protected SetOnElement currentSetOnElement;
 
 
 
@@ -56,7 +61,10 @@ namespace Interactive.Engine
 		protected virtual void Start()
 		{
 			// initialize state
-			InteractiveEngine.chemistry.SetEntityWithChemical(this, this.setOnElement);
+			this.InteractWith(this.status, null);
+
+			// initialize cell
+			// this.cellable.Initialize(myTransform);
 		}
 
 		protected virtual void OnCollisionEnter(Collision other)
@@ -77,23 +85,9 @@ namespace Interactive.Engine
 		}
 
 		// life
-		protected virtual void OnUpdateLife(){}
+		protected virtual void OnUpdateLife() {}
 
-		// elements
-		public delegate void SetOnElement(bool active);
-		public SetOnElement setOnElement;
-
-		public virtual void SetOnVoidd(bool active){}
-		public virtual void SetOnFire(bool active){}
-		public virtual void SetOnWater(bool active){}
-		public virtual void SetOnWind(bool active){}
-		public virtual void SetOnEarth(bool active){}
-		public virtual void SetOnLightning(bool active){}
-		public virtual void SetOnMagma(bool active){}
-		public virtual void SetOnSteam(bool active){}
-		public virtual void SetOnIce(bool active){}
-
-		public virtual void InteractWith(InteractiveStatus s, PhysicalInteractionEntity i){}
+		public virtual void InteractWith(InteractiveStatus s, PhysicalInteractionEntity i) {}
 
 		public override string ToString() => $"{gameObject.name} (Interactive Entity: status = {status} and material = {material})";
 	}

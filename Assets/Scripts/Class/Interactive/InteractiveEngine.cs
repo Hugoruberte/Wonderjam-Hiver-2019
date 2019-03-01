@@ -10,12 +10,16 @@ namespace Interactive.Engine
 		
 		private static List<InteractiveExtensionEngine> extensions = new List<InteractiveExtensionEngine>();
 
-		public static ChemistryEngine chemistry = new ChemistryEngine();
-		public static PhysicEngine physic = new PhysicEngine();
+		private static ChemistryEngine chemistry = new ChemistryEngine();
+		private static PhysicEngine physic = new PhysicEngine();
 
 		protected override void Awake()
 		{
 			base.Awake();
+
+			if(interactiveEngineData == null) {
+				Debug.LogWarning("WARNING : You forgot to add an 'InteractiveEngineData' scriptable object to the InteractiveEngine !", transform);
+			}
 
 			// Add extension engine :
 			extensions.Add(new FoodChainEngine());
@@ -54,18 +58,15 @@ namespace Interactive.Engine
 			main.chemical = status.element;
 
 			// main manage its new status && the interaction with the unknown entity
-			chemistry.SetEntityWithChemical(main, main.setOnElement);
 			main.InteractWith(status, interaction);
 		}
 	}
 
-	public struct InteractiveStatus
-	{
+	public struct InteractiveStatus {
 		public PhysicalStateEntity state;
 		public ChemicalElementEntity element;
 		
-		public InteractiveStatus(PhysicalStateEntity s, ChemicalElementEntity e)
-		{
+		public InteractiveStatus(PhysicalStateEntity s, ChemicalElementEntity e) {
 			this.state = s;
 			this.element = e;
 		}
