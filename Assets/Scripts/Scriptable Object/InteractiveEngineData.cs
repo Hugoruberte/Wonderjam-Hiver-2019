@@ -59,9 +59,10 @@ namespace Interactive.Engine
 	[CreateAssetMenu(fileName = "InteractiveEngineData", menuName = "Scriptable Object/Other/InteractiveEngineData", order = 3)]
 	public class InteractiveEngineData : ScriptableObject
 	{
-		[HideInInspector] public List<ChemicalElementMixEntity> chemicalElementMixEntityPoolList = new List<ChemicalElementMixEntity>();
-		[HideInInspector] public List<ChemicalElement> chemicalElementPoolList = new List<ChemicalElement>();
-		[HideInInspector] public List<Attribute> attributePoolList = new List<Attribute>();
+		[NonSerialized] public List<ChemicalElementMixEntity> chemicalElementMixEntityPoolList = new List<ChemicalElementMixEntity>();
+		[NonSerialized] public List<ChemicalElement> chemicalElementPoolList = new List<ChemicalElement>();
+		[NonSerialized] public List<AlcoholColor> colorPoolList = new List<AlcoholColor>();
+		[NonSerialized] public List<Attribute> attributePoolList = new List<Attribute>();
 
 		[HideInInspector] public List<ChemicalToArrayData> primaries = new List<ChemicalToArrayData>();
 		[HideInInspector] public List<ChemicalToAttributesData> attributes = new List<ChemicalToAttributesData>();
