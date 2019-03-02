@@ -551,6 +551,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3d9e94ef952714f8771df9f390642e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toleranceGaugeMin: 0
+  toleranceGaugeMaxNoStress: 33
+  toleranceGaugeMaxNormalStress: 66
+  toleranceGaugeMax: 100
+  toleranceGaugeCurrent: 100
   toleranceSliderUI: {fileID: 0}
 --- !u!1 &834522430
 GameObject:
