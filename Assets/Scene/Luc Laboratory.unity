@@ -203,9 +203,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 595264765}
-  - component: {fileID: 595264767}
   - component: {fileID: 595264766}
   - component: {fileID: 595264768}
+  - component: {fileID: 595264767}
   m_Layer: 0
   m_Name: DJ Duck
   m_TagString: Untagged
@@ -248,12 +248,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 595264764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f73f611fad272c348a8c2178edc457c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 926ea057b55c3f447ad87b09fd396e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: 0
-  monsterAspect: 0
-  waiting: 2
+  timeBetweenMonster: 1
+  monsterNumber: 10
+  prefabMonster: {fileID: 7043736630936830290, guid: 8d4079b859124cc488d5030083ec2454,
+    type: 3}
 --- !u!114 &595264768
 MonoBehaviour:
   m_ObjectHideFlags: 0

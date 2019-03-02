@@ -5,16 +5,21 @@ using Random = System.Random;
 
 public class MonsterManager : Singleton<MonsterManager>
 {
+    public float timeBetweenMonster = 1.0f;
+
+    public int monsterNumber;
+    public MonsterScript prefabMonster;
+
+    //VARIABLE TO MOVE BUT I DONT KNOW WHERE TO PUT IT NOW...
+    public float orderSuccessValue = 10;
+
+    private float timeToCreateMonster;
 
     private MonsterScript[] monsters;
-    public int monsterNumber;
-    public GameObject prefabMonster;
-
-
     private List<int> freeIndice = new List<int>();
-    
-    
-    
+
+
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -23,24 +28,43 @@ public class MonsterManager : Singleton<MonsterManager>
         {
             freeIndice.Add(i);
         }
+
+        setTimeToCreateMonster(timeBetweenMonster);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (freeIndice.Count !=0)
+        
+        if (freeIndice.Count !=0 && Time.time >= timeToCreateMonster)
         {
             CreateMonster();
+            setTimeToCreateMonster(timeBetweenMonster);
         }
+    }
+
+    void setTimeToCreateMonster(float waitingTimeToCreateMonster)
+    {
+        timeToCreateMonster = Time.time + waitingTimeToCreateMonster;
     }
 
     void CreateMonster()
     {
+        //index of free index
         int indiceTemp = UnityEngine.Random.Range(0, freeIndice.Count - 1);
-        GameObject MonsterCreate = Instantiate(prefabMonster);
-        MonsterCreate.GetComponent<MonsterScript>().position = UnityEngine.Random.Range(GetRangeMin(indiceTemp),GetRangeMax(indiceTemp));
+
+        //free index
+        int freePlace = freeIndice[indiceTemp];
+        freeIndice.RemoveAt(indiceTemp);
+
+        MonsterScript MonsterCreate = Instantiate(prefabMonster);
+        //set MonsterCreate
+        MonsterCreate.index = freePlace;
+        MonsterCreate.position = UnityEngine.Random.Range(GetRangeMin(indiceTemp),GetRangeMax(indiceTemp));
         // TODO : rajoutez un MonsterAspect
-        monsters[indiceTemp] = MonsterCreate.GetComponent<MonsterScript>();
+
+        //fill the array of monsters
+        monsters[freePlace] = MonsterCreate;
 
     }
 
@@ -49,6 +73,7 @@ public class MonsterManager : Singleton<MonsterManager>
         GameObject leavingMonster = monsters[position].gameObject;
         monsters[position] = null;
         Destroy(leavingMonster);
+        freeIndice.Add(position);
     }
 
     int GetRangeMin(int indice)
@@ -70,9 +95,9 @@ public class MonsterManager : Singleton<MonsterManager>
 
     public void TimerEnd(int position)
     {
+        ToleranceManager.instance.UpdateGaugeValue(-orderSuccessValue);
         LeavingMonster(position);
         // Renvoyez tout ca à Luc pour obtenir la nouvelle valeur de satisfaction.
-        freeIndice.Add(position);
     }
 
 }
