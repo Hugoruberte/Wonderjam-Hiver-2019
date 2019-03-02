@@ -45,6 +45,11 @@ namespace Interactive.Engine
 
 			return res;
 		}
+
+		public static ChemicalElementEntity GetCocktailFrom(List<ChemicalElementEntity> combo)
+		{
+			return ChemicalElementMixEntity.MixSeveralElement(combo);
+		}
 	}
 }
 
