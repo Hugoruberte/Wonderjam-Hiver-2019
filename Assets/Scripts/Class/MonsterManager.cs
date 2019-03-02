@@ -5,7 +5,9 @@ using Random = System.Random;
 
 public class MonsterManager : Singleton<MonsterManager>
 {
-    private MonsterScript[] monstres = new MonsterScript[10];
+
+    private MonsterScript[] monsters;
+    public int monsterNumber;
     public GameObject prefabMonster;
 
 
@@ -16,16 +18,11 @@ public class MonsterManager : Singleton<MonsterManager>
     // Start is called before the first frame update
     protected override void Start()
     {
-        freeIndice.Add(1);
-        freeIndice.Add(2);
-        freeIndice.Add(3);
-        freeIndice.Add(4);
-        freeIndice.Add(5);
-        freeIndice.Add(6);
-        freeIndice.Add(7);
-        freeIndice.Add(8);
-        freeIndice.Add(9);
-        
+        monsters = new MonsterScript[monsterNumber];
+        for(int i = 0; i < monsterNumber; ++i )
+        {
+            freeIndice.Add(i);
+        }
     }
 
     // Update is called once per frame
@@ -41,10 +38,17 @@ public class MonsterManager : Singleton<MonsterManager>
     {
         int indiceTemp = UnityEngine.Random.Range(0, freeIndice.Count - 1);
         GameObject MonsterCreate = Instantiate(prefabMonster);
-        MonsterCreate.GetComponent<MonsterScript>().Position = UnityEngine.Random.Range(GetRangeMin(indiceTemp),GetRangeMax(indiceTemp));
+        MonsterCreate.GetComponent<MonsterScript>().position = UnityEngine.Random.Range(GetRangeMin(indiceTemp),GetRangeMax(indiceTemp));
         // TODO : rajoutez un MonsterAspect
-        monstres[indiceTemp] = MonsterCreate.GetComponent<MonsterScript>();
+        monsters[indiceTemp] = MonsterCreate.GetComponent<MonsterScript>();
 
+    }
+
+    public void LeavingMonster(int position)
+    {
+        GameObject leavingMonster = monsters[position].gameObject;
+        monsters[position] = null;
+        Destroy(leavingMonster);
     }
 
     int GetRangeMin(int indice)
@@ -66,7 +70,7 @@ public class MonsterManager : Singleton<MonsterManager>
 
     public void TimerEnd(int position)
     {
-        monstres[position] = null;
+        LeavingMonster(position);
         // Renvoyez tout ca à Luc pour obtenir la nouvelle valeur de satisfaction.
         freeIndice.Add(position);
     }
