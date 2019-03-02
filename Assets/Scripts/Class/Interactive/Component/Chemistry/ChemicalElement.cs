@@ -7,7 +7,7 @@ using System;
 
 namespace Interactive.Engine
 {
-	public enum ChemicalElement:long
+	public enum ChemicalElement
 	{
 		Voidd = 1,
 		DragonBlood = 2,
@@ -26,22 +26,20 @@ namespace Interactive.Engine
 		Mojito = 16384,
 		Eternitear = 32768,
 		Bartinic = 65536,
-        Ichor = 131072,
-        DevilTear = 262144,
-        KingOfSnake = 524288,
-        BasiLicorn = 048576, 
-        SlimyGod = 2097152,
-        RainbowGodtail = 4194304,
-        BarmanChor = 8388608,
-        AshBullSia = 16777216,
-        WingedBull = 33554432,
-        BulliSnake = 67108864,
-        GreenSunRise = 134217728,
-        Kir = 268435456,
-        Librid = 536870912,
-        HellFire = 1073741824,
-        GreenChorTear = 2147483648,
-        TearApart = 4294967296
+		Ichor = 131072,
+		DevilTear = 262144,
+		KingOfSnake = 524288,
+		BasiLicorn = 048576, 
+		SlimyGod = 2097152,
+		RainbowGodtail = 4194304,
+		BarmanChor = 8388608,
+		AshBullSia = 16777216,
+		WingedBull = 33554432,
+		BulliSnake = 67108864,
+		Kir = 134217728,
+		Librid = 268435456,
+		HellFire = 536870912,
+		TearApart = 1073741824
 	}
 
 	public enum Attribute
@@ -126,7 +124,7 @@ namespace Interactive.Engine
 
 		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
 			new AlcoholAttribute(Attribute.Sugar, 1),
-            new AlcoholAttribute(Attribute.Fatal, 1)
+			new AlcoholAttribute(Attribute.Fatal, 1)
 		};
 	}
 
@@ -137,7 +135,7 @@ namespace Interactive.Engine
 
 		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
 			new AlcoholAttribute(Attribute.Strong, 1),
-            new AlcoholAttribute(Attribute.Spicy, 1)
+			new AlcoholAttribute(Attribute.Spicy, 1)
 		};
 	}
 
@@ -163,17 +161,17 @@ namespace Interactive.Engine
 		};
 	}
 
-    public class Ichor : ChemicalElementMixEntity
-    {
-        public Ichor() : base(ChemicalElement.Ichor, Ichor.combo) { }
+	public class Ichor : ChemicalElementMixEntity
+	{
+		public Ichor() : base(ChemicalElement.Ichor, Ichor.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.DragonBlood,
-            ChemicalElement.Ambrosia
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.DragonBlood,
+			ChemicalElement.Ambrosia
+		};
+	}
 
-    public class BloodySlimy : ChemicalElementMixEntity {
+	public class BloodySlimy : ChemicalElementMixEntity {
 		public BloodySlimy() : base(ChemicalElement.BloodySlimy, BloodySlimy.combo) {}
 
 		private static ChemicalElement[] combo = new ChemicalElement[] {
@@ -182,39 +180,39 @@ namespace Interactive.Engine
 		};
 	}
 
-    public class DevilTear : ChemicalElementMixEntity
-    {
-        public DevilTear() : base(ChemicalElement.DevilTear, DevilTear.combo) { }
+	public class DevilTear : ChemicalElementMixEntity
+	{
+		public DevilTear() : base(ChemicalElement.DevilTear, DevilTear.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.DragonBlood,
-            ChemicalElement.BarmanTear
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.DragonBlood,
+			ChemicalElement.BarmanTear
+		};
+	}
 
-    public class KingOfSnake : ChemicalElementMixEntity { 
+	public class KingOfSnake : ChemicalElementMixEntity { 
 
-        public KingOfSnake() : base(ChemicalElement.KingOfSnake, KingOfSnake.combo) { }
+		public KingOfSnake() : base(ChemicalElement.KingOfSnake, KingOfSnake.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.BasilicAshes,
-            ChemicalElement.GreenSlim
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.BasilicAshes,
+			ChemicalElement.GreenSlim
+		};
+	}
 
-    public class BasiLicorn : ChemicalElementMixEntity
-    {
+	public class BasiLicorn : ChemicalElementMixEntity
+	{
 
-        public BasiLicorn() : base(ChemicalElement.BasiLicorn, BasiLicorn.combo) { }
+		public BasiLicorn() : base(ChemicalElement.BasiLicorn, BasiLicorn.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.BasilicAshes,
-            ChemicalElement.RainbowBull
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.BasilicAshes,
+			ChemicalElement.RainbowBull
+		};
+	}
 
-    
-    public class StickyTear : ChemicalElementMixEntity {
+	
+	public class StickyTear : ChemicalElementMixEntity {
 		public StickyTear() : base(ChemicalElement.StickyTear, StickyTear.combo) {}
 
 		private static ChemicalElement[] combo = new ChemicalElement[] {
@@ -223,132 +221,112 @@ namespace Interactive.Engine
 		};
 	}
 
-    public class SlimyGod : ChemicalElementMixEntity
-    {
-        public SlimyGod() : base(ChemicalElement.SlimyGod, SlimyGod.combo) { }
+	public class SlimyGod : ChemicalElementMixEntity
+	{
+		public SlimyGod() : base(ChemicalElement.SlimyGod, SlimyGod.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.Ambrosia,
-            ChemicalElement.GreenSlim
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.Ambrosia,
+			ChemicalElement.GreenSlim
+		};
+	}
 
-    public class RainbowGodtail : ChemicalElementMixEntity
-    {
-        public RainbowGodtail() : base(ChemicalElement.RainbowGodtail, RainbowGodtail.combo) { }
+	public class RainbowGodtail : ChemicalElementMixEntity
+	{
+		public RainbowGodtail() : base(ChemicalElement.RainbowGodtail, RainbowGodtail.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.Ambrosia,
-            ChemicalElement.RainbowBull
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.Ambrosia,
+			ChemicalElement.RainbowBull
+		};
+	}
 
-    public class BarmanChor : ChemicalElementMixEntity
-    {
-        public BarmanChor() : base(ChemicalElement.BarmanChor, BarmanChor.combo) { }
+	public class BarmanChor : ChemicalElementMixEntity
+	{
+		public BarmanChor() : base(ChemicalElement.BarmanChor, BarmanChor.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.Ichor,
-            ChemicalElement.BarmanTear
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.Ichor,
+			ChemicalElement.BarmanTear
+		};
+	}
 
-    public class AshBullSia : ChemicalElementMixEntity
-    {
-        public AshBullSia() : base(ChemicalElement.AshBullSia, AshBullSia.combo) { }
+	public class AshBullSia : ChemicalElementMixEntity
+	{
+		public AshBullSia() : base(ChemicalElement.AshBullSia, AshBullSia.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.PinaAmbrosia,
-            ChemicalElement.RainbowBull
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.PinaAmbrosia,
+			ChemicalElement.RainbowBull
+		};
+	}
 
-    public class WingedBull : ChemicalElementMixEntity
-    {
-        public WingedBull() : base(ChemicalElement.WingedBull, WingedBull.combo) { }
+	public class WingedBull : ChemicalElementMixEntity
+	{
+		public WingedBull() : base(ChemicalElement.WingedBull, WingedBull.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.Ichor,
-            ChemicalElement.RainbowBull
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.Ichor,
+			ChemicalElement.RainbowBull
+		};
+	}
 
-    public class GreenSunRise : ChemicalElementMixEntity
-    {
-        public GreenSunRise() : base(ChemicalElement.GreenSunRise, GreenSunRise.combo) { }
+	public class BulliSnake : ChemicalElementMixEntity
+	{
+		public BulliSnake() : base(ChemicalElement.BulliSnake, BulliSnake.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.DraculaSunrise,
-            ChemicalElement.GreenSlim
-        };
-    }
-
-    public class BulliSnake : ChemicalElementMixEntity
-    {
-        public BulliSnake() : base(ChemicalElement.BulliSnake, BulliSnake.combo) { }
-
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.KingOfSnake,
-            ChemicalElement.RainbowBull
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.KingOfSnake,
+			ChemicalElement.RainbowBull
+		};
+	}
 
 
-    public class HellFire : ChemicalElementMixEntity
-    {
-        public HellFire() : base(ChemicalElement.HellFire, HellFire.combo) { }
+	public class HellFire : ChemicalElementMixEntity
+	{
+		public HellFire() : base(ChemicalElement.HellFire, HellFire.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.DraculaSunrise,
-            ChemicalElement.SlimyGod
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.DraculaSunrise,
+			ChemicalElement.SlimyGod
+		};
+	}
 
-    public class GreenChorTear : ChemicalElementMixEntity
-    {
-        public GreenChorTear() : base(ChemicalElement.GreenChorTear, GreenChorTear.combo) { }
+	public class Librid : ChemicalElementMixEntity
+	{
+		public Librid() : base(ChemicalElement.Librid, Librid.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.Ichor,
-            ChemicalElement.StickyTear
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.DraculaSunrise,
+			ChemicalElement.RainbowGodtail
+		};
+	}
 
-    public class Librid : ChemicalElementMixEntity
-    {
-        public Librid() : base(ChemicalElement.Librid, Librid.combo) { }
+	public class Kir : ChemicalElementMixEntity
+	{
+		public Kir() : base(ChemicalElement.Kir, Kir.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.DraculaSunrise,
-            ChemicalElement.RainbowGodtail
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.SlimyGod,
+			ChemicalElement.RainbowBull
+		};
+	}
 
-    public class Kir : ChemicalElementMixEntity
-    {
-        public Kir() : base(ChemicalElement.Kir, Kir.combo) { }
+	public class TearApart : ChemicalElementMixEntity
+	{
+		public TearApart() : base(ChemicalElement.TearApart, TearApart.combo) { }
 
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.SlimyGod,
-            ChemicalElement.RainbowBull
-        };
-    }
-
-    public class TearApart : ChemicalElementMixEntity
-    {
-        public TearApart() : base(ChemicalElement.TearApart, TearApart.combo) { }
-
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.DragonBlood,
-            ChemicalElement.BasilicAshes,
-            ChemicalElement.Ambrosia,
-            ChemicalElement.GreenSlim,
-            ChemicalElement.RainbowBull,
-        };
-    }
+		private static ChemicalElement[] combo = new ChemicalElement[] {
+			ChemicalElement.DragonBlood,
+			ChemicalElement.BasilicAshes,
+			ChemicalElement.Ambrosia,
+			ChemicalElement.GreenSlim,
+			ChemicalElement.RainbowBull,
+		};
+	}
 
 
-    public class BigIsland : ChemicalElementMixEntity {
+	public class BigIsland : ChemicalElementMixEntity {
 		public BigIsland() : base(ChemicalElement.BigIsland, BigIsland.combo) {}
 
 		private static ChemicalElement[] combo = new ChemicalElement[] {
