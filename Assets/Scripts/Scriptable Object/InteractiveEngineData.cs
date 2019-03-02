@@ -20,6 +20,28 @@ namespace Interactive.Engine
 	}
 
 	[Serializable]
+	public struct ChemicalToAttributesData {
+		public ChemicalElement element;
+		public Attribute[] array;
+
+		public ChemicalToAttributesData(ChemicalElement e, Attribute[] a) {
+			this.element = e;
+			this.array = a;
+		}
+	}
+
+	[Serializable]
+	public struct ChemicalToColorData {
+		public ChemicalElement element;
+		public AlcoholColor[] array;
+
+		public ChemicalToColorData(ChemicalElement e, AlcoholColor[] a) {
+			this.element = e;
+			this.array = a;
+		}
+	}
+
+	[Serializable]
 	public struct IntToChemicalData {
 		public int couple;
 		public ChemicalElement type;
@@ -32,16 +54,19 @@ namespace Interactive.Engine
 		}
 	}
 
+
+
 	[CreateAssetMenu(fileName = "InteractiveEngineData", menuName = "Scriptable Object/Other/InteractiveEngineData", order = 3)]
 	public class InteractiveEngineData : ScriptableObject
 	{
 		[HideInInspector] public List<ChemicalElementMixEntity> chemicalElementMixEntityPoolList = new List<ChemicalElementMixEntity>();
 		[HideInInspector] public List<ChemicalElement> chemicalElementPoolList = new List<ChemicalElement>();
+		[HideInInspector] public List<Attribute> attributePoolList = new List<Attribute>();
 
 		[HideInInspector] public List<ChemicalToArrayData> primaries = new List<ChemicalToArrayData>();
-		[HideInInspector] public List<ChemicalToArrayData> weaknesses = new List<ChemicalToArrayData>();
+		[HideInInspector] public List<ChemicalToAttributesData> attributes = new List<ChemicalToAttributesData>();
+		[HideInInspector] public List<ChemicalToColorData> colors = new List<ChemicalToColorData>();
 		[HideInInspector] public List<IntToChemicalData> couples = new List<IntToChemicalData>();
-		[HideInInspector] public List<IntToChemicalData> winners = new List<IntToChemicalData>();
 
 		private StringBuilder stringBuilder = new StringBuilder();
 		private const string voiddString = "Interactive.Engine.Voidd";
@@ -72,19 +97,20 @@ namespace Interactive.Engine
 
 
 
-		public bool HasWeaknessesOf(ChemicalElementEntity ent)
+
+		public bool HasAttributesOf(ChemicalElementEntity ent)
 		{
 			// only does that
-			return this.weaknesses.Exists(x => x.element == ent.type);
+			return this.attributes.Exists(x => x.element == ent.type);
 		}
-		public void SetWeaknessesOf(ChemicalElementEntity ent, ChemicalElement[] ps)
+		public void SetAttributesOf(ChemicalElementEntity ent, Attribute[] ats)
 		{
-			this.weaknesses.Add(new ChemicalToArrayData(ent.type, ps));
-			this.weaknesses.Sort(CompareChemicalToArrayData);
+			this.attributes.Add(new ChemicalToAttributesData(ent.type, ats));
+			this.attributes.Sort(CompareChemicalToAttributesData);
 		}
-		public ChemicalElement[] GetWeaknessesOf(ChemicalElementEntity ent)
+		public Attribute[] GetAttributesOf(ChemicalElementEntity ent)
 		{
-			ChemicalToArrayData data = this.weaknesses.Find(x => x.element == ent.type);
+			ChemicalToAttributesData data = this.attributes.Find(x => x.element == ent.type);
 			if(data.array != null) {
 				return data.array;
 			} else {
@@ -92,6 +118,32 @@ namespace Interactive.Engine
 				return null;
 			}
 		}
+
+
+
+
+		public bool HasColorsOf(ChemicalElementEntity ent)
+		{
+			// only does that
+			return this.colors.Exists(x => x.element == ent.type);
+		}
+		public void SetColorsOf(ChemicalElementEntity ent, AlcoholColor[] acs)
+		{
+			this.colors.Add(new ChemicalToColorData(ent.type, acs));
+			this.colors.Sort(CompareChemicalToColorsData);
+		}
+		public AlcoholColor[] GetColorsOf(ChemicalElementEntity ent)
+		{
+			ChemicalToColorData data = this.colors.Find(x => x.element == ent.type);
+			if(data.array != null) {
+				return data.array;
+			} else {
+				Debug.LogWarning($"WARNING : This element ({ent.type}) is not yet registered ! Check it out !");
+				return null;
+			}
+		}
+
+
 
 
 		public bool HasMixOf(ChemicalElementEntity a, ChemicalElementEntity b)
@@ -130,37 +182,6 @@ namespace Interactive.Engine
 		}
 
 
-		public bool HasWinnerBetween(ChemicalElementEntity main, ChemicalElementEntity other)
-		{
-			int couple = (int)(main.type | other.type);
-			return this.winners.Exists(x => x.couple == couple);
-		}
-		public void SetWinnerBetween(ChemicalElementEntity main, ChemicalElementEntity other, bool isMainWinning)
-		{
-			int couple = (int)(main.type | other.type);
-			if(!this.winners.Exists(x => x.couple == couple)) {
-				if(isMainWinning) {
-					this.winners.Add(new IntToChemicalData(couple, main.type));
-				} else {
-					this.winners.Add(new IntToChemicalData(couple, other.type));
-				}
-			} else {
-				Debug.LogWarning($"WARNING : This couple ({main} + {other}) is already registered ! Check it out for optimization !");
-			}
-		}
-		public bool IsWinningAgainst(ChemicalElementEntity main, ChemicalElementEntity other)
-		{
-			int couple = (int)(main.type | other.type);
-			IntToChemicalData data = this.winners.Find(x => x.couple == couple);
-			if(data.couple > 0) {
-				return (data.type == main.type);
-			} else {
-				Debug.LogWarning($"WARNING : This couple ({main} + {other}) is not yet registered ! Check it out !");
-				return false;
-			}
-		}
-
-
 
 
 
@@ -178,161 +199,33 @@ namespace Interactive.Engine
 			}
 		}
 
+		private static int CompareChemicalToAttributesData(ChemicalToAttributesData x, ChemicalToAttributesData y)
+		{
+			int xe = (int)x.element;
+			int ye = (int)y.element;
 
+			if(xe > ye) {
+				return 1;
+			} else if(xe < ye) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
 
+		private static int CompareChemicalToColorsData(ChemicalToColorData x, ChemicalToColorData y)
+		{
+			int xe = (int)x.element;
+			int ye = (int)y.element;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-		// public bool HasPrimariesOf(ChemicalElementEntity ent)
-		// {
-		// 	return this.primaries.ContainsKey(ent.type);
-		// }
-		// public void SetPrimariesOf(ChemicalElementEntity ent, ChemicalElement[] ps)
-		// {
-		// 	if(!this.primaries.ContainsKey(ent.type)) {
-		// 		this.primaries.Add(ent.type, ps);
-		// 	} else {
-		// 		Debug.LogWarning($"WARNING : This element ({ent.type}) is already registered ! Check it out for optimization !");
-		// 	}
-		// }
-		// public ChemicalElement[] GetPrimariesOf(ChemicalElementEntity ent)
-		// {
-		// 	if(this.primaries.ContainsKey(ent.type)) {
-		// 		return this.primaries[ent.type];
-		// 	} else {
-		// 		Debug.LogWarning($"WARNING : This element ({ent.type}) is not yet registered ! Check it out !");
-		// 		return null;
-		// 	}
-		// }
-
-
-
-		// public bool HasWeaknessesOf(ChemicalElementEntity ent)
-		// {
-		// 	return this.weaknesses.ContainsKey(ent.type);
-		// }
-		// public void SetWeaknessesOf(ChemicalElementEntity ent, ChemicalElement[] ws)
-		// {
-		// 	if(!this.weaknesses.ContainsKey(ent.type)) {
-		// 		this.weaknesses.Add(ent.type, ws);
-		// 	} else {
-		// 		Debug.LogWarning($"WARNING : This element ({ent.type}) is already registered ! Check it out for optimization !");
-		// 	}
-		// }
-		// public ChemicalElement[] GetWeaknessesOf(ChemicalElementEntity ent)
-		// {
-		// 	if(this.weaknesses.ContainsKey(ent.type)) {
-		// 		return this.weaknesses[ent.type];
-		// 	} else {
-		// 		Debug.LogWarning($"WARNING : This element ({ent.type}) is not yet registered ! Check it out !");
-		// 		return null;
-		// 	}
-		// }
-
-
-		// public bool HasMixOf(ChemicalElementEntity a, ChemicalElementEntity b)
-		// {
-		// 	int couple = (int)(a.type | b.type);
-		// 	return this.couples.ContainsKey(couple);
-		// }
-		// public void SetMixOf(ChemicalElementEntity a, ChemicalElementEntity b, ChemicalElementEntity ent)
-		// {
-		// 	int couple = (int)(a.type | b.type);
-		// 	if(!this.couples.ContainsKey(couple)) {
-		// 		this.couples.Add(couple, ent);
-		// 	} else {
-		// 		Debug.LogWarning($"WARNING : This couple ({a} + {b}) is already registered ! Check it out for optimization !");
-		// 	}
-		// }
-		// public ChemicalElementEntity GetMixOf(ChemicalElementEntity a, ChemicalElementEntity b)
-		// {
-		// 	int couple = (int)(a.type | b.type);
-		// 	if(this.couples.ContainsKey(couple)) {
-		// 		return this.couples[couple].Spawn();
-		// 	} else {
-		// 		Debug.LogWarning($"WARNING : This couple ({a} + {b}) is not yet registered ! Check it out !");
-		// 		return null;
-		// 	}
-		// }
-
-
-		// public bool HasWinnerBetween(ChemicalElementEntity main, ChemicalElementEntity other)
-		// {
-		// 	int couple = (int)(main.type | other.type);
-		// 	return this.winners.ContainsKey(couple);
-		// }
-		// public void SetWinnerBetween(ChemicalElementEntity main, ChemicalElementEntity other, bool isMainWinning)
-		// {
-		// 	int couple = (int)(main.type | other.type);
-		// 	if(!this.winners.ContainsKey(couple)) {
-		// 		if(isMainWinning) {
-		// 			this.winners.Add(couple, main);
-		// 		} else {
-		// 			this.winners.Add(couple, other);
-		// 		}
-		// 	} else {
-		// 		Debug.LogWarning($"WARNING : This couple ({main} + {other}) is already registered ! Check it out for optimization !");
-		// 	}
-		// }
-		// public bool IsWinningAgainst(ChemicalElementEntity main, ChemicalElementEntity other)
-		// {
-		// 	int couple = (int)(main.type | other.type);
-		// 	if(this.winners.ContainsKey(couple)) {
-		// 		return (this.winners[couple].type == main.type);
-		// 	} else {
-		// 		Debug.LogWarning($"WARNING : This couple ({main} + {other}) is not yet registered ! Check it out !");
-		// 		return false;
-		// 	}
-		// }
+			if(xe > ye) {
+				return 1;
+			} else if(xe < ye) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
 	}
 }
 
