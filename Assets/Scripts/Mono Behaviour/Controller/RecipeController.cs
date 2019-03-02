@@ -22,6 +22,7 @@ public class RecipeController : Singleton<RecipeController>
 	public Transform recipeSlotsTransform;
 
 	private ShelfController shelfController;
+	private BarmanController barmanController;
 
 	private ChemicalElementEntity cocktail;
 
@@ -45,6 +46,7 @@ public class RecipeController : Singleton<RecipeController>
 	{
 		base.Start();
 
+		this.barmanController = BarmanController.instance;
 		this.shelfController = ShelfController.instance;
 
 		this.ClearCocktail();
@@ -85,11 +87,10 @@ public class RecipeController : Singleton<RecipeController>
 	}
 	public void MakeCocktail()
 	{
-		Debug.Log("yoyoyo -> " + cocktail);
-
 		this.ClearCocktail();
 
 		this.shelfController.MadeCocktail();
+		this.barmanController.HoldCocktail(InteractiveEngine.instance.ingredientDatabase.GetIconWith(cocktail.type));
 
 		this.UpdateResultDisplay(cocktail);
 	}
