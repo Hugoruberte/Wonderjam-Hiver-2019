@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Interactive.Engine;
 
 
 namespace Interactive.Engine
@@ -75,23 +76,32 @@ namespace Interactive.Engine
 
 
 
-		public bool HasPrimariesOf(ChemicalElementEntity ent)
+		public _ChemicalElementEntity GetChemicalElementDataWithEnum(ChemicalElement e)
 		{
 			// only does that
-			return this.primaries.Exists(x => x.element == ent.type);
+			return new _ChemicalElementEntity(e, this.GetColorsOf(e), this.GetAttributesOf(e));
 		}
-		public void SetPrimariesOf(ChemicalElementEntity ent, ChemicalElement[] ps)
+
+
+
+
+		public bool HasPrimariesOf(ChemicalElement ent)
 		{
-			this.primaries.Add(new ChemicalToArrayData(ent.type, ps));
+			// only does that
+			return this.primaries.Exists(x => x.element == ent);
+		}
+		public void SetPrimariesOf(ChemicalElement ent, ChemicalElement[] ps)
+		{
+			this.primaries.Add(new ChemicalToArrayData(ent, ps));
 			this.primaries.Sort(CompareChemicalToArrayData);
 		}
-		public ChemicalElement[] GetPrimariesOf(ChemicalElementEntity ent)
+		public ChemicalElement[] GetPrimariesOf(ChemicalElement ent)
 		{
-			ChemicalToArrayData data = this.primaries.Find(x => x.element == ent.type);
+			ChemicalToArrayData data = this.primaries.Find(x => x.element == ent);
 			if(data.array != null) {
 				return data.array;
 			} else {
-				Debug.LogWarning($"WARNING : This element ({ent.type}) is not yet registered ! Check it out !");
+				Debug.LogWarning($"WARNING : This element ({ent}) is not yet registered ! Check it out !");
 				return null;
 			}
 		}
@@ -99,23 +109,23 @@ namespace Interactive.Engine
 
 
 
-		public bool HasAlcoholAttributesOf(ChemicalElementEntity ent)
+		public bool HasAlcoholAttributesOf(ChemicalElement ent)
 		{
 			// only does that
-			return this.attributes.Exists(x => x.element == ent.type);
+			return this.attributes.Exists(x => x.element == ent);
 		}
-		public void SetAlcoholAttributesOf(ChemicalElementEntity ent, AlcoholAttribute[] ats)
+		public void SetAlcoholAttributesOf(ChemicalElement ent, AlcoholAttribute[] ats)
 		{
-			this.attributes.Add(new ChemicalToAlcoholAttributesData(ent.type, ats));
+			this.attributes.Add(new ChemicalToAlcoholAttributesData(ent, ats));
 			this.attributes.Sort(CompareChemicalToAlcoholAttributesData);
 		}
-		public AlcoholAttribute[] GetAlcoholAttributesOf(ChemicalElementEntity ent)
+		public AlcoholAttribute[] GetAttributesOf(ChemicalElement ent)
 		{
-			ChemicalToAlcoholAttributesData data = this.attributes.Find(x => x.element == ent.type);
+			ChemicalToAlcoholAttributesData data = this.attributes.Find(x => x.element == ent);
 			if(data.array != null) {
 				return data.array;
 			} else {
-				Debug.LogWarning($"WARNING : This element ({ent.type}) is not yet registered ! Check it out !");
+				Debug.LogWarning($"WARNING : This element ({ent}) is not yet registered ! Check it out !");
 				return null;
 			}
 		}
@@ -123,23 +133,23 @@ namespace Interactive.Engine
 
 
 
-		public bool HasColorsOf(ChemicalElementEntity ent)
+		public bool HasColorsOf(ChemicalElement ent)
 		{
 			// only does that
-			return this.colors.Exists(x => x.element == ent.type);
+			return this.colors.Exists(x => x.element == ent);
 		}
-		public void SetColorsOf(ChemicalElementEntity ent, AlcoholColor[] acs)
+		public void SetColorsOf(ChemicalElement ent, AlcoholColor[] acs)
 		{
-			this.colors.Add(new ChemicalToColorData(ent.type, acs));
+			this.colors.Add(new ChemicalToColorData(ent, acs));
 			this.colors.Sort(CompareChemicalToColorsData);
 		}
-		public AlcoholColor[] GetColorsOf(ChemicalElementEntity ent)
+		public AlcoholColor[] GetColorsOf(ChemicalElement ent)
 		{
-			ChemicalToColorData data = this.colors.Find(x => x.element == ent.type);
+			ChemicalToColorData data = this.colors.Find(x => x.element == ent);
 			if(data.array != null) {
 				return data.array;
 			} else {
-				Debug.LogWarning($"WARNING : This element ({ent.type}) is not yet registered ! Check it out !");
+				Debug.LogWarning($"WARNING : This element ({ent}) is not yet registered ! Check it out !");
 				return null;
 			}
 		}
@@ -147,27 +157,27 @@ namespace Interactive.Engine
 
 
 
-		public bool HasMixOf(ChemicalElementEntity a, ChemicalElementEntity b)
+		public bool HasMixOf(ChemicalElement a, ChemicalElement b)
 		{
-			int couple = (int)(a.type | b.type);
+			int couple = (int)(a | b);
 			return this.couples.Exists(x => x.couple == couple);
 		}
-		public void SetMixOf(ChemicalElementEntity a, ChemicalElementEntity b, ChemicalElementEntity ent)
+		public void SetMixOf(ChemicalElement a, ChemicalElement b, ChemicalElement ent)
 		{
-			int couple = (int)(a.type | b.type);
+			int couple = (int)(a | b);
 			if(!this.couples.Exists(x => x.couple == couple)) {
-				if(ent == null) {
-					this.couples.Add(new IntToChemicalData(couple, ChemicalElement.Voidd, true));
+				if(ent == ChemicalElement.Voidd) {
+					this.couples.Add(new IntToChemicalData(couple, ent, true));
 				} else {
-					this.couples.Add(new IntToChemicalData(couple, ent.type));
+					this.couples.Add(new IntToChemicalData(couple, ent));
 				}
 			} else {
 				Debug.LogWarning($"WARNING : This couple ({a} + {b}) is already registered ! Check it out for optimization !");
 			}
 		}
-		public string GetMixOf(ChemicalElementEntity a, ChemicalElementEntity b)
+		public string GetMixOf(ChemicalElement a, ChemicalElement b)
 		{
-			int couple = (int)(a.type | b.type);
+			int couple = (int)(a | b);
 			IntToChemicalData data = this.couples.Find(x => x.couple == couple);
 			if(data.couple > 0) {
 				if(data.empty) {
@@ -230,4 +240,14 @@ namespace Interactive.Engine
 	}
 }
 
+public struct _ChemicalElementEntity {
+	public ChemicalElement type;
+	public AlcoholColor[] color;
+	public AlcoholAttribute[] attribute;
 
+	public _ChemicalElementEntity(ChemicalElement t, AlcoholColor[] c, AlcoholAttribute[] a) {
+		this.type = t;
+		this.color = c;
+		this.attribute = a;
+	}
+}

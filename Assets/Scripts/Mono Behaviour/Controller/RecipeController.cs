@@ -5,7 +5,7 @@ using Interactive.Engine;
 
 public class RecipeController : Singleton<RecipeController>
 {
-	private List<ChemicalElementEntity> combo = new List<ChemicalElementEntity>();
+	private List<ChemicalElement> combo = new List<ChemicalElement>();
 
 	private float length;
 	private float height;
@@ -21,11 +21,16 @@ public class RecipeController : Singleton<RecipeController>
 	public Transform resultTransform;
 	public Transform recipeSlotsTransform;
 
+	private ShelfController shelfController;
+
+	private ChemicalElementEntity cocktail;
+
 	private const float DISTANCE_BETWEEN_INGREDIENT = 0.12f;
 	private const float DISTANCE_BEFORE_RESULT = 1f;
 
-	private SpriteRenderer resultIcon;
+	[SerializeField] private int maxComboLength = 6;
 
+	private SpriteRenderer resultIcon;
 
 
 	protected override void Awake()
@@ -40,22 +45,21 @@ public class RecipeController : Singleton<RecipeController>
 	{
 		base.Start();
 
-		combo.Add(new BloodySlimy());
-		combo.Add(new DraculaSunrise());
-		// combo.Add(new StickyTear());
+		this.shelfController = ShelfController.instance;
 
-		AddElementToCocktail(new BigIsland());
-
-		// this.ClearCocktail();
+		this.ClearCocktail();
 	}
 
 
 
 
-	public void AddElementToCocktail(ChemicalElementEntity element)
+	public void AddElementToCocktail(ChemicalElement element)
 	{
-		if(combo.Exists(x => x.type == element.type)) {
+		if(combo.Exists(x => x == element)) {
 			Debug.LogWarning($"WARNING : Element {element} already in combo !");
+			return;
+		} else if(combo.Count == maxComboLength) {
+			Debug.Log("Reached max combo length !");
 			return;
 		}
 
@@ -63,9 +67,13 @@ public class RecipeController : Singleton<RecipeController>
 
 		this.UpdateCocktail();
 	}
-	public void RemoveElementFromCocktail(ChemicalElementEntity element)
+	private void RemoveElementFromCocktail(OnClickController click)
 	{
-		this.combo.Remove(element);
+		int index = click.transform.GetSiblingIndex();
+
+		this.shelfController.RemovedElementFromCombo(this.combo[index]);
+
+		this.combo.RemoveAt(index);
 
 		this.UpdateCocktail();
 	}
@@ -74,6 +82,16 @@ public class RecipeController : Singleton<RecipeController>
 		this.combo.Clear();
 
 		this.UpdateCocktail();
+	}
+	public void MakeCocktail()
+	{
+		Debug.Log("yoyoyo -> " + cocktail);
+
+		this.ClearCocktail();
+
+		this.shelfController.MadeCocktail();
+
+		this.UpdateResultDisplay(cocktail);
 	}
 
 
@@ -84,21 +102,13 @@ public class RecipeController : Singleton<RecipeController>
 
 		result = null;
 		if(this.combo.Count > 0) {
-			if(this.combo.Count < 3) {
-				result = this.combo[0];
-				for(int i = 1; i < this.combo.Count; i++) {
-					result *= this.combo[i];
-				}
-			} else {
-				result = InteractiveEngine.GetCocktailFrom(this.combo);
-			}
+			result = InteractiveEngine.GetCocktailFrom(this.combo);
 		}
+
+		this.cocktail = result;
 		
 		this.UpdateDisplay(result);
 	}
-
-	
-
 	private void UpdateDisplay(ChemicalElementEntity result)
 	{
 		this.height = mainTransform.localScale.y;
@@ -122,12 +132,13 @@ public class RecipeController : Singleton<RecipeController>
 		Transform tr;
 		for(int i = 0; i < this.combo.Count; i++) {
 			obj = Instantiate(this.slotPrefab, recipeSlotsTransform.position, Quaternion.identity);
+			obj.GetComponentInChildren<OnClickController>().onClickWithReference.AddListener(RemoveElementFromCocktail);
 			tr = obj.transform;
 
 			tr.parent = recipeSlotsTransform;
 			tr.position = new Vector3(this.left + i * (DISTANCE_BETWEEN_INGREDIENT + widthOfSlot) + DISTANCE_BETWEEN_INGREDIENT + (widthOfSlot / 2f), tr.position.y, tr.position.z);
 
-			tr.Find("Icon").GetComponent<SpriteRenderer>().sprite = InteractiveEngine.instance.ingredientDatabase.GetIconWith(this.combo[i].type);
+			tr.Find("Icon").GetComponent<SpriteRenderer>().sprite = InteractiveEngine.instance.ingredientDatabase.GetIconWith(this.combo[i]);
 		}
 	}
 	private void UpdateResultDisplay(ChemicalElementEntity result)
@@ -135,6 +146,7 @@ public class RecipeController : Singleton<RecipeController>
 		if(result != null) {
 			if(this.combo.Count > 0) {
 				resultTransform.position = new Vector3(this.left + this.combo.Count * (DISTANCE_BETWEEN_INGREDIENT+widthOfSlot) + DISTANCE_BEFORE_RESULT + (widthOfSlot/2f), resultTransform.position.y, resultTransform.position.z);
+				resultArrowObject.SetActive(true);
 			} else {
 				resultTransform.position = new Vector3(0f, resultTransform.position.y, resultTransform.position.z);
 				resultArrowObject.SetActive(false);
