@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class ToleranceManager : Singleton<ToleranceManager>
 {
-
-
-    private float toleranceGaugeMin = 0;
-    private float toleranceGaugeMaxNoStress = 33;
-    private float toleranceGaugeMaxNormalStress = 66;
-    private float toleranceGaugeMax = 100;
-    private float toleranceGaugeCurrent = 100;
+    public float toleranceGaugeMin = 0;
+    public float toleranceGaugeMaxNoStress = 33;
+    public float toleranceGaugeMaxNormalStress = 66;
+    public float toleranceGaugeMax = 100;
+    public float toleranceGaugeCurrent = 100;
 
     public Slider toleranceSliderUI;
 
@@ -27,8 +25,6 @@ public class ToleranceManager : Singleton<ToleranceManager>
         {
             // YOU GOOD I DONT EVEN KNOW WHY THIS CONDITION EXIST BUT WELL IT WAS 2A.M AND I WAS EXHAUSTED
         }
-        Debug.Log("toleranceGaugeValue after:" + toleranceGaugeCurrent);
         AudioManager.instance.ChangeMixerFromValue(toleranceGaugeCurrent / toleranceGaugeMax);
     }
-
 }
