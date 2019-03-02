@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MonsterScript : MonoBehaviour
 {
-    private int position;
-    private int attente = 2;
-    private int monsterAspect;
+    public int position;
+    public float waiting = 2.0f;
+    public int monsterAspect;
     
 
     // Start is called before the first frame update
@@ -21,26 +21,13 @@ public class MonsterScript : MonoBehaviour
         
     }
 
-    public int Position
+    void OnWaitingEnd()
     {
-        get { return position; }
-        set { position = value; }
+        MonsterManager.instance.TimerEnd(position);
     }
 
-    public int Attente
+    void SetCocktail(Cocktail)
     {
-        get { return attente; }
-        set { attente = value; }
-    }
-
-    public int MonsterAspect
-    {
-        get { return monsterAspect; }
-        set { monsterAspect = value; }
-    }
-
-    int youGotCocktail()
-    {
-        
+        // Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
     }
 }
