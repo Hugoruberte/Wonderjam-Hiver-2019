@@ -590,7 +590,7 @@ namespace Interactive.Engine
 				}
 			}
 
-			return winner?.Spawn();
+			return (winner != null) ? winner.Spawn() : new Voidd();
 		}
 
 		// get composition by decomposing 'recipe' in its primary element
@@ -626,10 +626,6 @@ namespace Interactive.Engine
 						cache.Remove(at);
 					}
 				}
-			}
-
-			foreach(AlcoholAttribute a in cache) {
-				Debug.LogWarning(a);
 			}
 
 			return cache.ToArray();

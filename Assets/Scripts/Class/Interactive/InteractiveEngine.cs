@@ -10,6 +10,7 @@ namespace Interactive.Engine
 	public class InteractiveEngine : Singleton<InteractiveEngine>
 	{
 		public InteractiveEngineData interactiveEngineData;
+		public ElementIconDatabase elementIconDatabase;
 		
 		private static ChemistryEngine chemistry = new ChemistryEngine();
 
