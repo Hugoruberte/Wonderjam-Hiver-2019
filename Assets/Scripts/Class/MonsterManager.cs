@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using Random = System.Random;
+using Vector3 = UnityEngine.Vector3;
 
 public class MonsterManager : Singleton<MonsterManager>
 {
@@ -17,7 +19,8 @@ public class MonsterManager : Singleton<MonsterManager>
 
     private MonsterScript[] monsters;
     private List<int> freeIndice = new List<int>();
-
+    private List<float> xMin = new List<float>();
+    private List<float> xMax = new List<float>();
 
 
     // Start is called before the first frame update
@@ -30,6 +33,25 @@ public class MonsterManager : Singleton<MonsterManager>
         }
 
         setTimeToCreateMonster(timeBetweenMonster);
+
+        xMin.Add(-6.56f);
+        xMin.Add(-4.5f);
+        xMin.Add(-2.5f);
+        xMin.Add(-0.5f);
+        xMin.Add(1.5f);
+        xMin.Add(3.5f);
+        xMin.Add(5.5f);
+        xMin.Add(7.5f);
+        
+        xMax.Add(-6f);
+        xMax.Add(-4f);
+        xMax.Add(-2f);
+        xMax.Add(0f);
+        xMax.Add(2f);
+        xMax.Add(4f);
+        xMax.Add(6f);
+        xMax.Add(8f);
+
     }
 
     // Update is called once per frame
@@ -59,8 +81,13 @@ public class MonsterManager : Singleton<MonsterManager>
 
         MonsterScript MonsterCreate = Instantiate(prefabMonster);
         //set MonsterCreate
+        float Yposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.y;
+        float Zposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.z;
         MonsterCreate.index = freePlace;
-        MonsterCreate.position = UnityEngine.Random.Range(GetRangeMin(indiceTemp),GetRangeMax(indiceTemp));
+        Debug.Log(MonsterCreate.index);
+        MonsterCreate.position = UnityEngine.Random.Range(xMin[freePlace],xMax[freePlace]);
+        MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position =
+            new Vector3(MonsterCreate.position, Yposition, Zposition);
         // TODO : rajoutez un MonsterAspect
 
         //fill the array of monsters
@@ -74,18 +101,6 @@ public class MonsterManager : Singleton<MonsterManager>
         monsters[position] = null;
         Destroy(leavingMonster);
         freeIndice.Add(position);
-    }
-
-    int GetRangeMin(int indice)
-    {
-        // TODO : Rajouter une fonction pour obtenir la valeur min de z
-        return 0;
-    }
-
-    int GetRangeMax(int indice)
-    {
-        // TODO : Rajouter une fonction pour obtenir la valeur max de z
-        return 0;
     }
 
     public void TimerEnd(int position)

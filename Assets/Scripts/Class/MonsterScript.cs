@@ -6,14 +6,16 @@ using Interactive.Engine;
 public class MonsterScript : MonoBehaviour
 {
     //monster variables
-    public int position;
+    public float position;
     public int index;
     public int monsterAspect;
 
     //time variables
-    public float waiting = 2.0f;
+    public float waiting = 4.0f;
+    public float walking = 1.0f; 
 
     private WaitForSeconds waitBeforeLeaving;
+    private WaitForSeconds waitBeforeWalking;
     private float startWaitingTime;
     private float timeCoeff = 10;
     private float timeLimit = 0.5f;
@@ -33,7 +35,9 @@ public class MonsterScript : MonoBehaviour
     {
         startWaitingTime = Time.time;
         waitBeforeLeaving = new WaitForSeconds(waiting);
+        waitBeforeWalking = new WaitForSeconds(walking);
         StartCoroutine(Leaving());
+        StartCoroutine(Walking());
 
         /*TODO Random Attribution of order just test value here */
         AlcoholColor color = AlcoholColor.Black;
@@ -64,9 +68,13 @@ public class MonsterScript : MonoBehaviour
         yield return waitBeforeLeaving;
         MonsterManager.instance.TimerEnd(index);
     }
-    void OnWaitingEnd()
+
+    IEnumerator Walking()
     {
-        MonsterManager.instance.TimerEnd(position);
+        yield return waitBeforeWalking;
+        Vector3 positionTemp = GetComponent<Transform>().position;
+        positionTemp.y += 1.0f;
+        GetComponent<Transform>().position = positionTemp;
     }
 
     void SetCocktail(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
@@ -179,7 +187,6 @@ public class MonsterScript : MonoBehaviour
 
         return toleranceCategoryPoints;
     }
-
-
-
+    
+    
 }
