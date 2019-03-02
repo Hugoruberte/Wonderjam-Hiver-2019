@@ -14,17 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredients:
   - element: 2
-    sprite: {fileID: 0}
-    isUnlocked: 0
+    sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+    isUnlocked: 1
   - element: 8
-    sprite: {fileID: 0}
-    isUnlocked: 0
+    sprite: {fileID: 21300000, guid: 8c639bcf842478d48bbc01dac0b31640, type: 3}
+    isUnlocked: 1
   - element: 512
-    sprite: {fileID: 0}
-    isUnlocked: 0
+    sprite: {fileID: 21300000, guid: 7eae5ff9155fc7347a2219aa09a22b87, type: 3}
+    isUnlocked: 1
   - element: 4096
-    sprite: {fileID: 0}
-    isUnlocked: 0
+    sprite: {fileID: 21300000, guid: 5ce322ffd46999048aa663ba0bbe4cbb, type: 3}
+    isUnlocked: 1
   - element: 65536
-    sprite: {fileID: 0}
-    isUnlocked: 0
+    sprite: {fileID: 21300000, guid: b59b99ed9c3f3b546ba7f735af0c8d25, type: 3}
+    isUnlocked: 1
+  - element: 131072
+    sprite: {fileID: 21300000, guid: 975570a90d56c477582e12d440dc9931, type: 3}
+    isUnlocked: 1
