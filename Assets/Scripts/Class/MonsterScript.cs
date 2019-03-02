@@ -7,6 +7,7 @@ public class MonsterScript : MonoBehaviour
 {
     //monster variables
     public int position;
+    public int index;
     public int monsterAspect;
 
     //time variables
@@ -14,13 +15,12 @@ public class MonsterScript : MonoBehaviour
 
     private WaitForSeconds waitBeforeLeaving;
     private float startWaitingTime;
-    private float timeCoeff = 20;
+    private float timeCoeff = 10;
     private float timeLimit = 0.5f;
 
     //order Variable
     private Order myOrder;
-    //VARIABLE TO MOVE BUT I DONT KNOW WHERE TO PUT IT NOW...
-    private float orderSuccessValue = 10;
+    private Ambrosia cocktailTest;
 
     //color variable
     private float colorCoeff = 7;
@@ -37,14 +37,19 @@ public class MonsterScript : MonoBehaviour
 
         /*TODO Random Attribution of order just test value here */
         AlcoholColor color = AlcoholColor.Black;
-        List<AlcoholAttribute> attributesList = new List<AlcoholAttribute>();
+        AlcoholAttribute[] attributesList = new AlcoholAttribute[2];
 
-        attributesList.Add(new AlcoholAttribute(Attribute.Sugar, 2));
-        attributesList.Add(new AlcoholAttribute(Attribute.Spicy, 3));
+        attributesList[0] = (new AlcoholAttribute(Attribute.Fatal, 2));
+        attributesList[1] = (new AlcoholAttribute(Attribute.Spicy, 3));
 
-        /* END OF TEST HERE */
-        myOrder = new Order(color, attributesList);
+        cocktailTest = new Ambrosia();
+
+
         
+        myOrder = new Order(attributesList, color);
+        /* END OF TEST HERE */
+
+
 
     }
 
@@ -57,40 +62,36 @@ public class MonsterScript : MonoBehaviour
     IEnumerator Leaving()
     {
         yield return waitBeforeLeaving;
-        MonsterManager.instance.LeavingMonster(position);
+        MonsterManager.instance.TimerEnd(index);
     }
     void OnWaitingEnd()
     {
         MonsterManager.instance.TimerEnd(position);
     }
 
-    void SetCocktail(ChemicalElementEntity Cocktail)
+    void SetCocktail(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
     {
-
-        float tolerancePoint = CalculateTolerancePoint(Cocktail);
+        // Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
+        float tolerancePoint = CalculateTolerancePoint(Order, Cocktail);
 
         ToleranceManager.instance.UpdateGaugeValue(tolerancePoint);
 
-        //categoryPoints
-
-
-
-        // Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
+        MonsterManager.instance.LeavingMonster(index);
     }
 
     //calculateTolerancePoint
-    private float CalculateTolerancePoint(ChemicalElementEntity Cocktail)
+    private float CalculateTolerancePoint(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
     {
         //time points
         float toleranceTimePoints = CalculateTimeTolerancePoint();
 
         //color Points
-        float toleranceColorPoints = CalculateColorTolerancePoint(myOrder.color, Cocktail.colors);
+        float toleranceColorPoints = CalculateColorTolerancePoints(myOrder.colors, Cocktail.colors);
 
         //category Points
-        float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attribute, Cocktail.attributes);
+        float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attributes, Cocktail.attributes);
 
-        return orderSuccessValue /*- toleranceTimePoints - toleranceColorPoints*/ - toleranceCategoryPoints;
+        return MonsterManager.instance.orderSuccessValue - toleranceTimePoints - toleranceColorPoints - toleranceCategoryPoints;
 
     }
     
@@ -105,7 +106,18 @@ public class MonsterScript : MonoBehaviour
         return ((waitingTime / waiting) - timeLimit) * timeCoeff;
     }
 
-    //color points
+    //calculate errors due to colors
+    private float CalculateColorTolerancePoints(AlcoholColor []colorsWanted, AlcoholColor [] colors)
+    {
+        float toleranceColorPoints = 0;
+        foreach(AlcoholColor color in colorsWanted)
+        {
+            toleranceColorPoints += CalculateColorTolerancePoint(color, colors);
+        }
+        return toleranceColorPoints;
+    }
+
+    //calculate error of one color
     private float CalculateColorTolerancePoint(AlcoholColor colorWanted,AlcoholColor []colors)
     {
         
@@ -125,12 +137,12 @@ public class MonsterScript : MonoBehaviour
     }
 
     //category points
-    private float CalculateCategoryTolerancePoint(List<AlcoholAttribute> orderAttributes, AlcoholAttribute []cocktailAttributes)
+    private float CalculateCategoryTolerancePoint(AlcoholAttribute [] orderAttributes, AlcoholAttribute []cocktailAttributes)
     {
         //create Map Order Attributes
         Dictionary<Attribute, float> IntensityForAttribute = new Dictionary<Attribute, float>();
 
-        for (int i = 0; i < orderAttributes.Count; ++i)
+        for (int i = 0; i < orderAttributes.Length; ++i)
         {
             AlcoholAttribute tmpAttribute = orderAttributes[i];
             IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
