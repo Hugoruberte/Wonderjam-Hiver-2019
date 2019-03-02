@@ -18,7 +18,7 @@ public class ToleranceManager : Singleton<ToleranceManager>
         }
         else if(toleranceGaugeCurrent >= toleranceGaugeMax)
         {
-            // YOU GOOD I DONT EVEN KNOW WHY THIS CONDITION EXIST
+            // YOU GOOD I DONT EVEN KNOW WHY THIS CONDITION EXIST BUT WELL IT WAS 2A.M AND I WAS EXHAUSTED
         }
         Debug.Log("toleranceGaugeValue after:" + toleranceGaugeCurrent);
     }

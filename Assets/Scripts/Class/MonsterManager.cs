@@ -88,16 +88,10 @@ public class MonsterManager : Singleton<MonsterManager>
         return 0;
     }
 
-    void SetCocktail()
-    {
-        
-    }
-
     public void TimerEnd(int position)
     {
         ToleranceManager.instance.UpdateGaugeValue(-orderSuccessValue);
         LeavingMonster(position);
-        // Renvoyez tout ca à Luc pour obtenir la nouvelle valeur de satisfaction.
     }
 
 }
