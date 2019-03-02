@@ -5,188 +5,204 @@ using Interactive.Engine;
 
 public class MonsterScript : MonoBehaviour
 {
-    //monster variables
-    public float position;
-    public int index;
-    public int monsterAspect;
+	private Transform myTransform;
 
-    //time variables
-    public float waiting = 4.0f;
-    public float walking = 1.0f; 
+	public int monsterAspect;
+	public float smooth = 0.25f;
 
-    private WaitForSeconds waitBeforeLeaving;
-    private WaitForSeconds waitBeforeWalking;
-    private float startWaitingTime;
-    private float timeCoeff = 10;
-    private float timeLimit = 0.5f;
+	[HideInInspector] public int indexInMonsterArray;
+	private float startWaitingTime;
+	private float willBeWaitingMax;
+	private float timeCoeff = 10;
+	private float timeLimit = 0.5f;
+	private float colorCoeff = 7;
+	private float categoryCoeff = 2;
 
-    //order Variable
-    private Order myOrder;
-    private Ambrosia cocktailTest;
+	private bool iHaveNotBeenServed = true;
 
-    //color variable
-    private float colorCoeff = 7;
+	private WaitForSeconds waitBeforeLeaving;
 
-    //category variable
-    private float categoryCoeff = 2;
+	private IEnumerator waitForCocktailCoroutine = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        startWaitingTime = Time.time;
-        waitBeforeLeaving = new WaitForSeconds(waiting);
-        waitBeforeWalking = new WaitForSeconds(walking);
-        StartCoroutine(Leaving());
-        StartCoroutine(Walking());
+	private Order myOrder;
 
-        /*TODO Random Attribution of order just test value here */
-        AlcoholColor color = AlcoholColor.Black;
-        AlcoholAttribute[] attributesList = new AlcoholAttribute[2];
-
-        attributesList[0] = (new AlcoholAttribute(Attribute.Fatal, 2));
-        attributesList[1] = (new AlcoholAttribute(Attribute.Spicy, 3));
-
-        cocktailTest = new Ambrosia();
+	private MonsterManager monsterManager;
 
 
-        
-        myOrder = new Order(attributesList, color);
-        /* END OF TEST HERE */
+	void Awake()
+	{
+		myTransform = transform;
+	}
+
+	void Start()
+	{
+		monsterManager = MonsterManager.instance;
+
+		startWaitingTime = Time.time;
+		willBeWaitingMax = monsterManager.GetMonsterWaitingDuration();
+		waitBeforeLeaving = new WaitForSeconds(willBeWaitingMax);
+
+		waitForCocktailCoroutine = WaitForCocktailCoroutine();
+		StartCoroutine(waitForCocktailCoroutine);
+	}
+
+	private IEnumerator WaitForCocktailCoroutine()
+	{
+		Vector3 target;
+		Vector3 reference = Vector3.zero;
+
+		// Walk in
+		target = myTransform.position + Vector3.up;
+		while(Vector3.Distance(myTransform.position, target) > 0.05f) {
+			myTransform.position = Vector3.SmoothDamp(myTransform.position, target, ref reference, smooth);
+			yield return null;
+		}
+
+		// Wait
+		yield return waitBeforeLeaving;
+
+		yield return this.LeaveCoroutine();
+	}
+
+	private IEnumerator LeaveCoroutine()
+	{
+		Vector3 target;
+		Vector3 reference = Vector3.zero;
+
+		// Leaving
+		monsterManager.MonsterStartLeaving(this.indexInMonsterArray);
+
+		// Walk out
+		target = myTransform.position - Vector3.up * 3f;
+		while(Vector3.Distance(myTransform.position, target) > 0.05f) {
+			myTransform.position = Vector3.SmoothDamp(myTransform.position, target, ref reference, smooth);
+			yield return null;
+		}
+
+		if(iHaveNotBeenServed) {
+			monsterManager.UpdateGaugeOnTimeEnd(this.indexInMonsterArray);
+		}
+		Destroy(gameObject);
+	}
+
+	public void SetCocktail(ChemicalElementEntity Cocktail)
+	{
+		// Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
+		float tolerancePoint = CalculateTolerancePoint(myOrder, Cocktail);
+
+		this.iHaveNotBeenServed = false;
+
+		ToleranceManager.instance.UpdateGaugeValue(tolerancePoint);
+
+		StopCoroutine(waitForCocktailCoroutine);
+		StartCoroutine(this.LeaveCoroutine());
+	}
 
 
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    IEnumerator Leaving()
-    {
-        yield return waitBeforeLeaving;
-        MonsterManager.instance.TimerEnd(index);
-    }
-
-    IEnumerator Walking()
-    {
-        yield return waitBeforeWalking;
-        Vector3 positionTemp = GetComponent<Transform>().position;
-        positionTemp.y += 1.0f;
-        GetComponent<Transform>().position = positionTemp;
-    }
-
-    void SetCocktail(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
-    {
-        // Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
-        float tolerancePoint = CalculateTolerancePoint(Order, Cocktail);
-
-        ToleranceManager.instance.UpdateGaugeValue(tolerancePoint);
-
-        MonsterManager.instance.LeavingMonster(index);
-    }
-
-    //calculateTolerancePoint
-    private float CalculateTolerancePoint(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
-    {
-        //time points
-        float toleranceTimePoints = CalculateTimeTolerancePoint();
-
-        //color Points
-        float toleranceColorPoints = CalculateColorTolerancePoints(myOrder.colors, Cocktail.colors);
-
-        //category Points
-        float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attributes, Cocktail.attributes);
-
-        return MonsterManager.instance.orderSuccessValue - toleranceTimePoints - toleranceColorPoints - toleranceCategoryPoints;
-
-    }
-    
-    //time points
-    private float CalculateTimeTolerancePoint()
-    {
-        float currentWaitingTime = Time.time;
-        //actual waiting Time
-        float waitingTime = currentWaitingTime - startWaitingTime;
-
-        //tolerance points lost from time
-        return ((waitingTime / waiting) - timeLimit) * timeCoeff;
-    }
-
-    //calculate errors due to colors
-    private float CalculateColorTolerancePoints(AlcoholColor []colorsWanted, AlcoholColor [] colors)
-    {
-        float toleranceColorPoints = 0;
-        foreach(AlcoholColor color in colorsWanted)
-        {
-            toleranceColorPoints += CalculateColorTolerancePoint(color, colors);
-        }
-        return toleranceColorPoints;
-    }
-
-    //calculate error of one color
-    private float CalculateColorTolerancePoint(AlcoholColor colorWanted,AlcoholColor []colors)
-    {
-        
-        float toleranceColorPoints = colorCoeff;
-        bool colorNotFound = true;
-        int i = 0;
-        while (colorNotFound && i < colors.Length)
-        {
-            if (colorWanted == colors[i])
-            {
-                toleranceColorPoints *= 0;
-                colorNotFound = false;
-            }
-            ++i;
-        }
-        return toleranceColorPoints;
-    }
-
-    //category points
-    private float CalculateCategoryTolerancePoint(AlcoholAttribute [] orderAttributes, AlcoholAttribute []cocktailAttributes)
-    {
-        //create Map Order Attributes
-        Dictionary<Attribute, float> IntensityForAttribute = new Dictionary<Attribute, float>();
-
-        for (int i = 0; i < orderAttributes.Length; ++i)
-        {
-            AlcoholAttribute tmpAttribute = orderAttributes[i];
-            IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
-        }
 
 
-        //for all cocktailAttributes
-        for (int i = 0; i < cocktailAttributes.Length; ++i)
-        {
-            AlcoholAttribute tmpAttribute = cocktailAttributes[i];
-            //if the attributes is also in the order
-            if (IntensityForAttribute.ContainsKey(tmpAttribute.attribute))
-            {
-                //the tolerance point is the difference between the wantedValue and the givenValue
-                IntensityForAttribute[tmpAttribute.attribute] -= tmpAttribute.intensity;
-            }
-            /*else
-            {
-                //else the category was not wanted, all points in this category are false.
-                IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
-            }*/
-        }
 
 
-        //calculate toleranceValue
-        float toleranceCategoryPoints = 0;
 
-        foreach (Attribute attribute in IntensityForAttribute.Keys)
-        {
-            toleranceCategoryPoints += Mathf.Abs(IntensityForAttribute[attribute]);
-        }
 
-        toleranceCategoryPoints *= categoryCoeff;
+	//calculateTolerancePoint
+	private float CalculateTolerancePoint(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
+	{
+		//time points
+		float toleranceTimePoints = CalculateTimeTolerancePoint();
 
-        return toleranceCategoryPoints;
-    }
-    
-    
+		//color Points
+		float toleranceColorPoints = CalculateColorTolerancePoints(myOrder.colors, Cocktail.colors);
+
+		//category Points
+		float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attributes, Cocktail.attributes);
+
+		return monsterManager.orderSuccessValue - toleranceTimePoints - toleranceColorPoints - toleranceCategoryPoints;
+
+	}
+	
+	//time points
+	private float CalculateTimeTolerancePoint()
+	{
+		float currentWaitingTime = Time.time;
+		//actual waiting Time
+		float waitingTime = currentWaitingTime - startWaitingTime;
+
+		//tolerance points lost from time
+		return ((waitingTime / willBeWaitingMax) - timeLimit) * timeCoeff;
+	}
+
+	//calculate errors due to colors
+	private float CalculateColorTolerancePoints(AlcoholColor []colorsWanted, AlcoholColor [] colors)
+	{
+		float toleranceColorPoints = 0;
+		foreach(AlcoholColor color in colorsWanted)
+		{
+			toleranceColorPoints += CalculateColorTolerancePoint(color, colors);
+		}
+		return toleranceColorPoints;
+	}
+
+	//calculate error of one color
+	private float CalculateColorTolerancePoint(AlcoholColor colorWanted,AlcoholColor []colors)
+	{
+		
+		float toleranceColorPoints = colorCoeff;
+		bool colorNotFound = true;
+		int i = 0;
+		while (colorNotFound && i < colors.Length)
+		{
+			if (colorWanted == colors[i])
+			{
+				toleranceColorPoints *= 0;
+				colorNotFound = false;
+			}
+			++i;
+		}
+		return toleranceColorPoints;
+	}
+
+	//category points
+	private float CalculateCategoryTolerancePoint(AlcoholAttribute [] orderAttributes, AlcoholAttribute []cocktailAttributes)
+	{
+		//create Map Order Attributes
+		Dictionary<Attribute, float> IntensityForAttribute = new Dictionary<Attribute, float>();
+
+		for (int i = 0; i < orderAttributes.Length; ++i)
+		{
+			AlcoholAttribute tmpAttribute = orderAttributes[i];
+			IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
+		}
+
+
+		//for all cocktailAttributes
+		for (int i = 0; i < cocktailAttributes.Length; ++i)
+		{
+			AlcoholAttribute tmpAttribute = cocktailAttributes[i];
+			//if the attributes is also in the order
+			if (IntensityForAttribute.ContainsKey(tmpAttribute.attribute))
+			{
+				//the tolerance point is the difference between the wantedValue and the givenValue
+				IntensityForAttribute[tmpAttribute.attribute] -= tmpAttribute.intensity;
+			}
+			/*else
+			{
+				//else the category was not wanted, all points in this category are false.
+				IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
+			}*/
+		}
+
+		//calculate toleranceValue
+		float toleranceCategoryPoints = 0;
+
+		foreach (Attribute attribute in IntensityForAttribute.Keys)
+		{
+			toleranceCategoryPoints += Mathf.Abs(IntensityForAttribute[attribute]);
+		}
+
+		toleranceCategoryPoints *= categoryCoeff;
+
+		return toleranceCategoryPoints;
+	}
 }

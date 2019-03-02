@@ -36,7 +36,7 @@ namespace Interactive.Engine
 			ChemicalElementEntity[] res;
 
 			t = typeof(ChemicalElementEntity);
-			ts = Assembly.GetAssembly(t).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(t)).ToArray();
+			ts = Assembly.GetAssembly(t).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(t) && myType != typeof(Order)).ToArray();
 			res = new ChemicalElementEntity[ts.Length];
 			i = 0;
 

@@ -1,89 +1,127 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Interactive.Engine;
 
 public class Barman : Singleton<Barman>
 {
-    public enum Aspect
-    {
-        CHILL,
-        NORMAL,
-        STRESSED,
-    };
+	public enum Aspect
+	{
+		CHILL,
+		NORMAL,
+		STRESSED,
+		TERRIFIED
+	};
 
-    private Aspect aspect;
-    private GameObject currentCockail;
-    private GameObject currentMonster;
-    private int currentIndex = 0; //index of list monsters in front of the player
+	[Range(0.01f, 1f)]
+	public float smooth = 0.2f;
 
-    // Start is called before the first frame update
-    protected override void Start ()
-    {
-        
-    }
+	private Transform myTransform;
 
-    // Update is called once per frame
-    void Update()
-    {
-        updateAspect();
+	private Aspect aspect;
+	private MonsterScript currentMonster; 
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            //Move(KeyCode.LeftArrow); NEED monsters list
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            //Move(KeyCode.RightArrow); NEED monsters list
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            print("Le Barman sert un monstre");
-            // TODO set cocktail du monstre
-            //currentMonster.setCocktail();
-        }
-    }
+	private MonsterScript[] monsters;
 
-    void updateAspect()
-    {
-        if (StressGauge.instance.currentStress <= StressGauge.instance.maxNoStress)
-        {
-            aspect = Aspect.CHILL;
-        }
-        else if (StressGauge.instance.currentStress <= StressGauge.instance.maxNormalStress)
-        {
-            aspect = Aspect.NORMAL;
-        }
-        else
-        {
-            aspect = Aspect.STRESSED;
-        }
-        //TODO : change sprite renderer 
-    }
+	private int vertCache = 0;
 
-    void Move(KeyCode key, List<MonoBehaviour> listMonsters, int sizeList) //TODO : MonoBehaviour -> Monster
-    {
-        //Go Left
-        if (key == KeyCode.LeftArrow)
-        {
-            int nextIndex = currentIndex - 1;
-            if (nextIndex > 0)
-            {
-                currentIndex = nextIndex;
-            }
-        }
-        //Go Right
-        else if (key == KeyCode.RightArrow)
-        {
-            int nextIndex = currentIndex + 1;
-            if (nextIndex < sizeList)
-            {
-                currentIndex = nextIndex;
-            }
-        }
-        //else : already at the most left or right position 
-        MonoBehaviour currentMonster = listMonsters[currentIndex];
-        transform.position = currentMonster.transform.position;
-    }
+	private bool isMoving = false;
 
+	private IEnumerator moveCoroutine = null;
 
+	private Vector3 myReference = Vector3.zero;
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		myTransform = transform;
+	}
+
+	protected override void Start()
+	{
+		base.Start();
+
+		monsters = MonsterManager.instance.monsters;
+
+		StartCoroutine(MovementCoroutine());
+	}
+
+	private IEnumerator MovementCoroutine()
+	{
+		int vert, down;
+		MonsterScript monster;
+
+		while(true) {
+
+			do {
+				vert = (int)Input.GetAxisRaw("Horizontal");
+				down = (int)Input.GetAxisRaw("Vertical");
+
+				yield return null;
+			}
+			while(vert == 0 && down >= 0);
+
+			monster = null;
+
+			if(vert < 0) {
+				for(int i = this.monsters.Length - 1; i >= 0; i--) {
+					if(this.monsters[i] != null && this.monsters[i].transform.position.x < myTransform.position.x) {
+						monster = this.monsters[i];
+					}
+				}
+			} else if(vert > 0) {
+				for(int i = 0; i < this.monsters.Length; i++) {
+					if(this.monsters[i] != null && this.monsters[i].transform.position.x > myTransform.position.x) {
+						monster = this.monsters[i];
+					}
+				}
+			} else {
+				Debug.Log("Le Barman sert un monstre");
+			}
+
+			if(monster != null && currentMonster != monster && (!isMoving || vert != vertCache)) {
+				this.vertCache = vert;
+				this.currentMonster = monster;
+
+				if(moveCoroutine != null) {
+					StopCoroutine(moveCoroutine);
+				}
+				moveCoroutine = MoveCoroutine(currentMonster);
+				StartCoroutine(moveCoroutine);
+			}
+		}
+	}
+
+	private IEnumerator MoveCoroutine(MonsterScript currentMonster)
+	{
+		this.isMoving = true;
+		Vector3 target = new Vector3(currentMonster.transform.position.x, myTransform.position.y, myTransform.position.z);
+
+		while(Vector3.Distance(myTransform.position, target) > 0.1f)
+		{
+			myTransform.position = Vector3.SmoothDamp(myTransform.position, target, ref myReference, smooth);
+
+			yield return null;
+		}
+
+		this.isMoving = false;
+	}
+
+	private void UpdateAspect()
+	{
+		if (StressGauge.instance.currentStress <= StressGauge.instance.maxNoStress)
+		{
+			aspect = Aspect.CHILL;
+		}
+		else if (StressGauge.instance.currentStress <= StressGauge.instance.maxNormalStress)
+		{
+			aspect = Aspect.NORMAL;
+		}
+		else
+		{
+			aspect = Aspect.STRESSED;
+		}
+		//TODO : change sprite renderer 
+	}
 } 

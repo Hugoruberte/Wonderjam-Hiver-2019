@@ -1,112 +1,92 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using Random = System.Random;
-using Vector3 = UnityEngine.Vector3;
 
 public class MonsterManager : Singleton<MonsterManager>
 {
-    public float timeBetweenMonster = 1.0f;
+	private Transform folder;
 
-    public int monsterNumber;
-    public MonsterScript prefabMonster;
+	[Range(0f, 2f)]
+	public float maxTimeBetweenMonster = 1.0f;
 
-    //VARIABLE TO MOVE BUT I DONT KNOW WHERE TO PUT IT NOW...
-    public float orderSuccessValue = 10;
+	private const int MAX_MONSTER_NUMBER = 8;
+	public MonsterScript prefabMonster;
+	public MonsterScript[] monsters;
 
-    private float timeToCreateMonster;
+	//VARIABLE TO MOVE BUT I DONT KNOW WHERE TO PUT IT NOW...
+	[HideInInspector] public float orderSuccessValue = 10;
 
-    private MonsterScript[] monsters;
-    private List<int> freeIndice = new List<int>();
-    private List<float> xMin = new List<float>();
-    private List<float> xMax = new List<float>();
+	private float timeToCreateMonster;
+	private List<int> freeIndex = new List<int>();
+	private float[] xAnchor = new float[] {-6.5f, -4.8f, -2.95f, -1.35f, 0.25f, 2f, 4.25f, 6.5f};
 
 
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        monsters = new MonsterScript[monsterNumber];
-        for(int i = 0; i < monsterNumber; ++i )
-        {
-            freeIndice.Add(i);
-        }
+	protected override void Awake()
+	{
+		base.Awake();
 
-        setTimeToCreateMonster(timeBetweenMonster);
+		// initialize random time
+		timeToCreateMonster = Time.time + Random.Range(0f, maxTimeBetweenMonster);
 
-        xMin.Add(-6.56f);
-        xMin.Add(-4.5f);
-        xMin.Add(-2.5f);
-        xMin.Add(-0.5f);
-        xMin.Add(1.5f);
-        xMin.Add(3.5f);
-        xMin.Add(5.5f);
-        xMin.Add(7.5f);
-        
-        xMax.Add(-6f);
-        xMax.Add(-4f);
-        xMax.Add(-2f);
-        xMax.Add(0f);
-        xMax.Add(2f);
-        xMax.Add(4f);
-        xMax.Add(6f);
-        xMax.Add(8f);
+		// initialize list
+		monsters = new MonsterScript[MAX_MONSTER_NUMBER];
+		for(int i = 0; i < MAX_MONSTER_NUMBER; ++i) {
+			freeIndex.Add(i);
+		}
 
-    }
+		// initialize folder
+		GameObject fold = new GameObject();
+		fold.name = "Monster Folder";
+		folder = fold.transform;
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        if (freeIndice.Count !=0 && Time.time >= timeToCreateMonster)
-        {
-            CreateMonster();
-            setTimeToCreateMonster(timeBetweenMonster);
-        }
-    }
+	void Update()
+	{
+		if(freeIndex.Count > 0 && Time.time >= timeToCreateMonster)
+		{
+			this.CreateMonster();
+			timeToCreateMonster += Random.Range(0f, maxTimeBetweenMonster);
+		}
+	}
 
-    void setTimeToCreateMonster(float waitingTimeToCreateMonster)
-    {
-        timeToCreateMonster = Time.time + waitingTimeToCreateMonster;
-    }
+	private void CreateMonster()
+	{
+		// index of free index
+		int indexInFreeIndice = UnityEngine.Random.Range(0, freeIndex.Count - 1);
 
-    void CreateMonster()
-    {
-        //index of free index
-        int indiceTemp = UnityEngine.Random.Range(0, freeIndice.Count - 1);
+		// pop free index
+		int monsterIndex = freeIndex[indexInFreeIndice];
+		freeIndex.RemoveAt(indexInFreeIndice);
 
-        //free index
-        int freePlace = freeIndice[indiceTemp];
-        freeIndice.RemoveAt(indiceTemp);
+		// instantiate monster
+		MonsterScript obj = Instantiate(prefabMonster);
 
-        MonsterScript MonsterCreate = Instantiate(prefabMonster);
-        //set MonsterCreate
-        float Yposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.y;
-        float Zposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.z;
-        MonsterCreate.index = freePlace;
-        Debug.Log(MonsterCreate.index);
-        MonsterCreate.position = UnityEngine.Random.Range(xMin[freePlace],xMax[freePlace]);
-        MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position =
-            new Vector3(MonsterCreate.position, Yposition, Zposition);
-        // TODO : rajoutez un MonsterAspect
+		// set monster position
+		obj.indexInMonsterArray = monsterIndex;
+		obj.transform.parent = folder;
+		obj.transform.position = new Vector3(
+			xAnchor[monsterIndex] + Random.Range(-0.25f, 0.25f),
+			Random.Range(-3.25f, -2.75f),
+			0f);
 
-        //fill the array of monsters
-        monsters[freePlace] = MonsterCreate;
+		//fill the array of monsters
+		this.monsters[monsterIndex] = obj;
+	}
 
-    }
+	public void MonsterStartLeaving(int index)
+	{
+		this.monsters[index] = null;
+		freeIndex.Add(index);
+	}
 
-    public void LeavingMonster(int position)
-    {
-        GameObject leavingMonster = monsters[position].gameObject;
-        monsters[position] = null;
-        Destroy(leavingMonster);
-        freeIndice.Add(position);
-    }
+	public void UpdateGaugeOnTimeEnd(int index)
+	{
+		// only does that
+		ToleranceManager.instance.UpdateGaugeValue(-orderSuccessValue);
+	}
 
-    public void TimerEnd(int position)
-    {
-        ToleranceManager.instance.UpdateGaugeValue(-orderSuccessValue);
-        LeavingMonster(position);
-    }
-
+	public float GetMonsterWaitingDuration()
+	{
+		return Random.Range(2f, 4f);
+	}
 }
