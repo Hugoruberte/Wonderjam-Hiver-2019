@@ -159,11 +159,11 @@ public class MonsterScript : MonoBehaviour
                 //the tolerance point is the difference between the wantedValue and the givenValue
                 IntensityForAttribute[tmpAttribute.attribute] -= tmpAttribute.intensity;
             }
-            else
+            /*else
             {
                 //else the category was not wanted, all points in this category are false.
                 IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
-            }
+            }*/
         }
 
 
