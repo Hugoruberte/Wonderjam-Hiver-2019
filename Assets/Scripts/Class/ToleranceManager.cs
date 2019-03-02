@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToleranceManager : Singleton<ToleranceManager>
 {
     private float toleranceGaugeMin = 0;
+    private float toleranceGaugeMaxNoStress = 33;
+    private float toleranceGaugeMaxNormalStress = 66;
     private float toleranceGaugeMax = 100;
     private float toleranceGaugeCurrent = 50;
+
+    public Slider toleranceSliderUI;
 
     public void UpdateGaugeValue(float value)
     {
@@ -15,6 +20,7 @@ public class ToleranceManager : Singleton<ToleranceManager>
         if(toleranceGaugeCurrent <= toleranceGaugeMin)
         {
             // YOU LOSE
+            Debug.Log("You Lose !");
         }
         else if(toleranceGaugeCurrent >= toleranceGaugeMax)
         {
