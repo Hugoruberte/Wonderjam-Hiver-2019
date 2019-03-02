@@ -7,7 +7,7 @@ using System;
 
 namespace Interactive.Engine
 {
-	public enum ChemicalElement
+	public enum ChemicalElement:long
 	{
 		Voidd = 1,
 		DragonBlood = 2,
@@ -27,21 +27,21 @@ namespace Interactive.Engine
 		Eternitear = 32768,
 		Bartinic = 65536,
         Ichor = 131072,
-        DevilTear = 262 144,
-        KingOfSnake = 524 288,
-        BasiLicorn = 048 576, 
-        SlimyGod = 2 097 152,
-        RainbowGodtail = 4 194 304,
-        BarmanChor, 8 388 608,
-        AshBullSia, 16 777 216,
-        WingedBull, 33 554 432,
-        BulliSnake, 67 108 864,
-        GreenSunRise, 134 217 728,
-        Kir, 268 435 456,
-        Librid, 536 870 912,
-        HellFire, 1 073 741 824,
-        GreenChorTear, 2 147 483 648,
-        TearApart, 4 294 967 296
+        DevilTear = 262144,
+        KingOfSnake = 524288,
+        BasiLicorn = 048576, 
+        SlimyGod = 2097152,
+        RainbowGodtail = 4194304,
+        BarmanChor = 8388608,
+        AshBullSia = 16777216,
+        WingedBull = 33554432,
+        BulliSnake = 67108864,
+        GreenSunRise = 134217728,
+        Kir = 268435456,
+        Librid = 536870912,
+        HellFire = 1073741824,
+        GreenChorTear = 2147483648,
+        TearApart = 4294967296
 	}
 
 	public enum Attribute
@@ -269,16 +269,6 @@ namespace Interactive.Engine
 
         private static ChemicalElement[] combo = new ChemicalElement[] {
             ChemicalElement.Ichor,
-            ChemicalElement.RainbowBull
-        };
-    }
-
-    public class BasiBullia : ChemicalElementMixEntity
-    {
-        public BasiBullia() : base(ChemicalElement.BasiBullia, BasiBullia.combo) { }
-
-        private static ChemicalElement[] combo = new ChemicalElement[] {
-            ChemicalElement.PinaAmbrosia,
             ChemicalElement.RainbowBull
         };
     }

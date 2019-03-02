@@ -11,13 +11,12 @@ public class MonsterManager : Singleton<MonsterManager>
 
     public int monsterNumber;
     public MonsterScript prefabMonster;
+    public MonsterScript[] monsters;
 
     //VARIABLE TO MOVE BUT I DONT KNOW WHERE TO PUT IT NOW...
     public float orderSuccessValue = 10;
 
     private float timeToCreateMonster;
-
-    private MonsterScript[] monsters;
     private List<int> freeIndice = new List<int>();
     private List<float> xMin = new List<float>();
     private List<float> xMax = new List<float>();
