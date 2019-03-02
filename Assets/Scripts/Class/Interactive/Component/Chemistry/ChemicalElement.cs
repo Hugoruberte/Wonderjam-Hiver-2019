@@ -28,7 +28,7 @@ namespace Interactive.Engine
 		Bartinic = 65536
 	}
 
-	public enum AlcoholAttribute
+	public enum Attribute
 	{
 		None = 0,
 		Fatal,
@@ -68,9 +68,9 @@ namespace Interactive.Engine
 
 		protected internal static AlcoholColor _color = AlcoholColor.Red;
 
-		protected internal static Attribute[] _attributs = new Attribute[] {
-			new Attribute(AlcoholAttribute.Strong, 3),
-			new Attribute(AlcoholAttribute.Fatal, 2)
+		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
+			new AlcoholAttribute(Attribute.Strong, 3),
+			new AlcoholAttribute(Attribute.Fatal, 2)
 		};
 	}
 
@@ -79,9 +79,9 @@ namespace Interactive.Engine
 
 		protected internal static AlcoholColor _color = AlcoholColor.Black;
 
-		protected internal static Attribute[] _attributs = new Attribute[] {
-			new Attribute(AlcoholAttribute.Fatal, 2),
-			new Attribute(AlcoholAttribute.Spicy, 1)
+		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
+			new AlcoholAttribute(Attribute.Fatal, 2),
+			new AlcoholAttribute(Attribute.Spicy, 1)
 		};
 	}
 
@@ -90,9 +90,9 @@ namespace Interactive.Engine
 
 		protected internal static AlcoholColor _color = AlcoholColor.Yellow;
 
-		protected internal static Attribute[] _attributs = new Attribute[] {
-			new Attribute(AlcoholAttribute.Sugar, 2),
-			new Attribute(AlcoholAttribute.Strong, 1)
+		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
+			new AlcoholAttribute(Attribute.Sugar, 2),
+			new AlcoholAttribute(Attribute.Strong, 1)
 		};
 	}
 
@@ -101,9 +101,9 @@ namespace Interactive.Engine
 
 		protected internal static AlcoholColor _color = AlcoholColor.Green;
 
-		protected internal static Attribute[] _attributs = new Attribute[] {
-			new Attribute(AlcoholAttribute.Sugar, 1),
-			new Attribute(AlcoholAttribute.Spicy, 2)
+		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
+			new AlcoholAttribute(Attribute.Sugar, 1),
+			new AlcoholAttribute(Attribute.Spicy, 2)
 		};
 	}
 
@@ -112,8 +112,8 @@ namespace Interactive.Engine
 
 		protected internal static AlcoholColor _color = AlcoholColor.Rainbow;
 
-		protected internal static Attribute[] _attributs = new Attribute[] {
-			new Attribute(AlcoholAttribute.Sugar, 3)
+		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
+			new AlcoholAttribute(Attribute.Sugar, 3)
 		};
 	}
 
@@ -122,8 +122,8 @@ namespace Interactive.Engine
 
 		protected internal static AlcoholColor _color = AlcoholColor.Blue;
 
-		protected internal static Attribute[] _attributs = new Attribute[] {
-			new Attribute(AlcoholAttribute.Strong, 2)
+		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
+			new AlcoholAttribute(Attribute.Strong, 2)
 		};
 	}
 
@@ -254,22 +254,25 @@ namespace Interactive.Engine
 	/* ----------------------------------------------------------------------------------------------*/
 	/* ----------------------------------------------------------------------------------------------*/
 	/* ----------------------------------------------------------------------------------------------*/
-	public struct Attribute
+	[Serializable]
+	public struct AlcoholAttribute
 	{
 		public float intensity;
-		public AlcoholAttribute attribute;
+		public Attribute attribute;
 
-		public Attribute(AlcoholAttribute a, float i)
+		public AlcoholAttribute(Attribute a, float i)
 		{
 			this.intensity = i;
 			this.attribute = a;
 		}
 
-		public Attribute(AlcoholAttribute a, int i)
+		public AlcoholAttribute(Attribute a, int i)
 		{
 			this.intensity = (float)i;
 			this.attribute = a;
 		}
+
+		public override string ToString() => $"{attribute} (intensity = {intensity})";
 	}
 
 
@@ -331,27 +334,33 @@ namespace Interactive.Engine
 	/* ----------------------------------------------------------------------------------------------*/
 	public abstract class ChemicalElementEntity
 	{
-		public readonly ChemicalElement type;
+		public ChemicalElement type { get; protected set; }
+
+		public AlcoholAttribute[] attributes { get; protected set; }
+
+		public AlcoholColor[] colors { get; protected set; }
 
 		private protected InteractiveEngineData interactiveEngineData;
 		private protected static InteractiveEngineData _interactiveEngineData;
 
-		public ChemicalElementEntity(ChemicalElement e, Attribute[] a, AlcoholColor c, ChemicalElement[] r = null) {
+		public ChemicalElementEntity(ChemicalElement e, AlcoholAttribute[] a, AlcoholColor c, ChemicalElement[] r = null) {
 			this.type = e;
 
 			this.InitializeInteractiveEngineData();
 
-			this.SetAttributesAndAlcoholColor(a, c, r);
+			this.SetAlcoholAttributesAndAlcoholColor(a, c, r);
 		}
 
-		private protected virtual void SetAttributesAndAlcoholColor(Attribute[] a, AlcoholColor c, ChemicalElement[] recipe) {
+		private protected virtual void SetAlcoholAttributesAndAlcoholColor(AlcoholAttribute[] a, AlcoholColor c, ChemicalElement[] recipe) {
 			// Set weaknesses according to recipe
-			if(!this.interactiveEngineData.HasAttributesOf(this)) {
-				this.interactiveEngineData.SetAttributesOf(this, a);
+			this.attributes = a;
+			if(!this.interactiveEngineData.HasAlcoholAttributesOf(this)) {
+				this.interactiveEngineData.SetAlcoholAttributesOf(this, this.attributes);
 			}
 
+			this.colors = new AlcoholColor[] {c};
 			if(!this.interactiveEngineData.HasColorsOf(this)) {
-				this.interactiveEngineData.SetColorsOf(this, new AlcoholColor[] {c});
+				this.interactiveEngineData.SetColorsOf(this, this.colors);
 			}
 
 			// Set elements composition by decomposing recipe in its primary element
@@ -406,14 +415,16 @@ namespace Interactive.Engine
 	{
 		private protected ChemicalElementMixEntity(ChemicalElement e, ChemicalElement[] c) : base(e, null, AlcoholColor.None, c) {}
 
-		private protected override void SetAttributesAndAlcoholColor(Attribute[] a, AlcoholColor c, ChemicalElement[] recipe) {
+		private protected override void SetAlcoholAttributesAndAlcoholColor(AlcoholAttribute[] a, AlcoholColor c, ChemicalElement[] recipe) {
 			// Set weaknesses according to recipe
-			if(!this.interactiveEngineData.HasAttributesOf(this)) {
-				this.interactiveEngineData.SetAttributesOf(this, GetAttributesByDecomposition(recipe));
+			this.attributes = GetAlcoholAttributesByDecomposition(recipe);
+			if(!this.interactiveEngineData.HasAlcoholAttributesOf(this)) {
+				this.interactiveEngineData.SetAlcoholAttributesOf(this, this.attributes);
 			}
 
+			this.colors = GetColorsByDecomposition(recipe);
 			if(!this.interactiveEngineData.HasColorsOf(this)) {
-				this.interactiveEngineData.SetColorsOf(this, GetColorsByDecomposition(recipe));
+				this.interactiveEngineData.SetColorsOf(this, this.colors);
 			}
 
 			// Set elements composition by decomposing recipe in its primary element
@@ -548,21 +559,26 @@ namespace Interactive.Engine
 		}
 
 		// get colors according to recipe element colors
-		private static Attribute[] GetAttributesByDecomposition(ChemicalElement[] recipe) {
-			Attribute at;
+		private static AlcoholAttribute[] GetAlcoholAttributesByDecomposition(ChemicalElement[] recipe) {
+			AlcoholAttribute at;
 
-			List<Attribute> cache = _interactiveEngineData.attributePoolList;
+			List<AlcoholAttribute> cache = _interactiveEngineData.attributePoolList;
 			cache.Clear();
 
 			foreach(ChemicalElement es in recipe) {
-				foreach(Attribute a in SlowGetAttributesOf(es)) {
+				foreach(AlcoholAttribute a in SlowGetAlcoholAttributesOf(es)) {
 					at = cache.Find(x => x.attribute == a.attribute);
-					if(at.attribute == AlcoholAttribute.None) {
+					if(at.attribute == Attribute.None) {
 						cache.Add(a);
 					} else {
-						at.intensity = (a.intensity + at.intensity) / 2f;
+						cache.Add(new AlcoholAttribute(at.attribute, (a.intensity + at.intensity) / 2f));
+						cache.Remove(at);
 					}
 				}
+			}
+
+			foreach(AlcoholAttribute a in cache) {
+				Debug.LogWarning(a);
 			}
 
 			return cache.ToArray();
@@ -645,7 +661,7 @@ namespace Interactive.Engine
 		}
 
 		// get attributs of a particular element
-		private static Attribute[] SlowGetAttributesOf(ChemicalElement e) {
+		private static AlcoholAttribute[] SlowGetAlcoholAttributesOf(ChemicalElement e) {
 			switch(e) {
 				case ChemicalElement.Voidd:
 					return null;
@@ -669,7 +685,7 @@ namespace Interactive.Engine
 				if(type.Name == e.ToString()) {
 					// this will initialize this primaries of 'e'
 					ent = Activator.CreateInstance(type) as ChemicalElementMixEntity;
-					return _interactiveEngineData.GetAttributesOf(ent);
+					return _interactiveEngineData.GetAlcoholAttributesOf(ent);
 				}
 			}
 
