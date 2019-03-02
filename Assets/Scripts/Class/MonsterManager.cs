@@ -84,6 +84,7 @@ public class MonsterManager : Singleton<MonsterManager>
         float Yposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.y;
         float Zposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.z;
         MonsterCreate.index = freePlace;
+        Debug.Log(MonsterCreate.index);
         MonsterCreate.position = UnityEngine.Random.Range(xMin[freePlace],xMax[freePlace]);
         MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position =
             new Vector3(MonsterCreate.position, Yposition, Zposition);
