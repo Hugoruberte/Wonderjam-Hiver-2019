@@ -517,6 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d853479c9a21df247aec3647533f6faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smooth: 0.2
+  speed: 10
 --- !u!1 &722274754
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +531,6 @@ GameObject:
   - component: {fileID: 722274756}
   - component: {fileID: 722274757}
   - component: {fileID: 722274758}
-  - component: {fileID: 722274759}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -579,8 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926ea057b55c3f447ad87b09fd396e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenMonster: 2
-  monsterNumber: 8
+  maxTimeBetweenMonster: 1
   prefabMonster: {fileID: 3389642435966470415, guid: 8d4079b859124cc488d5030083ec2454,
     type: 3}
   monsters: []
@@ -595,18 +595,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea3d9e94ef952714f8771df9f390642e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &722274759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722274754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bba44da0f5ce6c408bedcb72181f952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &834522430
