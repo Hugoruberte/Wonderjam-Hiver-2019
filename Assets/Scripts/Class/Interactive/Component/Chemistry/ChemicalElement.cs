@@ -470,6 +470,44 @@ namespace Interactive.Engine
 			return true;
 		}
 
+		protected internal bool CanBeMadeOf(List<ChemicalElementEntity> es) {
+			ChemicalElement[] mine = this.interactiveEngineData.GetPrimariesOf(this);
+			int count = 0;
+			bool found;
+
+			foreach(ChemicalElementEntity e in es) {
+				count += this.interactiveEngineData.GetPrimariesOf(e).Length;
+			}
+
+			if(count != mine.Length) {
+				return false;
+			}
+
+			foreach(ChemicalElement e in mine) {
+				found = false;
+
+				foreach(ChemicalElementEntity els in es) {
+					foreach(ChemicalElement el in this.interactiveEngineData.GetPrimariesOf(els)) {
+						if(el == e) {
+							found = true;
+							break;
+						}
+					}
+					if(found) {
+						break;
+					}
+				}
+
+				if(!found) {
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+
+
 		
 
 		
@@ -540,6 +578,19 @@ namespace Interactive.Engine
 			return winner?.Spawn();
 		}
 
+		protected internal static ChemicalElementEntity MixSeveralElement(List<ChemicalElementEntity> combo) {
+			ChemicalElementEntity winner = null;
+
+			foreach(ChemicalElementMixEntity mix in ChemicalElementMixEntity.mixes) {
+				if(!combo.Exists(x => x.type == mix.type) && mix.CanBeMadeOf(combo)) {
+					winner = mix;
+					break;
+				}
+			}
+
+			return (winner != null) ? winner.Spawn() : new Voidd();
+		}
+
 		// get composition by decomposing 'recipe' in its primary element
 		private static ChemicalElement[] GetPrimariesByDecomposition(ChemicalElement[] recipe) {
 			List<ChemicalElement> cache = _interactiveEngineData.chemicalElementPoolList;
@@ -573,10 +624,6 @@ namespace Interactive.Engine
 						cache.Remove(at);
 					}
 				}
-			}
-
-			foreach(AlcoholAttribute a in cache) {
-				Debug.LogWarning(a);
 			}
 
 			return cache.ToArray();
