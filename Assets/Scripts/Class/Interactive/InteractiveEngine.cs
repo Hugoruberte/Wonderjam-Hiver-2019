@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Linq;
+using System.Reflection;
 
 namespace Interactive.Engine
 {
@@ -22,6 +25,25 @@ namespace Interactive.Engine
 		public static void InteractionBetween(InteractiveEntity main, InteractiveEntity other)
 		{
 			main.chemical = chemistry.InteractionBetween(main, other);
+		}
+
+		public static ChemicalElementEntity[] GetAllChemicalEntity()
+		{
+			int i;
+			Type t;
+			Type[] ts;
+			ChemicalElementEntity[] res;
+
+			t = typeof(ChemicalElementEntity);
+			ts = Assembly.GetAssembly(t).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(t)).ToArray();
+			res = new ChemicalElementEntity[ts.Length];
+			i = 0;
+
+			foreach(Type type in ts) {
+				res[i++] = Activator.CreateInstance(type) as ChemicalElementEntity;
+			}
+
+			return res;
 		}
 	}
 }

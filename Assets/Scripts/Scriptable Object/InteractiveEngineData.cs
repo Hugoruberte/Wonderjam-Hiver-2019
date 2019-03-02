@@ -20,11 +20,11 @@ namespace Interactive.Engine
 	}
 
 	[Serializable]
-	public struct ChemicalToAttributesData {
+	public struct ChemicalToAlcoholAttributesData {
 		public ChemicalElement element;
-		public Attribute[] array;
+		public AlcoholAttribute[] array;
 
-		public ChemicalToAttributesData(ChemicalElement e, Attribute[] a) {
+		public ChemicalToAlcoholAttributesData(ChemicalElement e, AlcoholAttribute[] a) {
 			this.element = e;
 			this.array = a;
 		}
@@ -59,16 +59,17 @@ namespace Interactive.Engine
 	[CreateAssetMenu(fileName = "InteractiveEngineData", menuName = "Scriptable Object/Other/InteractiveEngineData", order = 3)]
 	public class InteractiveEngineData : ScriptableObject
 	{
-		[HideInInspector] public List<ChemicalElementMixEntity> chemicalElementMixEntityPoolList = new List<ChemicalElementMixEntity>();
-		[HideInInspector] public List<ChemicalElement> chemicalElementPoolList = new List<ChemicalElement>();
-		[HideInInspector] public List<Attribute> attributePoolList = new List<Attribute>();
+		[NonSerialized] public List<ChemicalElementMixEntity> chemicalElementMixEntityPoolList = new List<ChemicalElementMixEntity>();
+		[NonSerialized] public List<ChemicalElement> chemicalElementPoolList = new List<ChemicalElement>();
+		[NonSerialized] public List<AlcoholColor> colorPoolList = new List<AlcoholColor>();
+		[NonSerialized] public List<AlcoholAttribute> attributePoolList = new List<AlcoholAttribute>();
 
 		[HideInInspector] public List<ChemicalToArrayData> primaries = new List<ChemicalToArrayData>();
-		[HideInInspector] public List<ChemicalToAttributesData> attributes = new List<ChemicalToAttributesData>();
+		[HideInInspector] public List<ChemicalToAlcoholAttributesData> attributes = new List<ChemicalToAlcoholAttributesData>();
 		[HideInInspector] public List<ChemicalToColorData> colors = new List<ChemicalToColorData>();
 		[HideInInspector] public List<IntToChemicalData> couples = new List<IntToChemicalData>();
 
-		private StringBuilder stringBuilder = new StringBuilder();
+		public StringBuilder stringBuilder = new StringBuilder();
 		private const string voiddString = "Interactive.Engine.Voidd";
 
 
@@ -98,19 +99,19 @@ namespace Interactive.Engine
 
 
 
-		public bool HasAttributesOf(ChemicalElementEntity ent)
+		public bool HasAlcoholAttributesOf(ChemicalElementEntity ent)
 		{
 			// only does that
 			return this.attributes.Exists(x => x.element == ent.type);
 		}
-		public void SetAttributesOf(ChemicalElementEntity ent, Attribute[] ats)
+		public void SetAlcoholAttributesOf(ChemicalElementEntity ent, AlcoholAttribute[] ats)
 		{
-			this.attributes.Add(new ChemicalToAttributesData(ent.type, ats));
-			this.attributes.Sort(CompareChemicalToAttributesData);
+			this.attributes.Add(new ChemicalToAlcoholAttributesData(ent.type, ats));
+			this.attributes.Sort(CompareChemicalToAlcoholAttributesData);
 		}
-		public Attribute[] GetAttributesOf(ChemicalElementEntity ent)
+		public AlcoholAttribute[] GetAlcoholAttributesOf(ChemicalElementEntity ent)
 		{
-			ChemicalToAttributesData data = this.attributes.Find(x => x.element == ent.type);
+			ChemicalToAlcoholAttributesData data = this.attributes.Find(x => x.element == ent.type);
 			if(data.array != null) {
 				return data.array;
 			} else {
@@ -199,7 +200,7 @@ namespace Interactive.Engine
 			}
 		}
 
-		private static int CompareChemicalToAttributesData(ChemicalToAttributesData x, ChemicalToAttributesData y)
+		private static int CompareChemicalToAlcoholAttributesData(ChemicalToAlcoholAttributesData x, ChemicalToAlcoholAttributesData y)
 		{
 			int xe = (int)x.element;
 			int ye = (int)y.element;
