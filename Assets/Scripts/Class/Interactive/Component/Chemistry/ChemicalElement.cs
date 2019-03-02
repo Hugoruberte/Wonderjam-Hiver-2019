@@ -10,16 +10,31 @@ namespace Interactive.Engine
 	public enum ChemicalElement
 	{
 		Voidd = 1,
-		Fire = 2,
-		Water = 4,
-		Wind = 8,
-		Earth = 16,
-		Ice = 32,
-		Lightning = 64,
-		Magma = 128,
-		Steam = 256,
-		Snow = 512,
-		Sand = 1024
+		DragonBlood = 2,
+		BasilicAshes = 4,
+		Ambrosia = 8,
+		GreenSlim = 16,
+		RainbowBull = 32,
+		BarmanTear = 64,
+		DraculaSunrise = 128
+	}
+
+	public enum AlcoholAttribute
+	{
+		None = 0,
+		Fatal,
+		Spicy,
+		Sugar,
+		Strong
+	}
+
+	public enum AlcoholColor
+	{
+		None = 0,
+		Red,
+		Green,
+		Black,
+		White
 	}
 
 
@@ -31,53 +46,30 @@ namespace Interactive.Engine
 	/* ---------------------------------------------------------------------------------------------*/
 	/* ---------------------------------------------------------------------------------------------*/
 	public class Voidd : ChemicalElementEntity {
-		public Voidd(float i = 0f) : base(ChemicalElement.Voidd, i, Voidd.weakness) {}
+		public Voidd() : base(ChemicalElement.Voidd, null, Voidd._color) {}
 
-		protected internal static ChemicalElement[] weakness = Enum.GetValues(typeof(ChemicalElement)) as ChemicalElement[];
+		protected internal static AlcoholColor _color = AlcoholColor.None;
 	}
 
-	public class Fire : ChemicalElementEntity {
-		public Fire(float i = 0f) : base(ChemicalElement.Fire, i, Fire.weakness) {}
+	public class DragonBlood : ChemicalElementEntity {
+		public DragonBlood() : base(ChemicalElement.DragonBlood, DragonBlood._attributs, DragonBlood._color) {}
 
-		protected internal static ChemicalElement[] weakness = new ChemicalElement[] {
-			ChemicalElement.Water,
-			ChemicalElement.Lightning
+		protected internal static AlcoholColor _color = AlcoholColor.Red;
+
+		protected internal static Attribute[] _attributs = new Attribute[] {
+			new Attribute(AlcoholAttribute.Strong, 3),
+			new Attribute(AlcoholAttribute.Fatal, 2)
 		};
 	}
 
-	public class Wind : ChemicalElementEntity {
-		public Wind(float i = 0f) : base(ChemicalElement.Wind, i, Wind.weakness) {}
+	public class BasilicAshes : ChemicalElementEntity {
+		public BasilicAshes() : base(ChemicalElement.BasilicAshes, BasilicAshes._attributs, BasilicAshes._color) {}
 
-		protected internal static ChemicalElement[] weakness = new ChemicalElement[] {
-			ChemicalElement.Fire,
-			ChemicalElement.Water
-		};
-	}
+		protected internal static AlcoholColor _color = AlcoholColor.Black;
 
-	public class Earth : ChemicalElementEntity {
-		public Earth(float i = 0f) : base(ChemicalElement.Earth, i, Earth.weakness) {}
-
-		protected internal static ChemicalElement[] weakness = new ChemicalElement[] {
-			ChemicalElement.Wind,
-			ChemicalElement.Fire
-		};
-	}
-
-	public class Lightning : ChemicalElementEntity {
-		public Lightning(float i = 0f) : base(ChemicalElement.Lightning, i, Lightning.weakness) {}
-
-		protected internal static ChemicalElement[] weakness = new ChemicalElement[] {
-			ChemicalElement.Earth,
-			ChemicalElement.Wind
-		};
-	}
-
-	public class Water : ChemicalElementEntity {
-		public Water(float i = 0f) : base(ChemicalElement.Water, i, Water.weakness) {}
-
-		protected internal static ChemicalElement[] weakness = new ChemicalElement[] {
-			ChemicalElement.Lightning,
-			ChemicalElement.Earth
+		protected internal static Attribute[] _attributs = new Attribute[] {
+			new Attribute(AlcoholAttribute.Fatal, 2),
+			new Attribute(AlcoholAttribute.Spicy, 1)
 		};
 	}
 
@@ -93,50 +85,83 @@ namespace Interactive.Engine
 	/* ---------------------------------------------------------------------------------------------*/
 	/* ---------------------------------------------------------------------------------------------*/
 	/* ---------------------------------------------------------------------------------------------*/
-	public class Magma : ChemicalElementMixEntity {
-		public Magma(float i = 0f) : base(ChemicalElement.Magma, i, Magma.combo) {}
+	public class DraculaSunrise : ChemicalElementMixEntity {
+		public DraculaSunrise() : base(ChemicalElement.DraculaSunrise, DraculaSunrise.combo) {}
 
 		private static ChemicalElement[] combo = new ChemicalElement[] {
-			ChemicalElement.Earth,
-			ChemicalElement.Fire
+			ChemicalElement.DragonBlood,
+			ChemicalElement.BasilicAshes
 		};
 	}
 
-	public class Steam : ChemicalElementMixEntity {
-		public Steam(float i = 0f) : base(ChemicalElement.Steam, i, Steam.combo) {}
 
-		private static ChemicalElement[] combo = new ChemicalElement[] {
-			ChemicalElement.Fire,
-			ChemicalElement.Water
-		};	
+
+
+
+
+
+
+
+
+
+	/* ----------------------------------------------------------------------------------------------*/
+	/* ----------------------------------------------------------------------------------------------*/
+	/* ----------------------------------------------------------------------------------------------*/
+	/* ----------------------------------------- ATTRIBUTS ------------------------------------------*/
+	/* ----------------------------------------------------------------------------------------------*/
+	/* ----------------------------------------------------------------------------------------------*/
+	/* ----------------------------------------------------------------------------------------------*/
+	public struct Attribute
+	{
+		public float intensity;
+		public AlcoholAttribute attribute;
+
+		public Attribute(AlcoholAttribute a, float i)
+		{
+			this.intensity = i;
+			this.attribute = a;
+		}
+
+		public Attribute(AlcoholAttribute a, int i)
+		{
+			this.intensity = (float)i;
+			this.attribute = a;
+		}
 	}
 
-	public class Ice : ChemicalElementMixEntity {
-		public Ice(float i = 0f) : base(ChemicalElement.Ice, i, Ice.combo) {}
 
-		private static ChemicalElement[] combo = new ChemicalElement[] {
-			ChemicalElement.Wind,
-			ChemicalElement.Water
-		};
-	}
 
-	public class Snow : ChemicalElementMixEntity {
-		public Snow(float i = 0f) : base(ChemicalElement.Snow, i, Snow.combo) {}
 
-		private static ChemicalElement[] combo = new ChemicalElement[] {
-			ChemicalElement.Steam,
-			ChemicalElement.Ice
-		};
-	}
 
-	public class Sand : ChemicalElementMixEntity {
-		public Sand(float i = 0f) : base(ChemicalElement.Sand, i, Sand.combo) {}
 
-		private static ChemicalElement[] combo = new ChemicalElement[] {
-			ChemicalElement.Earth,
-			ChemicalElement.Ice
-		};
-	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -168,69 +193,33 @@ namespace Interactive.Engine
 		private protected InteractiveEngineData interactiveEngineData;
 		private protected static InteractiveEngineData _interactiveEngineData;
 
-		private protected static object[] STANDARD_PARAMS = new object[] {0f};
-
-		private const float MIN_INTENSITY = 0f;
-		private const float MAX_INTENSITY = 100f;
-		private float _intensity = MIN_INTENSITY;
-		public float intensity {
-			get { return this._intensity; }
-			set { this._intensity = (value > MAX_INTENSITY) ? MAX_INTENSITY : ((value < MIN_INTENSITY) ? MIN_INTENSITY : value); }
-		}
-
-		public ChemicalElementEntity(ChemicalElement e, float i, ChemicalElement[] weaknesses) {
+		public ChemicalElementEntity(ChemicalElement e, Attribute[] a, AlcoholColor c, ChemicalElement[] r = null) {
 			this.type = e;
-			this.intensity = i;
 
 			this.InitializeInteractiveEngineData();
 
-			this.SetPrimariesAndWeaknesses(weaknesses);
+			this.SetAttributesAndAlcoholColor(a, c, r);
 		}
 
-		private protected virtual void SetPrimariesAndWeaknesses(ChemicalElement[] weaknesses) {
-			// Set weaknesses
-			if(!this.interactiveEngineData.HasWeaknessesOf(this)) {
-				this.interactiveEngineData.SetWeaknessesOf(this, weaknesses);
+		private protected virtual void SetAttributesAndAlcoholColor(Attribute[] a, AlcoholColor c, ChemicalElement[] recipe) {
+			// Set weaknesses according to recipe
+			if(!this.interactiveEngineData.HasAttributesOf(this)) {
+				this.interactiveEngineData.SetAttributesOf(this, a);
 			}
 
-			// Set elements composition
+			if(!this.interactiveEngineData.HasColorsOf(this)) {
+				this.interactiveEngineData.SetColorsOf(this, new AlcoholColor[] {c});
+			}
+
+			// Set elements composition by decomposing recipe in its primary element
 			if(!this.interactiveEngineData.HasPrimariesOf(this)) {
 				this.interactiveEngineData.SetPrimariesOf(this, new ChemicalElement[] {this.type});
 			}
 		}
 
-		private bool IsStrongAgainst(ChemicalElementEntity other) {
-			if(this.interactiveEngineData.HasWinnerBetween(this, other)) {
-				return this.interactiveEngineData.IsWinningAgainst(this, other);
-			}
-
-			int mywin, hiswin;
-			mywin = hiswin = 0;
-
-			foreach(ChemicalElement w in this.interactiveEngineData.GetPrimariesOf(this)) {
-				foreach(ChemicalElement e in this.interactiveEngineData.GetPrimariesOf(other)) {
-					if(w == e) {
-						hiswin ++;
-					}
-				}
-			}
-			foreach(ChemicalElement w in this.interactiveEngineData.GetPrimariesOf(other)) {
-				foreach(ChemicalElement e in this.interactiveEngineData.GetPrimariesOf(this)) {
-					if(w == e) {
-						mywin ++;
-					}
-				}
-			}
-
-			bool isMainWinning = (mywin != hiswin && mywin > hiswin);
-			this.interactiveEngineData.SetWinnerBetween(this, other, isMainWinning);
-
-			return isMainWinning;
-		}
-
 		public virtual ChemicalElementEntity Spawn() {
 			// only does that
-			return Activator.CreateInstance(this.GetType(), ChemicalElementMixEntity.STANDARD_PARAMS) as ChemicalElementEntity;
+			return Activator.CreateInstance(this.GetType()) as ChemicalElementEntity;
 		}
 
 		private void InitializeInteractiveEngineData() {
@@ -258,48 +247,9 @@ namespace Interactive.Engine
 		/* ---------------------------------------------------------------------------------------------*/
 		// ELEMENT * ELEMENT
 		public static ChemicalElementEntity operator *(ChemicalElementEntity a, ChemicalElementEntity b) {
-			if(a.type == b.type) {
-				a.intensity = b.intensity = a.intensity + b.intensity;
-				return a;
-			}
 			ChemicalElementEntity m = ChemicalElementMixEntity.MixTwoElement(a, b);
-			if(m != null) {
-				return m;
-			}
-			return ChemicalElementEntity.GetWinnerBetween(a, b);
-		}
 
-		// ELEMENT * MATERIAL
-		public static ChemicalElementEntity operator *(ChemicalMaterialEntity a, ChemicalElementEntity b) => b * a;
-		public static ChemicalElementEntity operator *(ChemicalElementEntity a, ChemicalMaterialEntity b) {
-			foreach(ChemicalElement e in b.vulnerabilities) {
-				if(a.type == e) {
-					return a;
-				}
-			}
-			return new Voidd();
-		}
-
-
-
-
-		/* ---------------------------------------------------------------------------------------------*/
-		/* ---------------------------------------------------------------------------------------------*/
-		/* ---------------------------------------------------------------------------------------------*/
-		/* -------------------------------------- STATIC METHODS ---------------------------------------*/
-		/* ---------------------------------------------------------------------------------------------*/
-		/* ---------------------------------------------------------------------------------------------*/
-		/* ---------------------------------------------------------------------------------------------*/		
-		private protected static ChemicalElementEntity GetWinnerBetween(ChemicalElementEntity a, ChemicalElementEntity b) {
-			if(a.IsStrongAgainst(b)) {
-				return a;
-			} else if(b.IsStrongAgainst(a)) {
-				return b;
-			} else if(a.intensity != b.intensity) {
-				return (a.intensity > b.intensity) ? a : b;
-			} else {
-				return new Voidd();
-			}
+			return (m != null) ? m : new Voidd();
 		}
 	}
 
@@ -311,12 +261,16 @@ namespace Interactive.Engine
 
 	public abstract class ChemicalElementMixEntity : ChemicalElementEntity
 	{
-		private protected ChemicalElementMixEntity(ChemicalElement e, float i, ChemicalElement[] recipe) : base(e, i, recipe) {}
+		private protected ChemicalElementMixEntity(ChemicalElement e, ChemicalElement[] c) : base(e, null, AlcoholColor.None, c) {}
 
-		private protected override void SetPrimariesAndWeaknesses(ChemicalElement[] recipe) {
+		private protected override void SetAttributesAndAlcoholColor(Attribute[] a, AlcoholColor c, ChemicalElement[] recipe) {
 			// Set weaknesses according to recipe
-			if(!this.interactiveEngineData.HasWeaknessesOf(this)) {
-				this.interactiveEngineData.SetWeaknessesOf(this, GetWeaknessesByDecomposition(recipe));
+			if(!this.interactiveEngineData.HasAttributesOf(this)) {
+				this.interactiveEngineData.SetAttributesOf(this, GetAttributesByDecomposition(recipe));
+			}
+
+			if(!this.interactiveEngineData.HasColorsOf(this)) {
+				this.interactiveEngineData.SetColorsOf(this, GetColorsByDecomposition(recipe));
 			}
 
 			// Set elements composition by decomposing recipe in its primary element
@@ -326,12 +280,17 @@ namespace Interactive.Engine
 		}
 
 		// does elements in 'a' and 'b' validate this primary element composition
-		protected internal bool CouldBeMadeOf(ChemicalElementEntity a, ChemicalElementEntity b) {
+		protected internal bool CanBeMadeOf(ChemicalElementEntity a, ChemicalElementEntity b) {
 			ChemicalElement[] a1 = this.interactiveEngineData.GetPrimariesOf(a);
 			ChemicalElement[] a2 = this.interactiveEngineData.GetPrimariesOf(b);
+			ChemicalElement[] mine = this.interactiveEngineData.GetPrimariesOf(this);
 			bool found;
 
-			foreach(ChemicalElement e in this.interactiveEngineData.GetPrimariesOf(this)) {
+			if(mine.Length != a1.Length + a2.Length) {
+				return false;
+			}
+
+			foreach(ChemicalElement e in mine) {
 				found = false;
 
 				// search in first array
@@ -410,31 +369,21 @@ namespace Interactive.Engine
 					return null;
 				}
 				Type t = Type.GetType(name);
-				return Activator.CreateInstance(t, ChemicalElementMixEntity.STANDARD_PARAMS) as ChemicalElementEntity;
+				return Activator.CreateInstance(t) as ChemicalElementEntity;
 			}
 
-			List<ChemicalElementMixEntity> candidates = null;
 			ChemicalElementEntity winner = null;
 
-			candidates = _interactiveEngineData.chemicalElementMixEntityPoolList;
-			candidates.Clear();
-
 			foreach(ChemicalElementMixEntity mix in ChemicalElementMixEntity.mixes) {
-				if(mix.type != a.type && mix.type != b.type && mix.CouldBeMadeOf(a, b)) {
-					candidates.Add(mix);
-				}
-			}
-
-			if(candidates.Count > 0) {
-				winner = candidates[0];
-				for(int i = 1; i < candidates.Count; i++) {
-					winner = GetWinnerBetween(winner, candidates[i]);
+				if(mix.type != a.type && mix.type != b.type && mix.CanBeMadeOf(a, b)) {
+					winner = mix;
+					break;
 				}
 			}
 
 			_interactiveEngineData.SetMixOf(a, b, winner);
 
-			return (winner != null) ? winner.Spawn() : null;
+			return winner?.Spawn();
 		}
 
 		// get composition by decomposing 'recipe' in its primary element
@@ -459,43 +408,49 @@ namespace Interactive.Engine
 			return cache.ToArray();
 		}
 
-		// get weaknesses according to recipe element weaknesses
-		private static ChemicalElement[] GetWeaknessesByDecomposition(ChemicalElement[] recipe) {
-			ChemicalElement[] wk0 = SlowGetWeaknessOf(recipe[0]);
-			ChemicalElement[] wk1 = SlowGetWeaknessOf(recipe[1]);
-			ChemicalElement[] wk = wk0.Concat(wk1).ToArray();
-			List<ChemicalElement> cache = _interactiveEngineData.chemicalElementPoolList;
-			bool found;
+		// get colors according to recipe element colors
+		private static Attribute[] GetAttributesByDecomposition(ChemicalElement[] recipe) {
+			Attribute[] a0 = SlowGetAttributesOf(recipe[0]);
+			Attribute[] a1 = SlowGetAttributesOf(recipe[1]);
+			Attribute at;
 
+			List<Attribute> cache = _interactiveEngineData.attributePoolList;
 			cache.Clear();
 
-			foreach(ChemicalElement e in wk) {
-				// do not add weakness which are part of our recipe !
-				found = false;
-				foreach(ChemicalElement a in recipe) {
-					if(e == a) {
-						found = true;
-						break;
-					}
-				}
-
-				if(!found && !cache.Contains(e)) {
-					cache.Add(e);
+			foreach(Attribute a in a0) {
+				at = cache.Find(x => x.attribute == a.attribute);
+				if(at.attribute == AlcoholAttribute.None) {
+					cache.Add(a);
+				} else {
+					at.intensity = (a.intensity + at.intensity) / 2f;
 				}
 			}
 
 			return cache.ToArray();
 		}
 
+		// get colors according to recipe element colors
+		private static AlcoholColor[] GetColorsByDecomposition(ChemicalElement[] recipe) {
+			AlcoholColor[] wk0 = SlowGetAlcoholColorsOf(recipe[0]);
+			AlcoholColor[] wk1 = SlowGetAlcoholColorsOf(recipe[1]);
+			
+			return wk0.Concat(wk1).ToArray();
+		}
+
+
+
+
+
 		// get primaries element of a particular element
 		private static ChemicalElement[] SlowGetPrimariesOf(ChemicalElement e) {
 			switch(e) {
-				case ChemicalElement.Voidd: 
-				case ChemicalElement.Fire:
-				case ChemicalElement.Wind:
-				case ChemicalElement.Water:
-				case ChemicalElement.Earth:
-				case ChemicalElement.Lightning:
+				case ChemicalElement.Voidd:
+				case ChemicalElement.DragonBlood:
+				case ChemicalElement.BasilicAshes:
+				case ChemicalElement.Ambrosia:
+				case ChemicalElement.GreenSlim :
+				case ChemicalElement.RainbowBull :
+				case ChemicalElement.BarmanTear :
 					return new ChemicalElement[] {e};
 			}
 
@@ -504,7 +459,7 @@ namespace Interactive.Engine
 			foreach(Type type in ChemicalElementMixEntity.types) {
 				if(type.Name == e.ToString()) {
 					// this will initialize this primaries of 'e'
-					ent = Activator.CreateInstance(type, ChemicalElementMixEntity.STANDARD_PARAMS) as ChemicalElementMixEntity;
+					ent = Activator.CreateInstance(type) as ChemicalElementMixEntity;
 					return _interactiveEngineData.GetPrimariesOf(ent);
 				}
 			}
@@ -513,30 +468,76 @@ namespace Interactive.Engine
 			return null;
 		}
 
-		// get weaknesses of a particular element
-		private static ChemicalElement[] SlowGetWeaknessOf(ChemicalElement e) {
+		// get colors of a particular element
+		private static AlcoholColor[] SlowGetAlcoholColorsOf(ChemicalElement e) {
 			switch(e) {
-				case ChemicalElement.Voidd: return Voidd.weakness;
-				case ChemicalElement.Fire: return Fire.weakness;
-				case ChemicalElement.Wind: return Wind.weakness;
-				case ChemicalElement.Water: return Water.weakness;
-				case ChemicalElement.Earth: return Earth.weakness;
-				case ChemicalElement.Lightning: return Lightning.weakness;
+				case ChemicalElement.Voidd:
+					return new AlcoholColor[] {Voidd._color};
+				case ChemicalElement.DragonBlood:
+					return new AlcoholColor[] {DragonBlood._color};
+				case ChemicalElement.BasilicAshes:
+					return new AlcoholColor[] {BasilicAshes._color};
+				/*case ChemicalElement.Ambrosia:
+					return new AlcoholColor[] {Ambrosia._color};
+				case ChemicalElement.GreenSlim :
+					return new AlcoholColor[] {GreenSlim._color};
+				case ChemicalElement.RainbowBull :
+					return new AlcoholColor[] {RainbowBull._color};
+				case ChemicalElement.BarmanTear :
+					return new AlcoholColor[] {BarmanTear._color};*/
 			}
 
 			ChemicalElementMixEntity ent;
 
 			foreach(Type type in ChemicalElementMixEntity.types) {
 				if(type.Name == e.ToString()) {
-					// this will initialize the weaknesses of 'e'
-					ent = Activator.CreateInstance(type, ChemicalElementMixEntity.STANDARD_PARAMS) as ChemicalElementMixEntity;
-					return _interactiveEngineData.GetWeaknessesOf(ent);
+					// this will initialize this primaries of 'e'
+					ent = Activator.CreateInstance(type) as ChemicalElementMixEntity;
+					return _interactiveEngineData.GetColorsOf(ent);
 				}
 			}
 
 			Debug.LogError($"ERROR: Should have not reached this place but we did with '{e}' !");
 			return null;
 		}
+
+		// get attributs of a particular element
+		private static Attribute[] SlowGetAttributesOf(ChemicalElement e) {
+			switch(e) {
+				case ChemicalElement.Voidd:
+					return null;
+				case ChemicalElement.DragonBlood:
+					return DragonBlood._attributs;
+				case ChemicalElement.BasilicAshes:
+					return BasilicAshes._attributs;
+				/*case ChemicalElement.Ambrosia:
+					return Ambrosia._attributs;
+				case ChemicalElement.GreenSlim :
+					return GreenSlim._attributs;
+				case ChemicalElement.RainbowBull :
+					return RainbowBull._attributs;
+				case ChemicalElement.BarmanTear :
+					return BarmanTear._attributs;*/
+			}
+
+			ChemicalElementMixEntity ent;
+
+			foreach(Type type in ChemicalElementMixEntity.types) {
+				if(type.Name == e.ToString()) {
+					// this will initialize this primaries of 'e'
+					ent = Activator.CreateInstance(type) as ChemicalElementMixEntity;
+					return _interactiveEngineData.GetAttributesOf(ent);
+				}
+			}
+
+			Debug.LogError($"ERROR: Should have not reached this place but we did with '{e}' !");
+			return null;
+		}
+
+
+
+
+
 
 		private static Type[] GetAllTypes() {
 			Type t;
@@ -554,7 +555,7 @@ namespace Interactive.Engine
 			i = 0;
 
 			foreach(Type type in ts) {
-				res[i++] = Activator.CreateInstance(type, ChemicalElementMixEntity.STANDARD_PARAMS) as ChemicalElementMixEntity;
+				res[i++] = Activator.CreateInstance(type) as ChemicalElementMixEntity;
 			}
 
 			return res;

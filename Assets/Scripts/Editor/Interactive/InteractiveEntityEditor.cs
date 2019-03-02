@@ -40,26 +40,16 @@ public class InteractiveEntityEditor : Editor
 			rect.x += rect.width + -110;
 
 			if(EditorApplication.isPlaying) {
-				// physical state
-				rect.y += 55;
-				EditorGUILayout.LabelField("Physical state");
-				EditorGUI.LabelField(rect, script.physical.ToString(), EditorStyles.boldLabel);
 
 				// chemical element
 				rect.y += -18;
 				EditorGUILayout.LabelField("Chemical element");
 				EditorGUI.LabelField(rect, script.chemical.ToString(), EditorStyles.boldLabel);
-
-				// chemical material
-				rect.y += -18;
-				EditorGUILayout.LabelField("Chemical material");
-				EditorGUI.LabelField(rect, script.material.ToString(), EditorStyles.boldLabel);
 			}
 
 			// life
 			GUI.enabled = true;
 			EditorGUI.indentLevel--;
-			EditorGUILayout.LabelField($"Life : {script.life}", EditorStyles.centeredGreyMiniLabel);
 
 			EditorGUILayout.Space();
 		}
