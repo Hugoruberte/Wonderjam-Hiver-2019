@@ -39,7 +39,7 @@ public class Barman : Singleton<Barman>
 
     void updateAspect()
     {
-        if (StressGauge.instance.currentStress <= StressGauge.instance.maxNoStress)
+        /*if (StressGauge.instance.currentStress <= StressGauge.instance.maxNoStress)
         {
             aspect = Aspect.CHILL;
         }
@@ -50,7 +50,7 @@ public class Barman : Singleton<Barman>
         else
         {
             aspect = Aspect.STRESSED;
-        }
+        }*/
         //TODO : change sprite renderer 
     }
 
