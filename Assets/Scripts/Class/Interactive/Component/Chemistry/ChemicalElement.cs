@@ -69,8 +69,7 @@ namespace Interactive.Engine
 		protected internal static AlcoholColor _color = AlcoholColor.Red;
 
 		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
-			new AlcoholAttribute(Attribute.Strong, 3),
-			new AlcoholAttribute(Attribute.Fatal, 2)
+			new AlcoholAttribute(Attribute.Strong, 3)
 		};
 	}
 
@@ -80,8 +79,7 @@ namespace Interactive.Engine
 		protected internal static AlcoholColor _color = AlcoholColor.Black;
 
 		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
-			new AlcoholAttribute(Attribute.Fatal, 2),
-			new AlcoholAttribute(Attribute.Spicy, 1)
+			new AlcoholAttribute(Attribute.Fatal, 3)
 		};
 	}
 
@@ -91,8 +89,7 @@ namespace Interactive.Engine
 		protected internal static AlcoholColor _color = AlcoholColor.Yellow;
 
 		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
-			new AlcoholAttribute(Attribute.Sugar, 2),
-			new AlcoholAttribute(Attribute.Strong, 1)
+			new AlcoholAttribute(Attribute.Sugar, 3)
 		};
 	}
 
@@ -102,8 +99,7 @@ namespace Interactive.Engine
 		protected internal static AlcoholColor _color = AlcoholColor.Green;
 
 		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
-			new AlcoholAttribute(Attribute.Sugar, 1),
-			new AlcoholAttribute(Attribute.Spicy, 2)
+			new AlcoholAttribute(Attribute.Spicy, 3)
 		};
 	}
 
@@ -113,7 +109,8 @@ namespace Interactive.Engine
 		protected internal static AlcoholColor _color = AlcoholColor.Rainbow;
 
 		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
-			new AlcoholAttribute(Attribute.Sugar, 3)
+			new AlcoholAttribute(Attribute.Sugar, 1),
+            new AlcoholAttribute(Attribute.Fatal, 1)
 		};
 	}
 
@@ -123,7 +120,8 @@ namespace Interactive.Engine
 		protected internal static AlcoholColor _color = AlcoholColor.Blue;
 
 		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
-			new AlcoholAttribute(Attribute.Strong, 2)
+			new AlcoholAttribute(Attribute.Strong, 1),
+            new AlcoholAttribute(Attribute.Spicy, 1)
 		};
 	}
 
