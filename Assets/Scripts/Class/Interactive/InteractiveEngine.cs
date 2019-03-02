@@ -10,6 +10,7 @@ namespace Interactive.Engine
 	public class InteractiveEngine : Singleton<InteractiveEngine>
 	{
 		public InteractiveEngineData interactiveEngineData;
+		public IngredientDatabase ingredientDatabase;
 		
 		private static ChemistryEngine chemistry = new ChemistryEngine();
 
@@ -44,6 +45,11 @@ namespace Interactive.Engine
 			}
 
 			return res;
+		}
+
+		public static ChemicalElementEntity GetCocktailFrom(List<ChemicalElement> combo)
+		{
+			return ChemicalElementMixEntity.MixSeveralElement(combo);
 		}
 	}
 }
