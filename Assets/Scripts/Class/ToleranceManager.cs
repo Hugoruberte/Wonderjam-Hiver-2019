@@ -8,8 +8,9 @@ public class ToleranceManager : Singleton<ToleranceManager>
     private float toleranceGaugeMax = 100;
     private float toleranceGaugeCurrent = 50;
 
-    void UpdateGaugeValue(float value)
+    public void UpdateGaugeValue(float value)
     {
+        Debug.Log("toleranceGaugeValue before:" + toleranceGaugeCurrent);
         toleranceGaugeCurrent += value;
         if(toleranceGaugeCurrent <= toleranceGaugeMin)
         {
@@ -19,6 +20,7 @@ public class ToleranceManager : Singleton<ToleranceManager>
         {
             // YOU GOOD I DONT EVEN KNOW WHY THIS CONDITION EXIST
         }
+        Debug.Log("toleranceGaugeValue after:" + toleranceGaugeCurrent);
     }
 
 
