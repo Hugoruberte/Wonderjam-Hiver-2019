@@ -13,6 +13,21 @@ MonoBehaviour:
   m_Name: IngredientDatabase
   m_EditorClassIdentifier: 
   ingredients:
-  - element: 128
+  - element: 2
     sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
-    unlocked: 0
+    isUnlocked: 0
+  - element: 4
+    sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+    isUnlocked: 1
+  - element: 8
+    sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+    isUnlocked: 1
+  - element: 16
+    sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+    isUnlocked: 1
+  - element: 32
+    sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+    isUnlocked: 1
+  - element: 64
+    sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+    isUnlocked: 1

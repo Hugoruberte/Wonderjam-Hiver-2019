@@ -545,18 +545,18 @@ namespace Interactive.Engine
 		private protected virtual void SetAlcoholAttributesAndAlcoholColor(AlcoholAttribute[] a, AlcoholColor c, ChemicalElement[] recipe) {
 			// Set weaknesses according to recipe
 			this.attributes = a;
-			if(!this.interactiveEngineData.HasAlcoholAttributesOf(this)) {
-				this.interactiveEngineData.SetAlcoholAttributesOf(this, this.attributes);
+			if(!this.interactiveEngineData.HasAlcoholAttributesOf(this.type)) {
+				this.interactiveEngineData.SetAlcoholAttributesOf(this.type, this.attributes);
 			}
 
 			this.colors = new AlcoholColor[] {c};
-			if(!this.interactiveEngineData.HasColorsOf(this)) {
-				this.interactiveEngineData.SetColorsOf(this, this.colors);
+			if(!this.interactiveEngineData.HasColorsOf(this.type)) {
+				this.interactiveEngineData.SetColorsOf(this.type, this.colors);
 			}
 
 			// Set elements composition by decomposing recipe in its primary element
-			if(!this.interactiveEngineData.HasPrimariesOf(this)) {
-				this.interactiveEngineData.SetPrimariesOf(this, new ChemicalElement[] {this.type});
+			if(!this.interactiveEngineData.HasPrimariesOf(this.type)) {
+				this.interactiveEngineData.SetPrimariesOf(this.type, new ChemicalElement[] {this.type});
 			}
 		}
 
@@ -609,26 +609,26 @@ namespace Interactive.Engine
 		private protected override void SetAlcoholAttributesAndAlcoholColor(AlcoholAttribute[] a, AlcoholColor c, ChemicalElement[] recipe) {
 			// Set weaknesses according to recipe
 			this.attributes = GetAlcoholAttributesByDecomposition(recipe);
-			if(!this.interactiveEngineData.HasAlcoholAttributesOf(this)) {
-				this.interactiveEngineData.SetAlcoholAttributesOf(this, this.attributes);
+			if(!this.interactiveEngineData.HasAlcoholAttributesOf(this.type)) {
+				this.interactiveEngineData.SetAlcoholAttributesOf(this.type, this.attributes);
 			}
 
 			this.colors = GetColorsByDecomposition(recipe);
-			if(!this.interactiveEngineData.HasColorsOf(this)) {
-				this.interactiveEngineData.SetColorsOf(this, this.colors);
+			if(!this.interactiveEngineData.HasColorsOf(this.type)) {
+				this.interactiveEngineData.SetColorsOf(this.type, this.colors);
 			}
 
 			// Set elements composition by decomposing recipe in its primary element
-			if(!this.interactiveEngineData.HasPrimariesOf(this)) {
-				this.interactiveEngineData.SetPrimariesOf(this, GetPrimariesByDecomposition(recipe));
+			if(!this.interactiveEngineData.HasPrimariesOf(this.type)) {
+				this.interactiveEngineData.SetPrimariesOf(this.type, GetPrimariesByDecomposition(recipe));
 			}
 		}
 
 		// does elements in 'a' and 'b' validate this primary element composition
 		protected internal bool CanBeMadeOf(ChemicalElementEntity a, ChemicalElementEntity b) {
-			ChemicalElement[] a1 = this.interactiveEngineData.GetPrimariesOf(a);
-			ChemicalElement[] a2 = this.interactiveEngineData.GetPrimariesOf(b);
-			ChemicalElement[] mine = this.interactiveEngineData.GetPrimariesOf(this);
+			ChemicalElement[] a1 = this.interactiveEngineData.GetPrimariesOf(a.type);
+			ChemicalElement[] a2 = this.interactiveEngineData.GetPrimariesOf(b.type);
+			ChemicalElement[] mine = this.interactiveEngineData.GetPrimariesOf(this.type);
 			bool found;
 
 			if(mine.Length != a1.Length + a2.Length) {
@@ -663,12 +663,12 @@ namespace Interactive.Engine
 			return true;
 		}
 
-		protected internal bool CanBeMadeOf(List<ChemicalElementEntity> es) {
-			ChemicalElement[] mine = this.interactiveEngineData.GetPrimariesOf(this);
+		protected internal bool CanBeMadeOf(List<ChemicalElement> es) {
+			ChemicalElement[] mine = this.interactiveEngineData.GetPrimariesOf(this.type);
 			int count = 0;
 			bool found;
 
-			foreach(ChemicalElementEntity e in es) {
+			foreach(ChemicalElement e in es) {
 				count += this.interactiveEngineData.GetPrimariesOf(e).Length;
 			}
 
@@ -679,7 +679,7 @@ namespace Interactive.Engine
 			foreach(ChemicalElement e in mine) {
 				found = false;
 
-				foreach(ChemicalElementEntity els in es) {
+				foreach(ChemicalElement els in es) {
 					foreach(ChemicalElement el in this.interactiveEngineData.GetPrimariesOf(els)) {
 						if(el == e) {
 							found = true;
@@ -748,8 +748,8 @@ namespace Interactive.Engine
 				return a.Spawn();
 			}
 
-			if(_interactiveEngineData.HasMixOf(a, b)) {
-				string name = _interactiveEngineData.GetMixOf(a, b);
+			if(_interactiveEngineData.HasMixOf(a.type, b.type)) {
+				string name = _interactiveEngineData.GetMixOf(a.type, b.type);
 				if(name == null) {
 					return null;
 				}
@@ -766,16 +766,16 @@ namespace Interactive.Engine
 				}
 			}
 
-			_interactiveEngineData.SetMixOf(a, b, winner);
+			_interactiveEngineData.SetMixOf(a.type, b.type, winner.type);
 
 			return winner?.Spawn();
 		}
 
-		protected internal static ChemicalElementEntity MixSeveralElement(List<ChemicalElementEntity> combo) {
+		protected internal static ChemicalElementEntity MixSeveralElement(List<ChemicalElement> combo) {
 			ChemicalElementEntity winner = null;
 
 			foreach(ChemicalElementMixEntity mix in ChemicalElementMixEntity.mixes) {
-				if(!combo.Exists(x => x.type == mix.type) && mix.CanBeMadeOf(combo)) {
+				if(!combo.Exists(x => x == mix.type) && mix.CanBeMadeOf(combo)) {
 					winner = mix;
 					break;
 				}
@@ -808,7 +808,7 @@ namespace Interactive.Engine
 			cache.Clear();
 
 			foreach(ChemicalElement es in recipe) {
-				foreach(AlcoholAttribute a in SlowGetAlcoholAttributesOf(es)) {
+				foreach(AlcoholAttribute a in SlowGetAttributesOf(es)) {
 					at = cache.Find(x => x.attribute == a.attribute);
 					if(at.attribute == Attribute.None) {
 						cache.Add(a);
@@ -857,7 +857,7 @@ namespace Interactive.Engine
 				if(type.Name == e.ToString()) {
 					// this will initialize this primaries of 'e'
 					ent = Activator.CreateInstance(type) as ChemicalElementMixEntity;
-					return _interactiveEngineData.GetPrimariesOf(ent);
+					return _interactiveEngineData.GetPrimariesOf(ent.type);
 				}
 			}
 
@@ -890,7 +890,7 @@ namespace Interactive.Engine
 				if(type.Name == e.ToString()) {
 					// this will initialize this primaries of 'e'
 					ent = Activator.CreateInstance(type) as ChemicalElementMixEntity;
-					return _interactiveEngineData.GetColorsOf(ent);
+					return _interactiveEngineData.GetColorsOf(ent.type);
 				}
 			}
 
@@ -899,7 +899,7 @@ namespace Interactive.Engine
 		}
 
 		// get attributs of a particular element
-		private static AlcoholAttribute[] SlowGetAlcoholAttributesOf(ChemicalElement e) {
+		private static AlcoholAttribute[] SlowGetAttributesOf(ChemicalElement e) {
 			switch(e) {
 				case ChemicalElement.Voidd:
 					return null;
@@ -923,7 +923,7 @@ namespace Interactive.Engine
 				if(type.Name == e.ToString()) {
 					// this will initialize this primaries of 'e'
 					ent = Activator.CreateInstance(type) as ChemicalElementMixEntity;
-					return _interactiveEngineData.GetAlcoholAttributesOf(ent);
+					return _interactiveEngineData.GetAttributesOf(ent.type);
 				}
 			}
 
