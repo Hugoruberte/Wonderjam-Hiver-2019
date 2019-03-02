@@ -49,8 +49,8 @@ public class MonsterScript : MonoBehaviour
         cocktailTest = new Ambrosia();
 
 
-        
-        myOrder = new Order(attributesList, color);
+
+        myOrder = Order.getRandomOrder() ;
         /* END OF TEST HERE */
 
 
