@@ -6,7 +6,7 @@ using Interactive.Engine;
 public class MonsterScript : MonoBehaviour
 {
     //monster variables
-    public int position;
+    public float position;
     public int index;
     public int monsterAspect;
 
@@ -63,10 +63,6 @@ public class MonsterScript : MonoBehaviour
     {
         yield return waitBeforeLeaving;
         MonsterManager.instance.TimerEnd(index);
-    }
-    void OnWaitingEnd()
-    {
-        MonsterManager.instance.TimerEnd(position);
     }
 
     void SetCocktail(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
@@ -179,7 +175,6 @@ public class MonsterScript : MonoBehaviour
 
         return toleranceCategoryPoints;
     }
-
-
-
+    
+    
 }
