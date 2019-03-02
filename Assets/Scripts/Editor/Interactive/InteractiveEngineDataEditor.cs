@@ -36,7 +36,7 @@ public class InteractiveEngineDataEditor : Editor
 			EditorGUI.indentLevel -= 2;
 		}
 		
-		showWeaknesses = EditorGUILayout.Foldout(showWeaknesses, "Weaknesses");
+		/*showWeaknesses = EditorGUILayout.Foldout(showWeaknesses, "Weaknesses");
 		if(showWeaknesses) {
 			EditorGUI.indentLevel += 2;
 			foreach(ChemicalToArrayData e in script.weaknesses) {
@@ -52,7 +52,7 @@ public class InteractiveEngineDataEditor : Editor
 				EditorGUI.indentLevel--;
 			}
 			EditorGUI.indentLevel -= 2;
-		}
+		}*/
 		
 
 		/*foreach(int c in script.couples.Keys) {
