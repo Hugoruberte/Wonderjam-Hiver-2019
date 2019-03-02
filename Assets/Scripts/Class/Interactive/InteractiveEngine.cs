@@ -36,7 +36,7 @@ namespace Interactive.Engine
 			ChemicalElementEntity[] res;
 
 			t = typeof(ChemicalElementEntity);
-			ts = Assembly.GetAssembly(t).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(t)).ToArray();
+			ts = Assembly.GetAssembly(t).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(t) && myType != typeof(Order)).ToArray();
 			res = new ChemicalElementEntity[ts.Length];
 			i = 0;
 
@@ -47,7 +47,7 @@ namespace Interactive.Engine
 			return res;
 		}
 
-		public static ChemicalElementEntity GetCocktailFrom(List<ChemicalElementEntity> combo)
+		public static ChemicalElementEntity GetCocktailFrom(List<ChemicalElement> combo)
 		{
 			return ChemicalElementMixEntity.MixSeveralElement(combo);
 		}

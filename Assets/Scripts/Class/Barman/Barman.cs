@@ -17,16 +17,10 @@ public class Barman : Singleton<Barman>
     private MonsterScript currentMonster; 
     private int currentIndex = 0; //index of list monsters in front of the player
 
-    // Start is called before the first frame update
-    protected override void Start ()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        updateAspect();
+        // updateAspect();
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -84,6 +78,4 @@ public class Barman : Singleton<Barman>
         MonoBehaviour currentMonster = listMonsters[currentIndex];
         transform.position = currentMonster.transform.position;
     }
-
-
 } 
