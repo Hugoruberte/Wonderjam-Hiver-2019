@@ -14,17 +14,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredients:
   - element: 2
-    sprite: {fileID: 0}
-    isUnlocked: 0
+    sprite: {fileID: 21300000, guid: cb4fe27127178af42a054748eb860a6f, type: 3}
+    isUnlocked: 1
+  - element: 4
+    sprite: {fileID: 21300000, guid: 2fd5abaa401938d44a0c74d14e37c3b4, type: 3}
+    isUnlocked: 1
   - element: 8
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 9ab9e2af71cb07649b50f9b6492b490a, type: 3}
+    isUnlocked: 1
+  - element: 16
+    sprite: {fileID: 21300000, guid: b59b99ed9c3f3b546ba7f735af0c8d25, type: 3}
+    isUnlocked: 1
+  - element: 32
+    sprite: {fileID: 21300000, guid: 02d55c15c87c6284097b1bffc72b5c27, type: 3}
+    isUnlocked: 1
+  - element: 64
+    sprite: {fileID: 21300000, guid: 053993ea811ae28409b9bfbdbeb60e18, type: 3}
+    isUnlocked: 1
+  - element: 128
+    sprite: {fileID: 21300000, guid: dade2d1217c742949911e1fc85abdbf4, type: 3}
+    isUnlocked: 0
+  - element: 131072
+    sprite: {fileID: 21300000, guid: 0542a970c9ccd0944a0312950db315f7, type: 3}
+    isUnlocked: 0
+  - element: 256
+    sprite: {fileID: 21300000, guid: ff6f81af7d6a10244a8042d33b197903, type: 3}
+    isUnlocked: 0
+  - element: 262144
+    sprite: {fileID: 21300000, guid: f7d66b3efe80dce40baf3ac77be29e6a, type: 3}
+    isUnlocked: 0
+  - element: 524288
+    sprite: {fileID: 21300000, guid: 0630cec373d5c1c409242ab424662d76, type: 3}
+    isUnlocked: 0
+  - element: 48576
+    sprite: {fileID: 21300000, guid: 41bcd3df2c2422542a6d2812e4ef04ef, type: 3}
     isUnlocked: 0
   - element: 512
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: f903dc9b32d10914b955cd44afbcc73b, type: 3}
+    isUnlocked: 0
+  - element: 2097152
+    sprite: {fileID: 21300000, guid: 4313e58911096e74f8a6287b17206c63, type: 3}
+    isUnlocked: 0
+  - element: 4194304
+    sprite: {fileID: 21300000, guid: d5c9292e40849ed40af44644622fa9ac, type: 3}
+    isUnlocked: 0
+  - element: 8388608
+    sprite: {fileID: 21300000, guid: 0ab86efa4ca856f48bbc2417a19a3e93, type: 3}
+    isUnlocked: 0
+  - element: 16777216
+    sprite: {fileID: 21300000, guid: 97b2a481fb466ea4380592955225c02c, type: 3}
+    isUnlocked: 0
+  - element: 33554432
+    sprite: {fileID: 21300000, guid: 6eea420a117bea94db0b0cfaa2536607, type: 3}
+    isUnlocked: 0
+  - element: 134217728
+    sprite: {fileID: 21300000, guid: 545695f33e5eff84a86293f985c1f9ac, type: 3}
+    isUnlocked: 0
+  - element: 67108864
+    sprite: {fileID: 21300000, guid: 4ff347a9c186d6143ab18d31905a6125, type: 3}
+    isUnlocked: 0
+  - element: 536870912
+    sprite: {fileID: 21300000, guid: b2b2cd9e43aac2f4c91770a8ab989289, type: 3}
+    isUnlocked: 0
+  - element: 268435456
+    sprite: {fileID: 21300000, guid: 96c85fa9fb5b2d240b8e743e859f2d25, type: 3}
+    isUnlocked: 0
+  - element: 1073741824
+    sprite: {fileID: 21300000, guid: cdb7aaeefe8413b47b101e5654b1ffeb, type: 3}
+    isUnlocked: 0
+  - element: 1024
+    sprite: {fileID: 21300000, guid: 141a33b84e1983e4390adcea25b03c45, type: 3}
+    isUnlocked: 0
+  - element: 2048
+    sprite: {fileID: 21300000, guid: b67661f5e1e27954e9b3be8e61ad0be5, type: 3}
     isUnlocked: 0
   - element: 4096
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 8989d7f12cccc9d40be5d9e5a809861c, type: 3}
+    isUnlocked: 0
+  - element: 8192
+    sprite: {fileID: 21300000, guid: 0218433a31a4fb64294e3964d2e9d611, type: 3}
+    isUnlocked: 0
+  - element: 16384
+    sprite: {fileID: 21300000, guid: ab86c28d2cbb3044b9e23f411c8d8f8d, type: 3}
+    isUnlocked: 0
+  - element: 32768
+    sprite: {fileID: 21300000, guid: c0673af338239514f8bca69719f8ffb4, type: 3}
     isUnlocked: 0
   - element: 65536
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: eb14b60ee61966c44b030992edeea7d8, type: 3}
     isUnlocked: 0

@@ -37,7 +37,7 @@ public class Barman : Singleton<Barman>
         }
     }
 
-    void updateAspect()
+    /* void updateAspect()
     {
         if (StressGauge.instance.currentStress <= StressGauge.instance.maxNoStress)
         {
@@ -52,7 +52,7 @@ public class Barman : Singleton<Barman>
             aspect = Aspect.STRESSED;
         }
         //TODO : change sprite renderer 
-    }
+    } */
 
     void Move(KeyCode key, MonsterScript[] listMonsters, int sizeList) 
     {
