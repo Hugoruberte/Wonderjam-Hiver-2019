@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c12fcc1ff013c3e4296a328053798659, type: 3}
-  m_Name: ElementIconDatabase
+  m_Script: {fileID: 11500000, guid: af7cddbb98f4e9b4c892524791ecedd3, type: 3}
+  m_Name: IngredientDatabase
   m_EditorClassIdentifier: 
-  icons:
-  - element: 2
+  ingredients:
+  - element: 128
     sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
-  - element: 4
-    sprite: {fileID: 21300000, guid: 01dfa3a0151d9eb478caddefa1b8bda7, type: 3}
-  - element: 64
-    sprite: {fileID: 21300000, guid: 5ce322ffd46999048aa663ba0bbe4cbb, type: 3}
+    unlocked: 0

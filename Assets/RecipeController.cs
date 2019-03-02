@@ -40,13 +40,13 @@ public class RecipeController : Singleton<RecipeController>
 	{
 		base.Start();
 
-		// combo.Add(new BloodySlimy());
-		// combo.Add(new DraculaSunrise());
+		combo.Add(new BloodySlimy());
+		combo.Add(new DraculaSunrise());
 		// combo.Add(new StickyTear());
 
-		// AddElementToCocktail(new BigIsland());
+		AddElementToCocktail(new BigIsland());
 
-		this.ClearCocktail();
+		// this.ClearCocktail();
 	}
 
 
@@ -127,7 +127,7 @@ public class RecipeController : Singleton<RecipeController>
 			tr.parent = recipeSlotsTransform;
 			tr.position = new Vector3(this.left + i * (DISTANCE_BETWEEN_INGREDIENT + widthOfSlot) + DISTANCE_BETWEEN_INGREDIENT + (widthOfSlot / 2f), tr.position.y, tr.position.z);
 
-			tr.Find("Icon").GetComponent<SpriteRenderer>().sprite = InteractiveEngine.instance.elementIconDatabase.GetIconWith(this.combo[i].type);
+			tr.Find("Icon").GetComponent<SpriteRenderer>().sprite = InteractiveEngine.instance.ingredientDatabase.GetIconWith(this.combo[i].type);
 		}
 	}
 	private void UpdateResultDisplay(ChemicalElementEntity result)
@@ -140,10 +140,11 @@ public class RecipeController : Singleton<RecipeController>
 				resultArrowObject.SetActive(false);
 			}
 
-			resultIcon.sprite = InteractiveEngine.instance.elementIconDatabase.GetIconWith(result.type);
+			resultIcon.sprite = InteractiveEngine.instance.ingredientDatabase.GetIconWith(result.type);
 
 		} else {
-			// anim result go away
+			resultTransform.position = new Vector3(0f, resultTransform.position.y, resultTransform.position.z);
+			resultArrowObject.SetActive(false);
 		}
 	}
 }
