@@ -49,8 +49,8 @@ public class MonsterScript : MonoBehaviour
         cocktailTest = new Ambrosia();
 
 
-        
-        myOrder = new Order(attributesList, color);
+
+        myOrder = Order.getRandomOrder() ;
         /* END OF TEST HERE */
 
 
@@ -77,10 +77,10 @@ public class MonsterScript : MonoBehaviour
         GetComponent<Transform>().position = positionTemp;
     }
 
-    void SetCocktail(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
+    public void SetCocktail(ChemicalElementEntity Cocktail)
     {
         // Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
-        float tolerancePoint = CalculateTolerancePoint(Order, Cocktail);
+        float tolerancePoint = CalculateTolerancePoint(myOrder, Cocktail);
 
         ToleranceManager.instance.UpdateGaugeValue(tolerancePoint);
 

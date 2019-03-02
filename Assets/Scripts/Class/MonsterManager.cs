@@ -11,13 +11,13 @@ public class MonsterManager : Singleton<MonsterManager>
 
     public int monsterNumber;
     public MonsterScript prefabMonster;
+    [HideInInspector]
+    public MonsterScript[] monsters;
 
     //VARIABLE TO MOVE BUT I DONT KNOW WHERE TO PUT IT NOW...
     public float orderSuccessValue = 10;
 
     private float timeToCreateMonster;
-
-    private MonsterScript[] monsters;
     private List<int> freeIndice = new List<int>();
     private List<float> xMin = new List<float>();
     private List<float> xMax = new List<float>();
@@ -74,24 +74,26 @@ public class MonsterManager : Singleton<MonsterManager>
     {
         //index of free index
         int indiceTemp = UnityEngine.Random.Range(0, freeIndice.Count - 1);
+        if (indiceTemp >= 0)
+        {
+            //free index
+            int freePlace = freeIndice[indiceTemp];
+            freeIndice.RemoveAt(indiceTemp);
 
-        //free index
-        int freePlace = freeIndice[indiceTemp];
-        freeIndice.RemoveAt(indiceTemp);
+            MonsterScript MonsterCreate = Instantiate(prefabMonster);
+            //set MonsterCreate
+            float Yposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.y;
+            float Zposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.z;
+            MonsterCreate.index = freePlace;
+            Debug.Log(MonsterCreate.index);
+            MonsterCreate.position = UnityEngine.Random.Range(xMin[freePlace], xMax[freePlace]);
+            MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position =
+                new Vector3(MonsterCreate.position, Yposition, Zposition);
+            // TODO : rajoutez un MonsterAspect
 
-        MonsterScript MonsterCreate = Instantiate(prefabMonster);
-        //set MonsterCreate
-        float Yposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.y;
-        float Zposition = MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position.z;
-        MonsterCreate.index = freePlace;
-        Debug.Log(MonsterCreate.index);
-        MonsterCreate.position = UnityEngine.Random.Range(xMin[freePlace],xMax[freePlace]);
-        MonsterCreate.GetComponentInChildren<SpriteRenderer>().transform.position =
-            new Vector3(MonsterCreate.position, Yposition, Zposition);
-        // TODO : rajoutez un MonsterAspect
-
-        //fill the array of monsters
-        monsters[freePlace] = MonsterCreate;
+            //fill the array of monsters
+            monsters[freePlace] = MonsterCreate;
+        }
 
     }
 
