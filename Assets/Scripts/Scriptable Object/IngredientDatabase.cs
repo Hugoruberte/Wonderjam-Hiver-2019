@@ -38,4 +38,12 @@ public struct Ingredient {
 		
 		this.isUsed = used;
 	}
+
+	public Ingredient(bool unlocked, Ingredient i) {
+		this.sprite = i.sprite;
+		this.element = i.element;
+		this.isUsed = i.isUsed;
+
+		this.isUnlocked = unlocked;
+	}
 }

@@ -60,14 +60,13 @@ public class BarmanController : Singleton<BarmanController>
 	{
 		this.currentCocktail = cocktail;
 
-		Debug.Log(currentCocktail);
-
 		tray.sprite = InteractiveEngine.instance.ingredientDatabase.GetIconWith(currentCocktail.type);
 	}
 
 	public void ReleaseCocktail()
 	{
-		// only does that
+		CameraEffect.Shake(0.2f);
+
 		tray.sprite = null;
 	}
 

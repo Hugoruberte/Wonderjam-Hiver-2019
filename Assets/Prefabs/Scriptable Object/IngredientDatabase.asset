@@ -33,7 +33,7 @@ MonoBehaviour:
     isUnlocked: 1
   - element: 128
     sprite: {fileID: 21300000, guid: dade2d1217c742949911e1fc85abdbf4, type: 3}
-    isUnlocked: 0
+    isUnlocked: 1
   - element: 131072
     sprite: {fileID: 21300000, guid: 0542a970c9ccd0944a0312950db315f7, type: 3}
     isUnlocked: 0

@@ -296,6 +296,15 @@ namespace Tools
 		{
 			vect.Set(Mathf.RoundToInt(vect.x), Mathf.RoundToInt(vect.y));
 		}
+
+		public static Vector2 WorldPositionToScreenPosition(Vector3 w_pos, RectTransform canvasRectTransform, Camera cam)
+		{
+			Vector2 view = cam.WorldToViewportPoint(w_pos);
+			return new Vector2(
+				view.x * canvasRectTransform.sizeDelta.x,
+				view.y * canvasRectTransform.sizeDelta.y
+			);
+		}
 	}
 
 	public static class ListExtension

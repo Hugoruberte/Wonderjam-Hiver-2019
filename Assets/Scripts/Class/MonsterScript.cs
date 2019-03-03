@@ -12,10 +12,10 @@ public class MonsterScript : MonoBehaviour
 
 	[HideInInspector] public int indexInMonsterArray;
 	private float startWaitingTime;
-	private float willBeWaitingMax;
-	private float timeCoeff = 10;
-	private float timeLimit = 0.5f;
-	private float colorCoeff = 7;
+	private float willBeWaiting;
+	private float timeCoeff = 5;
+	private float timeLimit = 0.25f;
+	private float colorCoeff = 5;
 	private float categoryCoeff = 2;
 
 	private bool iHaveNotBeenServed = true;
@@ -41,8 +41,8 @@ public class MonsterScript : MonoBehaviour
 		myOrder = Order.GetRandomOrder();
 
 		startWaitingTime = Time.time;
-		willBeWaitingMax = monsterManager.GetMonsterWaitingDuration();
-		waitBeforeLeaving = new WaitForSeconds(willBeWaitingMax);
+		willBeWaiting = monsterManager.GetMonsterWaitingDuration();
+		waitBeforeLeaving = new WaitForSeconds(willBeWaiting);
 
 		waitForCocktailCoroutine = WaitForCocktailCoroutine();
 		StartCoroutine(waitForCocktailCoroutine);
@@ -60,6 +60,22 @@ public class MonsterScript : MonoBehaviour
 			yield return null;
 		}
 
+		// Ask + spawn Clock
+		BubbleManager.instance.SpawnBubble(this, myTransform.position, myOrder);
+	}
+
+	public void OnEndSpawnBubble()
+	{
+		// only does that
+		ClockManager.instance.SpawnClock(this, myTransform.position, willBeWaiting);
+
+		StopCoroutine(waitForCocktailCoroutine);
+		waitForCocktailCoroutine = ContinueWaitForCocktailCoroutine();
+		StartCoroutine(waitForCocktailCoroutine);
+	}
+
+	private IEnumerator ContinueWaitForCocktailCoroutine()
+	{
 		// Wait
 		yield return waitBeforeLeaving;
 
@@ -90,7 +106,7 @@ public class MonsterScript : MonoBehaviour
 	public void ReceiveCocktail(ChemicalElementEntity Cocktail)
 	{
 		// Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
-		float tolerancePoint = CalculateTolerancePoint(myOrder, Cocktail);
+		float tolerancePoint = CalculateTolerancePoint(myOrder, Cocktail, false);
 
 		this.iHaveNotBeenServed = false;
 
@@ -109,7 +125,7 @@ public class MonsterScript : MonoBehaviour
 
 
 	//calculateTolerancePoint
-	private float CalculateTolerancePoint(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
+	private float CalculateTolerancePoint(ChemicalElementEntity Order, ChemicalElementEntity Cocktail, bool orderIsACocktail)
 	{
 		//time points
 		float toleranceTimePoints = CalculateTimeTolerancePoint();
@@ -118,9 +134,9 @@ public class MonsterScript : MonoBehaviour
 		float toleranceColorPoints = CalculateColorTolerancePoints(myOrder.colors, Cocktail.colors);
 
 		//category Points
-		float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attributes, Cocktail.attributes);
+		float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attributes, Cocktail.attributes, orderIsACocktail);
 
-		return monsterManager.orderSuccessValue - toleranceTimePoints - toleranceColorPoints - toleranceCategoryPoints;
+		return toleranceTimePoints + toleranceColorPoints + toleranceCategoryPoints;
 
 	}
 	
@@ -132,7 +148,7 @@ public class MonsterScript : MonoBehaviour
 		float waitingTime = currentWaitingTime - startWaitingTime;
 
 		//tolerance points lost from time
-		return ((waitingTime / willBeWaitingMax) - timeLimit) * timeCoeff;
+		return ((waitingTime / willBeWaiting) - timeLimit) * timeCoeff;
 	}
 
 	//calculate errors due to colors
@@ -150,14 +166,14 @@ public class MonsterScript : MonoBehaviour
 	private float CalculateColorTolerancePoint(AlcoholColor colorWanted,AlcoholColor []colors)
 	{
 		
-		float toleranceColorPoints = colorCoeff;
+		float toleranceColorPoints = -colorCoeff;
 		bool colorNotFound = true;
 		int i = 0;
 		while (colorNotFound && i < colors.Length)
 		{
 			if (colorWanted == colors[i])
 			{
-				toleranceColorPoints *= 0;
+				toleranceColorPoints *= -1;
 				colorNotFound = false;
 			}
 			++i;
@@ -166,7 +182,7 @@ public class MonsterScript : MonoBehaviour
 	}
 
 	//category points
-	private float CalculateCategoryTolerancePoint(AlcoholAttribute[] orderAttributes, AlcoholAttribute[] cocktailAttributes)
+	private float CalculateCategoryTolerancePoint(AlcoholAttribute[] orderAttributes, AlcoholAttribute[] cocktailAttributes, bool orderIsACocktail)
 	{
 		//create Map Order Attributes
 		Dictionary<Attribute, float> IntensityForAttribute = new Dictionary<Attribute, float>();
@@ -176,9 +192,11 @@ public class MonsterScript : MonoBehaviour
 			AlcoholAttribute tmpAttribute = orderAttributes[i];
 			IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
 		}
-
+        float toleranceCategoryPositivePoints = 0;
+        float toleranceCategoryNegativePoints = 0;
         if (cocktailAttributes != null)
         {
+            
             //for all cocktailAttributes
             for (int i = 0; i < cocktailAttributes.Length; ++i)
             {
@@ -186,26 +204,26 @@ public class MonsterScript : MonoBehaviour
                 //if the attributes is also in the order
                 if (IntensityForAttribute.ContainsKey(tmpAttribute.attribute))
                 {
+                    toleranceCategoryPositivePoints += Mathf.Min(IntensityForAttribute[tmpAttribute.attribute], tmpAttribute.intensity);
                     //the tolerance point is the difference between the wantedValue and the givenValue
                     IntensityForAttribute[tmpAttribute.attribute] -= tmpAttribute.intensity;
                 }
-                /*else
+                else if(orderIsACocktail)
                 {
                     //else the category was not wanted, all points in this category are false.
-                    IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
-                }*/
+                    toleranceCategoryNegativePoints += tmpAttribute.intensity;
+                }
             }
         }
-		//calculate toleranceValue
-		float toleranceCategoryPoints = 0;
 
+        
 		foreach (Attribute attribute in IntensityForAttribute.Keys)
 		{
-			toleranceCategoryPoints += Mathf.Abs(IntensityForAttribute[attribute]);
+            toleranceCategoryNegativePoints += Mathf.Abs(IntensityForAttribute[attribute]);
 		}
+        toleranceCategoryNegativePoints *= categoryCoeff;
 
-		toleranceCategoryPoints *= categoryCoeff;
 
-		return toleranceCategoryPoints;
+		return toleranceCategoryPositivePoints - toleranceCategoryNegativePoints;
 	}
 }
