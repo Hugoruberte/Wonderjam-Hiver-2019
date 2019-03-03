@@ -12,8 +12,9 @@ public class ShelfController : Singleton<ShelfController>
 	public Transform mainTransform;
 	public Transform firstSlotsTransform;
 	public Transform secondSlotsTransform;
+    public Transform triggerTransform;
 
-	[Header("Shader")]
+    [Header("Shader")]
 	public Shader lightedShader;
 	public Shader grayscaleShader;
 
@@ -97,12 +98,16 @@ public class ShelfController : Singleton<ShelfController>
 			outer = firstSlotsTransform;
 			currentShelf = secondSlotsTransform;
 			shelfIndex = 1;
-		} else {
+
+            triggerTransform.Rotate(0, 0, -50);
+        } else {
 			inner = firstSlotsTransform;
 			outer = secondSlotsTransform;
 			currentShelf = firstSlotsTransform;
 			shelfIndex = 0;
-		}
+
+            triggerTransform.Rotate(0, 0, 50);
+        }
 
 		inner.gameObject.SetActive(true);
 		this.UpdateShelfDisplay();

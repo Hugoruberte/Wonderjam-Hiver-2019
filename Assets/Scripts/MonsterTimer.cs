@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class MonsterTimer : MonoBehaviour
 {
-    float timeLeft = 300.0f;
+    float timeLeft;
     public Image timer;
     [HideInInspector] public UnityEvent onFinish = new UnityEvent();
       
    // Start is called before the first frame update
     void Start()
     {
-        
+        timeLeft = MonsterScript.waiting;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer.fillAmount -= 1.0f * Time.deltaTime;
+        timer.fillAmount -= (1/timeLeft) * Time.deltaTime;
     }
 }
