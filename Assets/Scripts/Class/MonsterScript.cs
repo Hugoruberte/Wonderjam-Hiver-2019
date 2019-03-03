@@ -13,10 +13,11 @@ public class MonsterScript : MonoBehaviour
 	[HideInInspector] public int indexInMonsterArray;
 	private float startWaitingTime;
 	private float willBeWaiting;
-	private float timeCoeff = 5;
-	private float timeLimit = 0.25f;
-	private float colorCoeff = 2;
-	private float categoryCoeff = 2;
+	private float timeCoeff = 2;
+	private float timeLimit = 0.5f;
+	private float colorCoeff = 3;
+	private float categoryPositiveCoeff = 3;
+    private float categoryNegativeCoeff = 6;
 
 	private bool iHaveNotBeenServed = true;
 
@@ -97,8 +98,7 @@ public class MonsterScript : MonoBehaviour
 		Vector3 target;
 		Vector3 reference = Vector3.zero;
 
-        Debug.Log("Leave" + name);
-		// Leaving
+       	// Leaving
 		monsterManager.MonsterStartLeaving(this.indexInMonsterArray);
 
 		// Walk out
@@ -147,7 +147,14 @@ public class MonsterScript : MonoBehaviour
 		//category Points
 		float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attributes, Cocktail.attributes, orderIsACocktail);
 
-		return toleranceTimePoints + toleranceColorPoints + toleranceCategoryPoints;
+
+        Debug.Log(toleranceTimePoints);
+        Debug.Log(toleranceColorPoints);
+        Debug.Log(toleranceCategoryPoints);
+
+        return toleranceTimePoints + toleranceColorPoints + toleranceCategoryPoints;
+
+
 
 	}
 	
@@ -201,6 +208,7 @@ public class MonsterScript : MonoBehaviour
 		for (int i = 0; i < orderAttributes.Length; ++i)
 		{
 			AlcoholAttribute tmpAttribute = orderAttributes[i];
+            Debug.Log(tmpAttribute.attribute);
 			IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
 		}
         float toleranceCategoryPositivePoints = 0;
@@ -215,14 +223,8 @@ public class MonsterScript : MonoBehaviour
                 //if the attributes is also in the order
                 if (IntensityForAttribute.ContainsKey(tmpAttribute.attribute))
                 {
-                    toleranceCategoryPositivePoints += Mathf.Min(IntensityForAttribute[tmpAttribute.attribute], tmpAttribute.intensity);
-                    //the tolerance point is the difference between the wantedValue and the givenValue
-                    IntensityForAttribute[tmpAttribute.attribute] -= tmpAttribute.intensity;
-                }
-                else if(orderIsACocktail)
-                {
-                    //else the category was not wanted, all points in this category are false.
-                    toleranceCategoryNegativePoints += tmpAttribute.intensity;
+                    toleranceCategoryPositivePoints++;
+                    IntensityForAttribute.Remove(tmpAttribute.attribute);
                 }
             }
         }
@@ -230,11 +232,13 @@ public class MonsterScript : MonoBehaviour
         
 		foreach (Attribute attribute in IntensityForAttribute.Keys)
 		{
-            toleranceCategoryNegativePoints += Mathf.Abs(IntensityForAttribute[attribute]);
+            toleranceCategoryNegativePoints++;
 		}
-        toleranceCategoryNegativePoints *= categoryCoeff;
+
+        toleranceCategoryPositivePoints *= categoryPositiveCoeff;
+        toleranceCategoryNegativePoints *= categoryNegativeCoeff;
 
 
-		return toleranceCategoryPositivePoints - toleranceCategoryNegativePoints;
+        return toleranceCategoryPositivePoints - toleranceCategoryNegativePoints;
 	}
 }
