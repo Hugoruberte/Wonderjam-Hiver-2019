@@ -31,11 +31,15 @@ public class ShelfController : Singleton<ShelfController>
 
 	private IngredientDatabase ingredientDatabase;
 	private RecipeController recipeController;
+	private SlotInfoController slotInfoController;
 
 	protected override void Start()
 	{
+		base.Start();
+		
 		this.recipeController = RecipeController.instance;
 		this.ingredientDatabase = InteractiveEngine.instance.ingredientDatabase;
+		this.slotInfoController = SlotInfoController.instance;
 
 		this.InitializeShelf();
 
@@ -47,10 +51,20 @@ public class ShelfController : Singleton<ShelfController>
 		this.shelfIndex = 0;
 		this.currentShelf = firstSlotsTransform;
 
-		OnClickController[] clicks = firstSlotsTransform.GetComponentsInChildren<OnClickController>();
+		OnMouseController[] clicks;
 
-		foreach(OnClickController click in clicks) {
+		clicks = firstSlotsTransform.GetComponentsInChildren<OnMouseController>();
+		foreach(OnMouseController click in clicks) {
 			click.onClickWithReference.AddListener(SelectIngredient);
+			click.onEnterWithReference.AddListener(StartDisplaySlotInfo);
+			click.onExitWithReference.AddListener(EndDisplaySlotInfo);
+		}
+
+		clicks = secondSlotsTransform.GetComponentsInChildren<OnMouseController>();
+		foreach(OnMouseController click in clicks) {
+			click.onClickWithReference.AddListener(SelectIngredient);
+			click.onEnterWithReference.AddListener(StartDisplaySlotInfo);
+			click.onExitWithReference.AddListener(EndDisplaySlotInfo);
 		}
 	}
 
@@ -137,7 +151,7 @@ public class ShelfController : Singleton<ShelfController>
 		this.UpdateShelfDisplay();
 	}
 
-	private void SelectIngredient(OnClickController click)
+	private void SelectIngredient(OnMouseController click)
 	{
 		int index;
 
@@ -153,8 +167,27 @@ public class ShelfController : Singleton<ShelfController>
 
 		if(ingredient.isUnlocked) {
 			this.recipeController.AddElementToCocktail(ingredient.element);
+			click.GetComponent<Animator>().SetTrigger("Select");
 		} else {
-			Debug.Log("Locked ! Maybe a little animation here ?");
+			click.GetComponent<Animator>().SetTrigger("Giggle");
 		}
+	}
+
+	private void StartDisplaySlotInfo(OnMouseController click)
+	{
+		int index = click.transform.GetSiblingIndex() + NUMBER_INGREDIENT_BY_SHELF * shelfIndex;
+
+		if(index > this.ingredientDatabase.ingredients.Count) {
+			return;
+		}
+
+		Ingredient ingredient = this.ingredientDatabase.ingredients[index];
+
+		this.slotInfoController.Set(click.transform.position, ingredient);
+	}
+
+	private void EndDisplaySlotInfo(OnMouseController click)
+	{
+		this.slotInfoController.Hide();
 	}
 }
