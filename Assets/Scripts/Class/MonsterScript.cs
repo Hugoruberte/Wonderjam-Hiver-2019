@@ -15,7 +15,7 @@ public class MonsterScript : MonoBehaviour
 	private float willBeWaiting;
 	private float timeCoeff = 5;
 	private float timeLimit = 0.25f;
-	private float colorCoeff = 5;
+	private float colorCoeff = 2;
 	private float categoryCoeff = 2;
 
 	private bool iHaveNotBeenServed = true;
@@ -48,13 +48,18 @@ public class MonsterScript : MonoBehaviour
 		StartCoroutine(waitForCocktailCoroutine);
 	}
 
-	private IEnumerator WaitForCocktailCoroutine()
+    private void Update()
+    {
+        transform.LookAt(BarmanController.instance.transform);
+    }
+
+    private IEnumerator WaitForCocktailCoroutine()
 	{
 		Vector3 target;
 		Vector3 reference = Vector3.zero;
 
 		// Walk in
-		target = myTransform.position + Vector3.up;
+		target = myTransform.position + Vector3.up + Vector3.forward;
 		while(Vector3.Distance(myTransform.position, target) > 0.05f) {
 			myTransform.position = Vector3.SmoothDamp(myTransform.position, target, ref reference, smooth);
 			yield return null;
@@ -92,11 +97,12 @@ public class MonsterScript : MonoBehaviour
 		Vector3 target;
 		Vector3 reference = Vector3.zero;
 
+        Debug.Log("Leave" + name);
 		// Leaving
 		monsterManager.MonsterStartLeaving(this.indexInMonsterArray);
 
 		// Walk out
-		target = myTransform.position - Vector3.up * 3f;
+		target = myTransform.position - Vector3.up * 2f - Vector3.forward * 2f;
 		while(Vector3.Distance(myTransform.position, target) > 0.05f) {
 			myTransform.position = Vector3.SmoothDamp(myTransform.position, target, ref reference, smooth);
 			yield return null;
