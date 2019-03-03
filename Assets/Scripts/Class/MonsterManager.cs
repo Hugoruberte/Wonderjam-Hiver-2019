@@ -17,10 +17,9 @@ public class MonsterManager : Singleton<MonsterManager>
     public float OverTimePoints = 10;
 
     private const int MAX_MONSTER_NUMBER = 8;
-	public MonsterScript prefabMonster;
 	[HideInInspector] public MonsterScript[] monsters;
 
-
+	public GameObject[] monstersPrefab;
 
     private float timeToIncreaseCategory;
     private float timeToCreateMonster;
@@ -74,18 +73,19 @@ public class MonsterManager : Singleton<MonsterManager>
 		freeIndex.RemoveAt(indexInFreeIndice);
 
 		// instantiate monster
-		MonsterScript obj = Instantiate(prefabMonster);
+		MonsterScript obj = null;
+		// obj = Instantiate(prefabMonster);
 
 		// set monster position
-		obj.indexInMonsterArray = monsterIndex;
-		obj.transform.parent = folder;
-		obj.transform.position = new Vector3(
-			xAnchor[monsterIndex] + Random.Range(-0.25f, 0.25f),
-			Random.Range(-3.25f, -2.75f),
-			0f);
+		// obj.indexInMonsterArray = monsterIndex;
+		// obj.transform.parent = folder;
+		// obj.transform.position = new Vector3(
+		// 	xAnchor[monsterIndex] + Random.Range(-0.25f, 0.25f),
+		// 	Random.Range(-3.25f, -2.75f),
+		// 	0f);
 
-		//fill the array of monsters    
-		this.monsters[monsterIndex] = obj;
+		// //fill the array of monsters    
+		// this.monsters[monsterIndex] = obj;
 	}
 
 	public void MonsterStartLeaving(int index)

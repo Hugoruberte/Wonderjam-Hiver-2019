@@ -60,6 +60,9 @@ public class MonsterScript : MonoBehaviour
 			yield return null;
 		}
 
+		// Ask
+		BubbleManager.instance.SpawnBubble(myTransform.position, myOrder);
+
 		// Wait
 		yield return waitBeforeLeaving;
 

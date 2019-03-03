@@ -23,6 +23,7 @@ public class RecipeController : Singleton<RecipeController>
 
 	private ShelfController shelfController;
 	private BarmanController barmanController;
+	private SlotInfoController slotInfoController;
 
 	private ChemicalElementEntity cocktail;
 
@@ -48,6 +49,7 @@ public class RecipeController : Singleton<RecipeController>
 
 		this.barmanController = BarmanController.instance;
 		this.shelfController = ShelfController.instance;
+		this.slotInfoController = SlotInfoController.instance;
 
 		this.ClearCocktail();
 	}
@@ -139,6 +141,8 @@ public class RecipeController : Singleton<RecipeController>
 		for(int i = 0; i < this.combo.Count; i++) {
 			obj = Instantiate(this.slotPrefab, recipeSlotsTransform.position, Quaternion.identity);
 			obj.GetComponentInChildren<OnMouseController>().onClickWithReference.AddListener(RemoveElementFromCocktail);
+			obj.GetComponentInChildren<OnMouseController>().onEnterWithReference.AddListener(StartDisplaySlotInfo);
+			obj.GetComponentInChildren<OnMouseController>().onExitWithReference.AddListener(EndDisplaySlotInfo);
 			tr = obj.transform;
 
 			tr.parent = recipeSlotsTransform;
@@ -169,5 +173,39 @@ public class RecipeController : Singleton<RecipeController>
 			resultTransform.position = new Vector3(0f, resultTransform.position.y, resultTransform.position.z);
 			resultArrowObject.SetActive(false);
 		}
+	}
+
+
+	public void StartDisplaySlotInfo(OnMouseController click)
+	{
+		int index = click.transform.GetSiblingIndex();
+
+		Ingredient ingredient = InteractiveEngine.instance.ingredientDatabase.ingredients.Find(x => x.element == this.combo[index]);
+
+		this.slotInfoController.Set(click.transform.position, ingredient);
+	}
+
+	public void EndDisplaySlotInfo(OnMouseController click)
+	{
+		this.slotInfoController.Hide();
+	}
+
+
+
+
+	public void StartDisplaySlotInfoForResult()
+	{
+		if(this.cocktail == null) {
+			return;
+		}
+
+		Ingredient ingredient = InteractiveEngine.instance.ingredientDatabase.ingredients.Find(x => x.element == this.cocktail.type);
+
+		this.slotInfoController.Set(resultTransform.position, ingredient);
+	}
+
+	public void EndDisplaySlotInfoForResult()
+	{
+		this.slotInfoController.Hide();
 	}
 }

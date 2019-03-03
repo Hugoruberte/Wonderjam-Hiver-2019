@@ -49,9 +49,7 @@ public class Order : ChemicalElementEntity
             if (attributeContained == false) {
                 attributes.Add(new AlcoholAttribute(currentAttribute, 1));
             }
-
         }
-
 
         return new Order(attributes.ToArray(), (AlcoholColor)currentColor);
     }
@@ -65,6 +63,4 @@ public class Order : ChemicalElementEntity
     {
 
     }
-
- 
 }
