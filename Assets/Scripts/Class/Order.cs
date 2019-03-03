@@ -7,7 +7,8 @@ using Interactive.Engine;
 
 public class Order : ChemicalElementEntity
 {
-    static int numberOfIntensity = 2;
+    static int numberOfIntensityMin = 2;
+    static int numberOfIntensityMax = 3;
     static int maxIntensity = 3;
 
     public static Order GetRandomOrder()
@@ -17,7 +18,10 @@ public class Order : ChemicalElementEntity
         int currentColor = UnityEngine.Random.Range(0, colorNumber);
 
 
+
         //Random Number Of Intensity
+        int numberOfIntensity = UnityEngine.Random.Range(numberOfIntensityMin, numberOfIntensityMax);
+
         List<AlcoholAttribute> attributes = new List<AlcoholAttribute>();
         for (int i = 0; i < numberOfIntensity; ++i)
         {
@@ -54,7 +58,7 @@ public class Order : ChemicalElementEntity
 
     public static void IncrementNumberOfCategoryPoints()
     {
-        numberOfIntensity++;
+        numberOfIntensityMax++;
     }
 
     public Order(AlcoholAttribute[] attributes, AlcoholColor color) : base(ChemicalElement.Voidd, attributes, color)
