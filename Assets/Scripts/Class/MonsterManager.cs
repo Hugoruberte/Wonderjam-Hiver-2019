@@ -8,6 +8,7 @@ public class MonsterManager : Singleton<MonsterManager>
 
 	[Range(0f, 25f)]
 	public float timeBetweenMonster = 25.0f;
+    public float coefBetweenMonster = 1.04f;
     [Range(0f, 120f)]
     public float timeBetweenIncreaseCategory = 120f;
 
@@ -31,8 +32,8 @@ public class MonsterManager : Singleton<MonsterManager>
 	{
 		base.Awake();
 
-		// initialize random time
-		timeToCreateMonster = Time.time + timeBetweenMonster;
+        // initialize random time
+        timeToCreateMonster = Time.time;
         timeToIncreaseCategory = Time.time + timeBetweenIncreaseCategory;
 
 		// initialize list
@@ -53,6 +54,7 @@ public class MonsterManager : Singleton<MonsterManager>
 		{
 			this.CreateMonster();
 			timeToCreateMonster = Time.time + timeBetweenMonster;
+            timeBetweenMonster /= coefBetweenMonster;
 		}
 
         if( Time.time >= timeToIncreaseCategory)
