@@ -21,8 +21,8 @@ public class BarmanController : Singleton<BarmanController>
 	private Transform myTransform;
 
 	private Aspect aspect;
-	private MonsterScript currentMonster; 
 
+	private MonsterScript currentMonster; 
 	private MonsterScript[] monsters;
 
 	private bool isMoving = false;
@@ -32,6 +32,10 @@ public class BarmanController : Singleton<BarmanController>
 	private Vector3 myReference = Vector3.zero;
 
 	private ToleranceManager toleranceGauge;
+
+	private WaitForSeconds waitAfterService = new WaitForSeconds(0.1f);
+
+	private ChemicalElementEntity currentCocktail = null;
 
 
 	protected override void Awake()
@@ -52,15 +56,24 @@ public class BarmanController : Singleton<BarmanController>
 		toleranceGauge = ToleranceManager.instance;
 	}
 
-	public void HoldCocktail(Sprite icon)
+	public void HoldCocktail(ChemicalElementEntity cocktail)
 	{
-		// only does that
-		tray.sprite = icon;
+		this.currentCocktail = cocktail;
+
+		tray.sprite = InteractiveEngine.instance.ingredientDatabase.GetIconWith(currentCocktail.type);
 	}
 
 	public void ReleaseCocktail()
 	{
 		// only does that
+		tray.sprite = null;
+	}
+
+	private void CocktailServiceToCurrentMonster()
+	{
+		currentMonster.ReceiveCocktail(this.currentCocktail);
+
+		this.currentCocktail = null;
 		tray.sprite = null;
 	}
 
@@ -82,7 +95,8 @@ public class BarmanController : Singleton<BarmanController>
 
 			monster = null;
 
-			if(vert < 0) {
+			if(vert < 0)
+			{
 				threshold = float.MinValue;
 				for(int i = 0; i < this.monsters.Length; i++) {
 					if(this.monsters[i] != null
@@ -93,7 +107,9 @@ public class BarmanController : Singleton<BarmanController>
 						monster = this.monsters[i];
 					}
 				}
-			} else if(vert > 0) {
+			}
+			else if(vert > 0)
+			{
 				threshold = float.MaxValue;
 				for(int i = 0; i < this.monsters.Length; i++) {
 					if(this.monsters[i] != null
@@ -104,8 +120,14 @@ public class BarmanController : Singleton<BarmanController>
 						monster = this.monsters[i];
 					}
 				}
-			} else {
-				Debug.Log("Le Barman sert un monstre");
+			}
+			else if(currentCocktail != null && currentMonster != null)
+			{
+				CameraEffect.Shake(0.2f);
+
+				this.CocktailServiceToCurrentMonster();
+
+				yield return waitAfterService;
 			}
 
 			if(monster != null && currentMonster != monster && !isMoving) {

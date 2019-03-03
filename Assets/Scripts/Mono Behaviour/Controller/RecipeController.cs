@@ -87,11 +87,12 @@ public class RecipeController : Singleton<RecipeController>
 	}
 	public void MakeCocktail()
 	{
+		this.barmanController.HoldCocktail(cocktail);
+
 		this.ClearCocktail();
 
 		this.shelfController.MadeCocktail();
-		this.barmanController.HoldCocktail(InteractiveEngine.instance.ingredientDatabase.GetIconWith(cocktail.type));
-
+		
 		this.UpdateResultDisplay(cocktail);
 	}
 
@@ -144,18 +145,23 @@ public class RecipeController : Singleton<RecipeController>
 	}
 	private void UpdateResultDisplay(ChemicalElementEntity result)
 	{
-		if(result != null) {
-			if(this.combo.Count > 0) {
+		if(result != null)
+		{
+			if(this.combo.Count > 0)
+			{
 				resultTransform.position = new Vector3(this.left + this.combo.Count * (DISTANCE_BETWEEN_INGREDIENT+widthOfSlot) + DISTANCE_BEFORE_RESULT + (widthOfSlot/2f), resultTransform.position.y, resultTransform.position.z);
 				resultArrowObject.SetActive(true);
-			} else {
+			}
+			else
+			{
 				resultTransform.position = new Vector3(0f, resultTransform.position.y, resultTransform.position.z);
 				resultArrowObject.SetActive(false);
 			}
 
 			resultIcon.sprite = InteractiveEngine.instance.ingredientDatabase.GetIconWith(result.type);
-
-		} else {
+		}
+		else
+		{
 			resultTransform.position = new Vector3(0f, resultTransform.position.y, resultTransform.position.z);
 			resultArrowObject.SetActive(false);
 		}
