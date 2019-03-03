@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c94810e395928d469351abbd1005678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Monster: {fileID: 5586104008067577004, guid: 8d4079b859124cc488d5030083ec2454, type: 3}
   timer: {fileID: 2736012160789990400}
   onFinish:
     m_PersistentCalls:

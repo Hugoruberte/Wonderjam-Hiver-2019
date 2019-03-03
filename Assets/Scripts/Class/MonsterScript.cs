@@ -11,8 +11,8 @@ public class MonsterScript : MonoBehaviour
     public int monsterAspect;
 
     //time variables
-    public float waiting = 4.0f;
-    public float walking = 1.0f; 
+    static public float waiting = 4.0f;
+    static public float walking = 1.0f; 
 
     private WaitForSeconds waitBeforeLeaving;
     private WaitForSeconds waitBeforeWalking;
