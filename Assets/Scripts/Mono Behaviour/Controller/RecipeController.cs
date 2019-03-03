@@ -87,6 +87,10 @@ public class RecipeController : Singleton<RecipeController>
 	}
 	public void MakeCocktail()
 	{
+		if(this.combo.Count == 0) {
+			return;
+		}
+
 		this.barmanController.HoldCocktail(cocktail);
 
 		this.ClearCocktail();

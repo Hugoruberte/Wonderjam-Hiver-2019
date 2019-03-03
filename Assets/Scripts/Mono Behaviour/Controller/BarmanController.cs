@@ -60,6 +60,8 @@ public class BarmanController : Singleton<BarmanController>
 	{
 		this.currentCocktail = cocktail;
 
+		Debug.Log(currentCocktail);
+
 		tray.sprite = InteractiveEngine.instance.ingredientDatabase.GetIconWith(currentCocktail.type);
 	}
 
