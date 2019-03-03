@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5f4c46a5fe9ce4148a233aca3b9edf57
+guid: 9467ab133a69048428b79182ce072e01
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -130,7 +130,17 @@ ModelImporter:
     9500000: //RootNode
     13700000: Body
     13700002: Box001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: 36e4c142f9d8a8f4e8c88b9cadef9437, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: weapon
+    second: {fileID: 2100000, guid: ab124737096705247a2f182ba7257e15, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -353,7 +363,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 0
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

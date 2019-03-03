@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b1696b12666ec44a9f2c997e0ccfbba
+guid: f34ed5add073a354fb9398e8e458c8f0
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -130,7 +130,12 @@ ModelImporter:
     9500000: //RootNode
     13700000: Body
     13700002: Box001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03 - Default
+    second: {fileID: 2100000, guid: 80e150b370609644382823354c6b43ab, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -353,7 +358,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 0
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
