@@ -131,8 +131,6 @@ public class BarmanController : Singleton<BarmanController>
 
 				yield return waitAfterService;
 			}
-            Debug.Log("is Moving:" + isMoving);
-            Debug.Log("monster" + monster);
 			if(monster != null && currentMonster != monster && !isMoving) {
 				this.currentMonster = monster;
                 xTarget = currentMonster.transform.position.x;
