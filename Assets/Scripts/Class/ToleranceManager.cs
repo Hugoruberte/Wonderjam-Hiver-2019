@@ -13,6 +13,12 @@ public class ToleranceManager : Singleton<ToleranceManager>
 
     public Slider toleranceSliderUI;
 
+    protected override void Start()
+    {
+        base.Start();
+
+    }
+
     public void UpdateGaugeValue(float value)
     {
         toleranceGaugeCurrent += value;
@@ -25,6 +31,7 @@ public class ToleranceManager : Singleton<ToleranceManager>
         {
             // YOU GOOD I DONT EVEN KNOW WHY THIS CONDITION EXIST BUT WELL IT WAS 2A.M AND I WAS EXHAUSTED
         }
+        toleranceSliderUI.value = toleranceGaugeCurrent;
         AudioManager.instance.ChangeMixerFromValue(toleranceGaugeCurrent / toleranceGaugeMax);
     }
 }

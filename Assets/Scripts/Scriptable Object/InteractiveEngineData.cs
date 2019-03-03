@@ -82,6 +82,27 @@ namespace Interactive.Engine
 			return new _ChemicalElementEntity(e, this.GetColorsOf(e), this.GetAttributesOf(e));
 		}
 
+		public Color GetColorWithAlcoholColor(AlcoholColor c) {
+			switch(c) {
+				case AlcoholColor.Red:
+					return Color.red;
+				case AlcoholColor.Green:
+					return Color.green;
+				case AlcoholColor.Black:
+					return Color.black;
+				case AlcoholColor.White:
+					return Color.white;
+				case AlcoholColor.Yellow:
+					return Color.yellow;
+				case AlcoholColor.Pink:
+					return new Color32(255, 38, 226, 255);
+				case AlcoholColor.Blue:
+					return Color.blue;
+			}
+
+			return Color.white;
+		}
+
 
 
 

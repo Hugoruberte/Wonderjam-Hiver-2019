@@ -6,20 +6,23 @@ public class MonsterManager : Singleton<MonsterManager>
 {
 	private Transform folder;
 
-	[Range(0f, 2f)]
-	public float maxTimeBetweenMonster = 1.0f;
+	[Range(0f, 25f)]
+	public float timeBetweenMonster = 25.0f;
+    public float coefBetweenMonster = 1.04f;
+    [Range(0f, 120f)]
+    public float timeBetweenIncreaseCategory = 120f;
 
-	private const int MAX_MONSTER_NUMBER = 8;
-	public MonsterScript prefabMonster;
+    public float leaveTime = 30f;
+
+    public float OverTimePoints = 10;
+
+    private const int MAX_MONSTER_NUMBER = 8;
 	[HideInInspector] public MonsterScript[] monsters;
 
-	public float leaveMinTime = 3f;
-	public float leaveMaxTime = 4f;
+	public GameObject[] monstersPrefab;
 
-	//VARIABLE TO MOVE BUT I DONT KNOW WHERE TO PUT IT NOW...
-	[HideInInspector] public float orderSuccessValue = 10;
-
-	private float timeToCreateMonster;
+    private float timeToIncreaseCategory;
+    private float timeToCreateMonster;
 	private List<int> freeIndex = new List<int>();
 	private float[] xAnchor = new float[] {-6.5f, -4.8f, -2.95f, -1.35f, 0.25f, 2f, 4.25f, 6.5f};
 
@@ -28,8 +31,9 @@ public class MonsterManager : Singleton<MonsterManager>
 	{
 		base.Awake();
 
-		// initialize random time
-		timeToCreateMonster = Time.time + Random.Range(0f, maxTimeBetweenMonster);
+        // initialize random time
+        timeToCreateMonster = Time.time;
+        timeToIncreaseCategory = Time.time + timeBetweenIncreaseCategory;
 
 		// initialize list
 		monsters = new MonsterScript[MAX_MONSTER_NUMBER];
@@ -48,8 +52,15 @@ public class MonsterManager : Singleton<MonsterManager>
 		if(freeIndex.Count > 0 && Time.time >= timeToCreateMonster)
 		{
 			this.CreateMonster();
-			timeToCreateMonster += Random.Range(0f, maxTimeBetweenMonster);
+			timeToCreateMonster = Time.time + timeBetweenMonster;
+            timeBetweenMonster /= coefBetweenMonster;
 		}
+
+        if( Time.time >= timeToIncreaseCategory)
+        {
+            Order.IncrementNumberOfCategoryPoints();
+            timeToIncreaseCategory = Time.time + timeBetweenIncreaseCategory;
+        }
 	}
 
 	private void CreateMonster()
@@ -62,18 +73,19 @@ public class MonsterManager : Singleton<MonsterManager>
 		freeIndex.RemoveAt(indexInFreeIndice);
 
 		// instantiate monster
-		MonsterScript obj = Instantiate(prefabMonster);
+		MonsterScript obj = null;
+		// obj = Instantiate(prefabMonster);
 
 		// set monster position
-		obj.indexInMonsterArray = monsterIndex;
-		obj.transform.parent = folder;
-		obj.transform.position = new Vector3(
-			xAnchor[monsterIndex] + Random.Range(-0.25f, 0.25f),
-			Random.Range(-3.25f, -2.75f),
-			0f);
+		// obj.indexInMonsterArray = monsterIndex;
+		// obj.transform.parent = folder;
+		// obj.transform.position = new Vector3(
+		// 	xAnchor[monsterIndex] + Random.Range(-0.25f, 0.25f),
+		// 	Random.Range(-3.25f, -2.75f),
+		// 	0f);
 
-		//fill the array of monsters
-		this.monsters[monsterIndex] = obj;
+		// //fill the array of monsters    
+		// this.monsters[monsterIndex] = obj;
 	}
 
 	public void MonsterStartLeaving(int index)
@@ -85,11 +97,11 @@ public class MonsterManager : Singleton<MonsterManager>
 	public void UpdateGaugeOnTimeEnd(int index)
 	{
 		// only does that
-		ToleranceManager.instance.UpdateGaugeValue(-orderSuccessValue);
+		ToleranceManager.instance.UpdateGaugeValue(-OverTimePoints);
 	}
 
 	public float GetMonsterWaitingDuration()
 	{
-		return Random.Range(this.leaveMinTime, this.leaveMaxTime);
+        return leaveTime;
 	}
 }

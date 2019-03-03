@@ -59,7 +59,7 @@ namespace Interactive.Engine
 		Black,
 		White,
 		Yellow,
-		Rainbow,
+		Pink,
 		Blue
 	}
 
@@ -120,7 +120,7 @@ namespace Interactive.Engine
 	public class RainbowBull : ChemicalElementEntity {
 		public RainbowBull() : base(ChemicalElement.RainbowBull, RainbowBull._attributs, RainbowBull._color) {}
 
-		protected internal static AlcoholColor _color = AlcoholColor.Rainbow;
+		protected internal static AlcoholColor _color = AlcoholColor.Pink;
 
 		protected internal static AlcoholAttribute[] _attributs = new AlcoholAttribute[] {
 			new AlcoholAttribute(Attribute.Sugar, 1),
@@ -431,7 +431,7 @@ namespace Interactive.Engine
 			this.attribute = a;
 		}
 
-		public override string ToString() => $"{attribute} (intensity = {intensity})";
+		public override string ToString() => $"{attribute}" + new String('+', Mathf.CeilToInt(this.intensity));
 	}
 
 
