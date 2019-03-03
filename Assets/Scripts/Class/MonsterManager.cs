@@ -11,7 +11,7 @@ public class MonsterManager : Singleton<MonsterManager>
 
 	private const int MAX_MONSTER_NUMBER = 8;
 	public MonsterScript prefabMonster;
-	public MonsterScript[] monsters;
+	[HideInInspector] public MonsterScript[] monsters;
 
 	public float leaveMinTime = 3f;
 	public float leaveMaxTime = 4f;

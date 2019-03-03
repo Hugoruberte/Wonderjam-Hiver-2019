@@ -242,12 +242,12 @@ namespace Interactive.Engine
 
 public struct _ChemicalElementEntity {
 	public ChemicalElement type;
-	public AlcoholColor[] color;
-	public AlcoholAttribute[] attribute;
+	public AlcoholColor[] colors;
+	public AlcoholAttribute[] attributes;
 
 	public _ChemicalElementEntity(ChemicalElement t, AlcoholColor[] c, AlcoholAttribute[] a) {
 		this.type = t;
-		this.color = c;
-		this.attribute = a;
+		this.colors = c;
+		this.attributes = a;
 	}
 }
