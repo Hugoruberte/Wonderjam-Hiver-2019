@@ -1170,9 +1170,11 @@ MonoBehaviour:
   leaveTime: 2
   OverTimePoints: 10
   monsters: []
-  monstersPrefab: []
-  _tmp_prefabMonster: {fileID: 3389642435966470415, guid: 1fc6c55299ddd344e9dd1ccd6841a5dd,
-    type: 3}
+  monstersPrefab:
+  - {fileID: 7092899047176795424, guid: e58f0f6791f92334ea458c9249475e42, type: 3}
+  - {fileID: 4303061777832686250, guid: 137aad29bdd0f5349bf247e4cec8b7fe, type: 3}
+  - {fileID: 3697080282143503508, guid: 62c17c7b124dd3b4080137721ba88964, type: 3}
+  - {fileID: 3151682308640867586, guid: 0b5e3198e7cda3f4288ee743dda6aa90, type: 3}
 --- !u!114 &722274758
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,8 +21,6 @@ public class MonsterManager : Singleton<MonsterManager>
 
 	public MonsterScript[] monstersPrefab;
 
-	public MonsterScript _tmp_prefabMonster;
-
     private float timeToIncreaseCategory;
     private float timeToCreateMonster;
 	private List<int> freeIndex = new List<int>();

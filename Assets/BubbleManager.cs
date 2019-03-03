@@ -44,7 +44,7 @@ public class BubbleManager : Singleton<BubbleManager>
 		s = s ?? GetSpriteWithAttribute(Attribute.Strong);
 		obj.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = s;
 
-		position += Vector3.right * -5.25f;
+		position += Vector3.up * 2f;
 		obj.GetComponent<RectTransform>().anchoredPosition = Vector2Extension.WorldPositionToScreenPosition(position, canvasRectTr, cam);
 
 		StartCoroutine(SpawnBubbleCoroutine(script, obj.transform));
