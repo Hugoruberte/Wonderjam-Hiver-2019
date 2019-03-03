@@ -8,7 +8,6 @@ public class AudioManager : Singleton<AudioManager>
     public AudioMixer mainMixer;
 
  
-
     public void ChangeMixerFromValue(float value)
     {
         float pitchValue = (100 + ((1 - value) * 100))/100;
