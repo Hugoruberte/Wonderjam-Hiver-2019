@@ -734,7 +734,11 @@ namespace Interactive.Engine
 				}
 			}
 
-			_interactiveEngineData.SetMixOf(a.type, b.type, winner.type);
+			if(winner != null) {
+				_interactiveEngineData.SetMixOf(a.type, b.type, winner.type);
+			} else {
+				_interactiveEngineData.SetMixOf(a.type, b.type, ChemicalElement.Voidd);
+			}
 
 			return winner?.Spawn();
 		}

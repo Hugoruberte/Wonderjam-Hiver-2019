@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3273088417618550222}
   - component: {fileID: 1031756751}
   - component: {fileID: 1031756750}
+  - component: {fileID: 3273088418646984248}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088417618550220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -125,6 +126,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984248
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088417618550220}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088417623235685
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +167,7 @@ GameObject:
   - component: {fileID: 3273088417623235687}
   - component: {fileID: 1023859302}
   - component: {fileID: 1023859301}
+  - component: {fileID: 3273088418646984232}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -242,7 +273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088417623235685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -250,6 +281,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984232
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088417623235685}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088417704267805
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +322,7 @@ GameObject:
   - component: {fileID: 3273088417704267807}
   - component: {fileID: 944985630}
   - component: {fileID: 944985629}
+  - component: {fileID: 3273088418646984251}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -367,7 +428,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088417704267805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -375,6 +436,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984251
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088417704267805}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088417723901836
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +491,7 @@ Transform:
   m_GameObject: {fileID: 3273088417723901836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088417910085595}
   m_RootOrder: 0
@@ -443,7 +533,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -451,7 +541,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088417867315878
@@ -466,6 +556,7 @@ GameObject:
   - component: {fileID: 3273088417867315880}
   - component: {fileID: 780876969}
   - component: {fileID: 780876968}
+  - component: {fileID: 3273088418646984250}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -571,7 +662,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088417867315878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -579,6 +670,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984250
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088417867315878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088417897082311
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +861,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088417899919969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -760,6 +880,16 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &3273088417910085592
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +902,7 @@ GameObject:
   - component: {fileID: 3273088417910085594}
   - component: {fileID: 740282843}
   - component: {fileID: 740282842}
+  - component: {fileID: 3273088418646984254}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -877,7 +1008,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088417910085592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -885,6 +1016,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984254
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088417910085592}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088417994224930
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,6 +1057,7 @@ GameObject:
   - component: {fileID: 3273088417994224932}
   - component: {fileID: 656126757}
   - component: {fileID: 656126756}
+  - component: {fileID: 3273088418646984238}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -1002,7 +1163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088417994224930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -1010,6 +1171,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984238
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088417994224930}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088417996708022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1212,7 @@ GameObject:
   - component: {fileID: 3273088417996708024}
   - component: {fileID: 650485433}
   - component: {fileID: 650485432}
+  - component: {fileID: 3273088418646984245}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -1127,7 +1318,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088417996708022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -1135,6 +1326,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984245
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088417996708022}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418026871479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1381,7 @@ Transform:
   m_GameObject: {fileID: 3273088418026871479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088419717363024}
   m_RootOrder: 0
@@ -1203,7 +1423,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1211,7 +1431,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418087554364
@@ -1240,7 +1460,7 @@ Transform:
   m_GameObject: {fileID: 3273088418087554364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418234453040}
   m_RootOrder: 0
@@ -1282,7 +1502,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1290,7 +1510,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418088069856
@@ -1305,6 +1525,7 @@ GameObject:
   - component: {fileID: 3273088418088069858}
   - component: {fileID: 561229027}
   - component: {fileID: 561229026}
+  - component: {fileID: 3273088418646984247}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -1410,7 +1631,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418088069856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -1418,6 +1639,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984247
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418088069856}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418152679613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1694,7 @@ Transform:
   m_GameObject: {fileID: 3273088418152679613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418176070409}
   m_RootOrder: 0
@@ -1486,7 +1736,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1494,7 +1744,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418160958281
@@ -1509,6 +1759,7 @@ GameObject:
   - component: {fileID: 3273088418160958283}
   - component: {fileID: 487316810}
   - component: {fileID: 487316809}
+  - component: {fileID: 3273088418646984255}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -1614,7 +1865,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418160958281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -1622,6 +1873,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984255
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418160958281}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418165898649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1928,7 @@ Transform:
   m_GameObject: {fileID: 3273088418165898649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088417618550223}
   m_RootOrder: 0
@@ -1690,7 +1970,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1698,7 +1978,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418166470910
@@ -1727,7 +2007,7 @@ Transform:
   m_GameObject: {fileID: 3273088418166470910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418938322213}
   m_RootOrder: 0
@@ -1769,7 +2049,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1777,7 +2057,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418176070406
@@ -1792,6 +2072,7 @@ GameObject:
   - component: {fileID: 3273088418176070408}
   - component: {fileID: 473068809}
   - component: {fileID: 473068808}
+  - component: {fileID: 3273088418646984246}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -1897,7 +2178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418176070406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -1905,6 +2186,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984246
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418176070406}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418177993177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,6 +2273,7 @@ GameObject:
   - component: {fileID: 3273088418234453043}
   - component: {fileID: 413747762}
   - component: {fileID: 413747761}
+  - component: {fileID: 3273088418646984242}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -2068,7 +2379,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418234453041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -2076,6 +2387,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984242
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418234453041}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418267418853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2088,6 +2428,7 @@ GameObject:
   - component: {fileID: 3273088418267418855}
   - component: {fileID: 379606758}
   - component: {fileID: 379606757}
+  - component: {fileID: 3273088418646984226}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -2193,7 +2534,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418267418853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -2201,6 +2542,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984226
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418267418853}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418286253812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,7 +2597,7 @@ Transform:
   m_GameObject: {fileID: 3273088418286253812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418981825959}
   m_RootOrder: 0
@@ -2269,7 +2639,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2277,7 +2647,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418337413944
@@ -2292,6 +2662,7 @@ GameObject:
   - component: {fileID: 3273088418337413946}
   - component: {fileID: 311713083}
   - component: {fileID: 311713082}
+  - component: {fileID: 3273088418646984236}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -2397,7 +2768,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418337413944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -2405,6 +2776,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984236
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418337413944}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418355518919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,7 +2831,7 @@ Transform:
   m_GameObject: {fileID: 3273088418355518919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418569495397}
   m_RootOrder: 0
@@ -2473,7 +2873,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2481,7 +2881,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418373127833
@@ -2510,7 +2910,7 @@ Transform:
   m_GameObject: {fileID: 3273088418373127833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088417996708025}
   m_RootOrder: 0
@@ -2552,7 +2952,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2560,7 +2960,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418392549064
@@ -2589,7 +2989,7 @@ Transform:
   m_GameObject: {fileID: 3273088418392549064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418817013444}
   m_RootOrder: 0
@@ -2631,7 +3031,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2639,7 +3039,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418393060718
@@ -2654,6 +3054,7 @@ GameObject:
   - component: {fileID: 3273088418393060720}
   - component: {fileID: 254112625}
   - component: {fileID: 254112624}
+  - component: {fileID: 3273088418646984249}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -2759,7 +3160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418393060718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -2767,6 +3168,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984249
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418393060718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418430186173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,7 +3223,7 @@ Transform:
   m_GameObject: {fileID: 3273088418430186173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088419538105493}
   m_RootOrder: 0
@@ -2835,7 +3265,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2843,7 +3273,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418442949661
@@ -2872,7 +3302,7 @@ Transform:
   m_GameObject: {fileID: 3273088418442949661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088419251405076}
   m_RootOrder: 0
@@ -2914,7 +3344,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2922,7 +3352,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418450456174
@@ -3005,7 +3435,7 @@ Transform:
   m_GameObject: {fileID: 3273088418483064537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088419592295521}
   m_RootOrder: 0
@@ -3047,7 +3477,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3055,7 +3485,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418483470239
@@ -3101,6 +3531,7 @@ GameObject:
   - component: {fileID: 3273088418531072608}
   - component: {fileID: 119233633}
   - component: {fileID: 119233632}
+  - component: {fileID: 3273088418646984256}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -3206,7 +3637,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418531072606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -3214,6 +3645,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984256
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418531072606}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418550537915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3226,6 +3686,7 @@ GameObject:
   - component: {fileID: 3273088418550537917}
   - component: {fileID: 96491708}
   - component: {fileID: 96491707}
+  - component: {fileID: 3273088418646984227}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -3331,7 +3792,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418550537915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -3339,6 +3800,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984227
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418550537915}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418569495394
 GameObject:
   m_ObjectHideFlags: 0
@@ -3351,6 +3841,7 @@ GameObject:
   - component: {fileID: 3273088418569495396}
   - component: {fileID: 77702501}
   - component: {fileID: 77702500}
+  - component: {fileID: 3273088418646984231}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -3456,7 +3947,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418569495394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -3464,6 +3955,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984231
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418569495394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418624304535
 GameObject:
   m_ObjectHideFlags: 0
@@ -3490,7 +4010,7 @@ Transform:
   m_GameObject: {fileID: 3273088418624304535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418550537914}
   m_RootOrder: 0
@@ -3532,7 +4052,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3540,7 +4060,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418687025427
@@ -3555,6 +4075,7 @@ GameObject:
   - component: {fileID: 3273088418687025429}
   - component: {fileID: 2108622612}
   - component: {fileID: 2108622611}
+  - component: {fileID: 3273088418646984229}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -3660,7 +4181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418687025427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -3668,6 +4189,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984229
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418687025427}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418687288952
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,6 +4230,7 @@ GameObject:
   - component: {fileID: 3273088418687288954}
   - component: {fileID: 2108358779}
   - component: {fileID: 2108358778}
+  - component: {fileID: 3273088418646984228}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -3785,7 +4336,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418687288952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -3793,6 +4344,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984228
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418687288952}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418721508510
 GameObject:
   m_ObjectHideFlags: 0
@@ -3819,7 +4399,7 @@ Transform:
   m_GameObject: {fileID: 3273088418721508510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418088069859}
   m_RootOrder: 0
@@ -3861,7 +4441,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3869,7 +4449,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418730689825
@@ -3898,7 +4478,7 @@ Transform:
   m_GameObject: {fileID: 3273088418730689825}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418781012931}
   m_RootOrder: 0
@@ -3940,7 +4520,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3948,7 +4528,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418748638177
@@ -3963,6 +4543,7 @@ GameObject:
   - component: {fileID: 3273088418748638179}
   - component: {fileID: 2048075234}
   - component: {fileID: 2048075233}
+  - component: {fileID: 3273088418646984252}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -4068,7 +4649,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418748638177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -4076,6 +4657,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984252
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418748638177}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418772075586
 GameObject:
   m_ObjectHideFlags: 0
@@ -4102,7 +4712,7 @@ Transform:
   m_GameObject: {fileID: 3273088418772075586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088417994224933}
   m_RootOrder: 0
@@ -4144,7 +4754,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4152,7 +4762,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418781012928
@@ -4167,6 +4777,7 @@ GameObject:
   - component: {fileID: 3273088418781012930}
   - component: {fileID: 2013603267}
   - component: {fileID: 2013603266}
+  - component: {fileID: 3273088418646984244}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -4272,7 +4883,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418781012928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -4280,6 +4891,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984244
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418781012928}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418800796063
 GameObject:
   m_ObjectHideFlags: 0
@@ -4306,7 +4946,7 @@ Transform:
   m_GameObject: {fileID: 3273088418800796063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418393060721}
   m_RootOrder: 0
@@ -4348,7 +4988,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4356,7 +4996,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418817013445
@@ -4371,6 +5011,7 @@ GameObject:
   - component: {fileID: 3273088418817013447}
   - component: {fileID: 1978560710}
   - component: {fileID: 1978560709}
+  - component: {fileID: 3273088418646984234}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -4476,7 +5117,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418817013445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -4484,6 +5125,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984234
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418817013445}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418872830563
 GameObject:
   m_ObjectHideFlags: 0
@@ -4510,7 +5180,7 @@ Transform:
   m_GameObject: {fileID: 3273088418872830563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418687288955}
   m_RootOrder: 0
@@ -4552,7 +5222,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4560,7 +5230,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418902589148
@@ -4575,6 +5245,7 @@ GameObject:
   - component: {fileID: 3273088418902589150}
   - component: {fileID: 1891907807}
   - component: {fileID: 1891907806}
+  - component: {fileID: 3273088418646984253}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -4680,7 +5351,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418902589148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -4688,6 +5359,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984253
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418902589148}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418904036427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4714,7 +5414,7 @@ Transform:
   m_GameObject: {fileID: 3273088418904036427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088419546305338}
   m_RootOrder: 0
@@ -4756,7 +5456,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4764,7 +5464,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418917086545
@@ -4793,7 +5493,7 @@ Transform:
   m_GameObject: {fileID: 3273088418917086545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088419175513657}
   m_RootOrder: 0
@@ -4835,7 +5535,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4843,7 +5543,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418938322210
@@ -4858,6 +5558,7 @@ GameObject:
   - component: {fileID: 3273088418938322212}
   - component: {fileID: 1856338725}
   - component: {fileID: 1856338724}
+  - component: {fileID: 3273088418646984241}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -4963,7 +5664,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418938322210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -4971,6 +5672,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984241
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418938322210}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418938858655
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,7 +5727,7 @@ Transform:
   m_GameObject: {fileID: 3273088418938858655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418687025426}
   m_RootOrder: 0
@@ -5039,7 +5769,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5047,7 +5777,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088418973243534
@@ -5062,6 +5792,7 @@ GameObject:
   - component: {fileID: 3273088418973243536}
   - component: {fileID: 1824415377}
   - component: {fileID: 1824415376}
+  - component: {fileID: 3273088418646984240}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -5167,7 +5898,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418973243534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -5175,6 +5906,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984240
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418973243534}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088418981825956
 GameObject:
   m_ObjectHideFlags: 0
@@ -5187,6 +5947,7 @@ GameObject:
   - component: {fileID: 3273088418981825958}
   - component: {fileID: 1815956391}
   - component: {fileID: 1815956390}
+  - component: {fileID: 3273088418646984243}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -5292,7 +6053,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088418981825956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -5300,6 +6061,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984243
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088418981825956}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088419036160262
 GameObject:
   m_ObjectHideFlags: 0
@@ -5326,7 +6116,7 @@ Transform:
   m_GameObject: {fileID: 3273088419036160262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418267418852}
   m_RootOrder: 0
@@ -5368,7 +6158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5376,7 +6166,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419099813492
@@ -5405,7 +6195,7 @@ Transform:
   m_GameObject: {fileID: 3273088419099813492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418337413947}
   m_RootOrder: 0
@@ -5447,7 +6237,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5455,7 +6245,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419137946116
@@ -5549,6 +6339,7 @@ GameObject:
   - component: {fileID: 3273088419175513656}
   - component: {fileID: 1619048505}
   - component: {fileID: 1619048504}
+  - component: {fileID: 3273088418646984233}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -5654,7 +6445,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088419175513654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -5662,6 +6453,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984233
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088419175513654}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088419230065153
 GameObject:
   m_ObjectHideFlags: 0
@@ -5688,7 +6508,7 @@ Transform:
   m_GameObject: {fileID: 3273088419230065153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088417867315881}
   m_RootOrder: 0
@@ -5730,7 +6550,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5738,7 +6558,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419251405077
@@ -5753,6 +6573,7 @@ GameObject:
   - component: {fileID: 3273088419251405079}
   - component: {fileID: 1544210198}
   - component: {fileID: 1544210197}
+  - component: {fileID: 3273088418646984257}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -5767,7 +6588,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3273088419251405077}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
   m_LocalPosition: {x: -6.55, y: 3, z: 0}
   m_LocalScale: {x: 1.75, y: 1.75, z: 1}
   m_Children:
@@ -5858,7 +6679,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088419251405077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -5866,6 +6687,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984257
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088419251405077}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088419315469786
 GameObject:
   m_ObjectHideFlags: 0
@@ -5892,7 +6742,7 @@ Transform:
   m_GameObject: {fileID: 3273088419315469786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418902589151}
   m_RootOrder: 0
@@ -5934,7 +6784,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5942,7 +6792,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419326538579
@@ -5971,7 +6821,7 @@ Transform:
   m_GameObject: {fileID: 3273088419326538579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418973243537}
   m_RootOrder: 0
@@ -6013,7 +6863,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6021,7 +6871,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419387278469
@@ -6082,7 +6932,7 @@ Transform:
   m_GameObject: {fileID: 3273088419413924790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418160958280}
   m_RootOrder: 0
@@ -6124,7 +6974,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6132,7 +6982,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419538105490
@@ -6147,6 +6997,7 @@ GameObject:
   - component: {fileID: 3273088419538105492}
   - component: {fileID: 1256551061}
   - component: {fileID: 1256551060}
+  - component: {fileID: 3273088418646984235}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -6252,7 +7103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088419538105490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -6260,6 +7111,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984235
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088419538105490}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088419546305339
 GameObject:
   m_ObjectHideFlags: 0
@@ -6272,6 +7152,7 @@ GameObject:
   - component: {fileID: 3273088419546305341}
   - component: {fileID: 1248236860}
   - component: {fileID: 1248236859}
+  - component: {fileID: 3273088418646984239}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -6377,7 +7258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088419546305339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -6385,6 +7266,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984239
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088419546305339}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088419562641418
 GameObject:
   m_ObjectHideFlags: 0
@@ -6411,7 +7321,7 @@ Transform:
   m_GameObject: {fileID: 3273088419562641418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418531072609}
   m_RootOrder: 0
@@ -6453,7 +7363,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6461,7 +7371,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419571400693
@@ -6490,7 +7400,7 @@ Transform:
   m_GameObject: {fileID: 3273088419571400693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088417704267804}
   m_RootOrder: 0
@@ -6532,7 +7442,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6540,7 +7450,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419592295518
@@ -6555,6 +7465,7 @@ GameObject:
   - component: {fileID: 3273088419592295520}
   - component: {fileID: 1205359201}
   - component: {fileID: 1205359200}
+  - component: {fileID: 3273088418646984230}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -6660,7 +7571,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088419592295518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -6668,6 +7579,35 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984230
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088419592295518}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3273088419602054011
 GameObject:
   m_ObjectHideFlags: 0
@@ -6694,7 +7634,7 @@ Transform:
   m_GameObject: {fileID: 3273088419602054011}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088417623235684}
   m_RootOrder: 0
@@ -6736,7 +7676,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6744,7 +7684,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419618263127
@@ -6773,7 +7713,7 @@ Transform:
   m_GameObject: {fileID: 3273088419618263127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3273088418748638176}
   m_RootOrder: 0
@@ -6815,7 +7755,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 8c4008fe40984964e831854cba89de46, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6823,7 +7763,7 @@ SpriteRenderer:
   m_Size: {x: 7.34, y: 7.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3273088419717363025
@@ -6838,6 +7778,7 @@ GameObject:
   - component: {fileID: 3273088419717363027}
   - component: {fileID: 1079292754}
   - component: {fileID: 1079292753}
+  - component: {fileID: 3273088418646984237}
   m_Layer: 0
   m_Name: Slot(Clone)
   m_TagString: Untagged
@@ -6943,7 +7884,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273088419717363025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
@@ -6951,3 +7892,32 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!95 &3273088418646984237
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273088419717363025}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a149627d860a88047bd885a5ec9b8165, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

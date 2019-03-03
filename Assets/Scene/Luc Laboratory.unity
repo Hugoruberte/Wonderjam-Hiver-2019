@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 595264772}
   - component: {fileID: 595264771}
   - component: {fileID: 595264770}
+  - component: {fileID: 595264774}
   m_Layer: 0
   m_Name: DJ Duck
   m_TagString: Untagged
@@ -244,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3d9e94ef952714f8771df9f390642e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toleranceSliderUI: {fileID: 0}
 --- !u!114 &595264767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,8 +260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenMonster: 1
   monsterNumber: 10
-  prefabMonster: {fileID: 7043736630936830290, guid: 8d4079b859124cc488d5030083ec2454,
+  prefabMonster: {fileID: 3389642435966470415, guid: 8d4079b859124cc488d5030083ec2454,
     type: 3}
+  monsters: []
   orderSuccessValue: 10
 --- !u!114 &595264768
 MonoBehaviour:
@@ -275,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactiveEngineData: {fileID: 11400000, guid: 4b685a2fbfb33a844bb9cad1882da7d0,
     type: 2}
+  ingredientDatabase: {fileID: 0}
 --- !u!82 &595264769
 AudioSource:
   m_ObjectHideFlags: 0
@@ -760,6 +764,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &595264774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595264764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5801b4ef9f684aa4e844eb86d0c03466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMixer: {fileID: 24100000, guid: 21fb4e53c74ad674695d0c263538f4dc, type: 2}
 --- !u!1 &1545665604
 GameObject:
   m_ObjectHideFlags: 0
