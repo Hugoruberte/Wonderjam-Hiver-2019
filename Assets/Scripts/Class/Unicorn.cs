@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Interactive.Engine;
-
+using Tools;
 
 public class Unicorn : MonsterScript
 {
     public float stayingTime;
     public float minSpawnInterval, maxSpawnInterval;
     public float gaugeBonus;
+    public float bubbleSeconds;
 
     private Animator myAnim;
 
@@ -17,6 +18,7 @@ public class Unicorn : MonsterScript
     private float spawnTime;
     private ChemicalElement cocktail;
     private Order myOrder;
+    private WaitForSeconds bubbleTime;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -27,6 +29,7 @@ public class Unicorn : MonsterScript
         _ChemicalElementEntity ent = InteractiveEngine.instance.interactiveEngineData.GetChemicalElementDataWithEnum(cocktail);
         myOrder = new Order(ent.attributes, ent.colors[0]);
         spawnTime = Time.time;
+        bubbleTime = new WaitForSeconds(bubbleSeconds);
     }
 
     // Update is called once per frame
@@ -43,8 +46,17 @@ public class Unicorn : MonsterScript
     {
         Debug.Log("is here");
         isHere = true;
+        StartCoroutine(spawnBubble());
     }
    
+    private IEnumerator spawnBubble()
+    {
+        Transform bubble = TransformExtension.DeepFind(transform, "Bubble");
+        bubble.gameObject.SetActive(true);
+        yield return bubbleTime;
+        bubble.gameObject.SetActive(false);
+   
+    }
     public void receiveCocktail(ChemicalElementEntity Cocktail)
     {
         Debug.Log("receive Cocktqil");
