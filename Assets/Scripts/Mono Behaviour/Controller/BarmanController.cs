@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Interactive.Engine;
 
-public class Barman : Singleton<Barman>
+public class BarmanController : Singleton<BarmanController>
 {
 	public enum Aspect
 	{
@@ -16,6 +16,8 @@ public class Barman : Singleton<Barman>
 	[Range(0.01f, 1f)]
 	public float smooth = 0.2f;
 
+	public SpriteRenderer tray;
+
 	private Transform myTransform;
 
 	private Aspect aspect;
@@ -23,13 +25,14 @@ public class Barman : Singleton<Barman>
 
 	private MonsterScript[] monsters;
 
-	private int vertCache = 0;
-
 	private bool isMoving = false;
 
 	private IEnumerator moveCoroutine = null;
 
 	private Vector3 myReference = Vector3.zero;
+
+	private ToleranceManager toleranceGauge;
+
 
 	protected override void Awake()
 	{
@@ -45,11 +48,26 @@ public class Barman : Singleton<Barman>
 		monsters = MonsterManager.instance.monsters;
 
 		StartCoroutine(MovementCoroutine());
+
+		toleranceGauge = ToleranceManager.instance;
+	}
+
+	public void HoldCocktail(Sprite icon)
+	{
+		// only does that
+		tray.sprite = icon;
+	}
+
+	public void ReleaseCocktail()
+	{
+		// only does that
+		tray.sprite = null;
 	}
 
 	private IEnumerator MovementCoroutine()
 	{
 		int vert, down;
+		float threshold;
 		MonsterScript monster;
 
 		while(true) {
@@ -65,14 +83,24 @@ public class Barman : Singleton<Barman>
 			monster = null;
 
 			if(vert < 0) {
-				for(int i = this.monsters.Length - 1; i >= 0; i--) {
-					if(this.monsters[i] != null && this.monsters[i].transform.position.x < myTransform.position.x) {
+				threshold = float.MinValue;
+				for(int i = 0; i < this.monsters.Length; i++) {
+					if(this.monsters[i] != null
+						&& this.monsters[i].transform.position.x < myTransform.position.x - 0.1f
+						&& this.monsters[i].transform.position.x > threshold)
+					{
+						threshold = this.monsters[i].transform.position.x;
 						monster = this.monsters[i];
 					}
 				}
 			} else if(vert > 0) {
+				threshold = float.MaxValue;
 				for(int i = 0; i < this.monsters.Length; i++) {
-					if(this.monsters[i] != null && this.monsters[i].transform.position.x > myTransform.position.x) {
+					if(this.monsters[i] != null
+						&& this.monsters[i].transform.position.x > myTransform.position.x + 0.1f
+						&& this.monsters[i].transform.position.x < threshold)
+					{
+						threshold = this.monsters[i].transform.position.x;
 						monster = this.monsters[i];
 					}
 				}
@@ -80,8 +108,7 @@ public class Barman : Singleton<Barman>
 				Debug.Log("Le Barman sert un monstre");
 			}
 
-			if(monster != null && currentMonster != monster && (!isMoving || vert != vertCache)) {
-				this.vertCache = vert;
+			if(monster != null && currentMonster != monster && !isMoving) {
 				this.currentMonster = monster;
 
 				if(moveCoroutine != null) {
@@ -110,17 +137,20 @@ public class Barman : Singleton<Barman>
 
 	private void UpdateAspect()
 	{
-		if (StressGauge.instance.currentStress <= StressGauge.instance.maxNoStress)
+		if (toleranceGauge.toleranceGaugeCurrent <= toleranceGauge.toleranceGaugeMaxNoStress)
 		{
 			aspect = Aspect.CHILL;
 		}
-		else if (StressGauge.instance.currentStress <= StressGauge.instance.maxNormalStress)
+		else if (toleranceGauge.toleranceGaugeCurrent <= toleranceGauge.toleranceGaugeMaxNormalStress)
 		{
 			aspect = Aspect.NORMAL;
 		}
-		else
+		else if (toleranceGauge.toleranceGaugeCurrent < toleranceGauge.toleranceGaugeMax)
 		{
 			aspect = Aspect.STRESSED;
+		}
+		else {
+			aspect = Aspect.TERRIFIED;
 		}
 		//TODO : change sprite renderer 
 	}
