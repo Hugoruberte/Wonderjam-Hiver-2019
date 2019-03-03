@@ -14,27 +14,27 @@ public class AudioManager : Singleton<AudioManager>
         mainMixer.SetFloat("MasterPitch", pitchValue);
 
         float bassVolume = -300 * value + 240;
-        if(bassVolume >= 20)
+        if(bassVolume >= 10)
         {
-            bassVolume = 20;
+            bassVolume = 10;
         }
         mainMixer.SetFloat("BassVolume", bassVolume);
-        float drum3Volume = -150 * value + 90 - 10;
-        if (drum3Volume >= 0)
+        float drum3Volume = -150 * value + 90;
+        if (drum3Volume >= -15)
         {
-            drum3Volume = 0;
+            drum3Volume = -15;
         }
         mainMixer.SetFloat("Drum3Volume", drum3Volume);
-        float drum4Volume = -100 * value + 40 - 10;
-        if (drum4Volume >= 0)
+        float drum4Volume = -100 * value + 40;
+        if (drum4Volume >= -15)
         {
-            drum4Volume = 0;
+            drum4Volume = -15;
         }
         mainMixer.SetFloat("Drum4Volume", drum4Volume);
-        float drum2Volume = -80 * value + 20 - 10;
-        if (drum2Volume >= 0)
+        float drum2Volume = -80 * value + 20;
+        if (drum2Volume >= -15)
         {
-            drum2Volume = 0;
+            drum2Volume = -15;
         }
         mainMixer.SetFloat("Drum2Volume", drum2Volume);
     }

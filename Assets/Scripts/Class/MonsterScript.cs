@@ -15,7 +15,7 @@ public class MonsterScript : MonoBehaviour
 	private float willBeWaiting;
 	private float timeCoeff = 5;
 	private float timeLimit = 0.25f;
-	private float colorCoeff = 5;
+	private float colorCoeff = 2;
 	private float categoryCoeff = 2;
 
 	private bool iHaveNotBeenServed = true;
