@@ -44,6 +44,8 @@ public class SlotInfoController : Singleton<SlotInfoController>
 		main.sizeDelta = new Vector2(main.sizeDelta.x, 25f * _ent.attributes.Length + 120f);
 		main.anchoredPosition = Vector2Extension.WorldPositionToScreenPosition(position, canvasRectTr, cam);
 
+		Debug.Log(main.anchoredPosition);
+
 		stringBuilder.Clear();
 		foreach(AlcoholAttribute a in _ent.attributes) {
 			stringBuilder.Append(a);
