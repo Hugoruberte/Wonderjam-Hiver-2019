@@ -17,13 +17,14 @@ public class Menu : MonoBehaviour
         
     }
 
-    void ClickPlayButton()
+    public void ClickPlayButton()
     {
         SceneManager.LoadScene("Main Scene");
     }
 
-    void ClickExitButton()
+    public void ClickExitButton()
     {
+        Debug.Log("Le jeu s'éteint");
         Application.Quit();
     }
 }
