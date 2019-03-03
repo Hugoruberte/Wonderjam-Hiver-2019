@@ -148,10 +148,6 @@ public class MonsterScript : MonoBehaviour
 		float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attributes, Cocktail.attributes, orderIsACocktail);
 
 
-        Debug.Log(toleranceTimePoints);
-        Debug.Log(toleranceColorPoints);
-        Debug.Log(toleranceCategoryPoints);
-
         return toleranceTimePoints + toleranceColorPoints + toleranceCategoryPoints;
 
 
@@ -208,7 +204,7 @@ public class MonsterScript : MonoBehaviour
 		for (int i = 0; i < orderAttributes.Length; ++i)
 		{
 			AlcoholAttribute tmpAttribute = orderAttributes[i];
-            Debug.Log(tmpAttribute.attribute);
+    
 			IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
 		}
         float toleranceCategoryPositivePoints = 0;

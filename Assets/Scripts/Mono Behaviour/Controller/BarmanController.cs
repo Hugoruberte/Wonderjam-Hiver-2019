@@ -142,8 +142,6 @@ public class BarmanController : Singleton<BarmanController>
 
 				yield return waitAfterService;
 			}
-            Debug.Log("is Moving:" + isMoving);
-            Debug.Log("monster" + monster);
 			if(monster != null && currentMonster != monster && !isMoving) {
 				this.currentMonster = monster;
 				xTarget = currentMonster.transform.position.x;
@@ -164,8 +162,6 @@ public class BarmanController : Singleton<BarmanController>
         return directionCoeff * (transform.position.z - Camera.main.transform.position.z);
     }
 
-		return directionCoeff * (transform.position.z - Camera.main.transform.position.z);
-	}
 
 	private IEnumerator MoveCoroutine(MonsterScript currentMonster)
 	{
@@ -204,9 +200,3 @@ public class BarmanController : Singleton<BarmanController>
         //TODO : change sprite renderer 
     }
 } 
-
-			
-	private float getXPoint(Vector3 monsterPosition)
-	{
-		Vector3 directionVector = (monsterPosition - Camera.main.transform.position);
-		float directionCoeff = directionVector.x / directionVector.z;
