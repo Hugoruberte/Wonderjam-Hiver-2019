@@ -97,7 +97,6 @@ public class MonsterScript : MonoBehaviour
 		Vector3 target;
 		Vector3 reference = Vector3.zero;
 
-        Debug.Log("Leave" + name);
 		// Leaving
 		monsterManager.MonsterStartLeaving(this.indexInMonsterArray);
 
@@ -114,13 +113,14 @@ public class MonsterScript : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	public void ReceiveCocktail(ChemicalElementEntity Cocktail)
+	public virtual void ReceiveCocktail(ChemicalElementEntity Cocktail)
 	{
 		// Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
 		float tolerancePoint = CalculateTolerancePoint(myOrder, Cocktail, false);
 
 		this.iHaveNotBeenServed = false;
 
+		ClockManager.instance.RemoveClock(this);
 		ToleranceManager.instance.UpdateGaugeValue(tolerancePoint);
 
 		StopCoroutine(waitForCocktailCoroutine);

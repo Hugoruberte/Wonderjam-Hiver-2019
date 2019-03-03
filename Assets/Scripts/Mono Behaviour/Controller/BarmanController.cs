@@ -125,12 +125,14 @@ public class BarmanController : Singleton<BarmanController>
 						threshold = this.monsters[i].transform.position.x;
 						monster = this.monsters[i];
 					}
-					else if(unicorn.isHere && currentCocktail != null)
-					{
-						Debug.Log("hooh");
-						monster = unicorn;
-						unicorn.receiveCocktail(currentCocktail);
-					}
+				}
+
+				if(!isMoving && monster == null && unicorn.isHere && currentCocktail != null)
+				{
+					monster = unicorn;
+					unicorn.ReceiveCocktail(currentCocktail);
+					this.currentCocktail = null;
+					tray.sprite = null;
 				}
 			}
 			else if(currentCocktail != null && currentMonster != null)

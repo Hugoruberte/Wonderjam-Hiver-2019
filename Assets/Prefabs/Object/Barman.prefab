@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smooth: 0.05
   tray: {fileID: 2397616165027589153}
+  unicorn: {fileID: 0}
 --- !u!1 &2397616165027589155
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ Transform:
   m_GameObject: {fileID: 2397616165027589155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.2, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 2397616163386710263}
   m_RootOrder: 0

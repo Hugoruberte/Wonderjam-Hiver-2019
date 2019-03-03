@@ -59,7 +59,6 @@ public class RecipeController : Singleton<RecipeController>
 
 	public void AddElementToCocktail(ChemicalElement element)
 	{
-		Debug.Log(element);
 		if(combo.Exists(x => x == element) || combo.Count == maxComboLength) {
 			return;
 		}
