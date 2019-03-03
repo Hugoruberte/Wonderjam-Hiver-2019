@@ -13,6 +13,9 @@ public class MonsterManager : Singleton<MonsterManager>
 	public MonsterScript prefabMonster;
 	public MonsterScript[] monsters;
 
+	public float leaveMinTime = 3f;
+	public float leaveMaxTime = 4f;
+
 	//VARIABLE TO MOVE BUT I DONT KNOW WHERE TO PUT IT NOW...
 	[HideInInspector] public float orderSuccessValue = 10;
 
@@ -87,6 +90,6 @@ public class MonsterManager : Singleton<MonsterManager>
 
 	public float GetMonsterWaitingDuration()
 	{
-		return Random.Range(2f, 4f);
+		return Random.Range(this.leaveMinTime, this.leaveMaxTime);
 	}
 }

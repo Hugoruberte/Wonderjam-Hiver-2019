@@ -38,6 +38,8 @@ public class MonsterScript : MonoBehaviour
 	{
 		monsterManager = MonsterManager.instance;
 
+		myOrder = Order.GetRandomOrder();
+
 		startWaitingTime = Time.time;
 		willBeWaitingMax = monsterManager.GetMonsterWaitingDuration();
 		waitBeforeLeaving = new WaitForSeconds(willBeWaitingMax);
@@ -85,7 +87,7 @@ public class MonsterScript : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	public void SetCocktail(ChemicalElementEntity Cocktail)
+	public void ReceiveCocktail(ChemicalElementEntity Cocktail)
 	{
 		// Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
 		float tolerancePoint = CalculateTolerancePoint(myOrder, Cocktail);
