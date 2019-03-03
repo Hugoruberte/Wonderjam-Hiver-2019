@@ -10,7 +10,7 @@ public class Order : ChemicalElementEntity
     static int numberOfIntensity = 2;
     static int maxIntensity = 3;
 
-    public static Order getRandomOrder()
+    public static Order GetRandomOrder()
     {
         //random Color
         int colorNumber = Enum.GetValues(typeof(AlcoholColor)).Length;

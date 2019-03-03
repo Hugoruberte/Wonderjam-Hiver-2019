@@ -103,3 +103,6 @@ MonoBehaviour:
   - element: 65536
     sprite: {fileID: 21300000, guid: eb14b60ee61966c44b030992edeea7d8, type: 3}
     isUnlocked: 0
+  - element: 1
+    sprite: {fileID: 21300000, guid: a387cfcc924e934429ba195323c6f169, type: 3}
+    isUnlocked: 1

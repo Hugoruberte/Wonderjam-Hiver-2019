@@ -22,6 +22,7 @@ public class RecipeController : Singleton<RecipeController>
 	public Transform recipeSlotsTransform;
 
 	private ShelfController shelfController;
+	private BarmanController barmanController;
 
 	private ChemicalElementEntity cocktail;
 
@@ -45,6 +46,7 @@ public class RecipeController : Singleton<RecipeController>
 	{
 		base.Start();
 
+		this.barmanController = BarmanController.instance;
 		this.shelfController = ShelfController.instance;
 
 		this.ClearCocktail();
@@ -67,7 +69,7 @@ public class RecipeController : Singleton<RecipeController>
 
 		this.UpdateCocktail();
 	}
-	private void RemoveElementFromCocktail(OnClickController click)
+	private void RemoveElementFromCocktail(OnMouseController click)
 	{
 		int index = click.transform.GetSiblingIndex();
 
@@ -85,12 +87,16 @@ public class RecipeController : Singleton<RecipeController>
 	}
 	public void MakeCocktail()
 	{
-		Debug.Log("yoyoyo -> " + cocktail);
+		if(this.combo.Count == 0) {
+			return;
+		}
+
+		this.barmanController.HoldCocktail(cocktail);
 
 		this.ClearCocktail();
 
 		this.shelfController.MadeCocktail();
-
+		
 		this.UpdateResultDisplay(cocktail);
 	}
 
@@ -132,7 +138,7 @@ public class RecipeController : Singleton<RecipeController>
 		Transform tr;
 		for(int i = 0; i < this.combo.Count; i++) {
 			obj = Instantiate(this.slotPrefab, recipeSlotsTransform.position, Quaternion.identity);
-			obj.GetComponentInChildren<OnClickController>().onClickWithReference.AddListener(RemoveElementFromCocktail);
+			obj.GetComponentInChildren<OnMouseController>().onClickWithReference.AddListener(RemoveElementFromCocktail);
 			tr = obj.transform;
 
 			tr.parent = recipeSlotsTransform;
@@ -143,18 +149,23 @@ public class RecipeController : Singleton<RecipeController>
 	}
 	private void UpdateResultDisplay(ChemicalElementEntity result)
 	{
-		if(result != null) {
-			if(this.combo.Count > 0) {
+		if(result != null)
+		{
+			if(this.combo.Count > 0)
+			{
 				resultTransform.position = new Vector3(this.left + this.combo.Count * (DISTANCE_BETWEEN_INGREDIENT+widthOfSlot) + DISTANCE_BEFORE_RESULT + (widthOfSlot/2f), resultTransform.position.y, resultTransform.position.z);
 				resultArrowObject.SetActive(true);
-			} else {
+			}
+			else
+			{
 				resultTransform.position = new Vector3(0f, resultTransform.position.y, resultTransform.position.z);
 				resultArrowObject.SetActive(false);
 			}
 
 			resultIcon.sprite = InteractiveEngine.instance.ingredientDatabase.GetIconWith(result.type);
-
-		} else {
+		}
+		else
+		{
 			resultTransform.position = new Vector3(0f, resultTransform.position.y, resultTransform.position.z);
 			resultArrowObject.SetActive(false);
 		}
