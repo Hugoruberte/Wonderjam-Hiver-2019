@@ -19,38 +19,12 @@ public class Order : ChemicalElementEntity
 
 
 
-        //Random Number Of Intensity
-        int numberOfIntensity = UnityEngine.Random.Range(numberOfIntensityMin, numberOfIntensityMax);
 
         List<AlcoholAttribute> attributes = new List<AlcoholAttribute>();
-        for (int i = 0; i < numberOfIntensity; ++i)
-        {
-            int alcoholNumber = Enum.GetValues(typeof(Interactive.Engine.Attribute)).Length;
-            Interactive.Engine.Attribute currentAttribute = (Interactive.Engine.Attribute)UnityEngine.Random.Range(0, alcoholNumber);
-
-            bool attributeContained = false;
-            int j = 0;
-            while(!attributeContained && j < attributes.Count)
-            {
-                if(currentAttribute == attributes[j].attribute)
-                {
-                    attributeContained = true;
-                    if (attributes[j].intensity != maxIntensity)
-                    {
-                        attributes[j] = new AlcoholAttribute(currentAttribute, attributes[j].intensity + 1);   
-                    }
-                    else
-                    {
-                        numberOfIntensity--;
-                    }
-                }
-                ++j;
-            }
-            if (attributeContained == false) {
-                attributes.Add(new AlcoholAttribute(currentAttribute, 1));
-            }
-        }
-
+        int alcoholNumber = Enum.GetValues(typeof(Interactive.Engine.Attribute)).Length;
+        Interactive.Engine.Attribute currentAttribute = (Interactive.Engine.Attribute)UnityEngine.Random.Range(0, alcoholNumber);
+        attributes.Add(new AlcoholAttribute(currentAttribute, 0));
+ 
         return new Order(attributes.ToArray(), (AlcoholColor)currentColor);
     }
 

@@ -1240,10 +1240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toleranceGaugeMin: 0
-  toleranceGaugeMaxNoStress: 33
-  toleranceGaugeMaxNormalStress: 66
+  toleranceGaugeStress: 33
+  toleranceGaugeNormal: 66
   toleranceGaugeMax: 100
   toleranceGaugeCurrent: 100
+  barman: {fileID: 1242717052}
   toleranceSliderUI: {fileID: 1781710199}
 --- !u!114 &722274759
 MonoBehaviour:
@@ -3447,6 +3448,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shelf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349745711692586407, guid: 5f5e0fc164cd9b74bbe1a162b9ed95f4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349745711692586407, guid: 5f5e0fc164cd9b74bbe1a162b9ed95f4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3273088418450456177, guid: 5f5e0fc164cd9b74bbe1a162b9ed95f4,
         type: 3}
