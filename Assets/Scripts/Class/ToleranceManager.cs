@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class ToleranceManager : Singleton<ToleranceManager>
 {
     public float toleranceGaugeMin = 0;
-    public float toleranceGaugeMaxNoStress = 33;
-    public float toleranceGaugeMaxNormalStress = 66;
+    public float toleranceGaugeStress = 33;
+    public float toleranceGaugeNormal = 66;
     public float toleranceGaugeMax = 100;
     public float toleranceGaugeCurrent = 100;
+    public BarmanController barman;
 
     public Slider toleranceSliderUI;
 
@@ -33,5 +34,7 @@ public class ToleranceManager : Singleton<ToleranceManager>
         }
         toleranceSliderUI.value = toleranceGaugeCurrent;
         AudioManager.instance.ChangeMixerFromValue(toleranceGaugeCurrent / toleranceGaugeMax);
+
+        barman.UpdateAspect();
     }
 }

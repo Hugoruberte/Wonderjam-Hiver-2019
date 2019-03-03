@@ -10,12 +10,13 @@ public class BarmanController : Singleton<BarmanController>
 		CHILL,
 		NORMAL,
 		STRESSED,
-		TERRIFIED
 	};
 
 	[Range(0.01f, 1f)]
 	public float smooth = 0.2f;
 
+    public Sprite chill, normal, stressed;
+    public SpriteRenderer mainSprite;
 	public SpriteRenderer tray;
 
     public Unicorn unicorn;
@@ -167,23 +168,23 @@ public class BarmanController : Singleton<BarmanController>
 		this.isMoving = false;
 	}
 
-	private void UpdateAspect()
-	{
-		if (toleranceGauge.toleranceGaugeCurrent <= toleranceGauge.toleranceGaugeMaxNoStress)
-		{
-			aspect = Aspect.CHILL;
-		}
-		else if (toleranceGauge.toleranceGaugeCurrent <= toleranceGauge.toleranceGaugeMaxNormalStress)
+	public void UpdateAspect()
+    {
+		if (toleranceGauge.toleranceGaugeCurrent <= toleranceGauge.toleranceGaugeStress)
+        {
+            aspect = Aspect.STRESSED;
+            mainSprite.sprite = stressed;
+        }
+        else if (toleranceGauge.toleranceGaugeCurrent <= toleranceGauge.toleranceGaugeNormal)
 		{
 			aspect = Aspect.NORMAL;
-		}
-		else if (toleranceGauge.toleranceGaugeCurrent < toleranceGauge.toleranceGaugeMax)
-		{
-			aspect = Aspect.STRESSED;
-		}
-		else {
-			aspect = Aspect.TERRIFIED;
-		}
-		//TODO : change sprite renderer 
-	}
+            mainSprite.sprite = normal;
+        }		
+        else if (toleranceGauge.toleranceGaugeCurrent <= toleranceGauge.toleranceGaugeMax)
+        {
+            aspect = Aspect.CHILL;
+            mainSprite.sprite = chill;
+        }
+        //TODO : change sprite renderer 
+    }
 } 
