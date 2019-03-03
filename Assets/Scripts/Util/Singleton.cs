@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Singleton<T> : MonoBehaviour where T : class
 {
-	private static T _instance = null;
+	protected static T _instance { get; private set; } = null;
 	public static T instance {
 		get {
 			if(_instance == null) {
