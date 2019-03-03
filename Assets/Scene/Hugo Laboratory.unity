@@ -690,6 +690,7 @@ GameObject:
   - component: {fileID: 722274756}
   - component: {fileID: 722274757}
   - component: {fileID: 722274758}
+  - component: {fileID: 722274759}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -765,6 +766,27 @@ MonoBehaviour:
   toleranceGaugeMax: 100
   toleranceGaugeCurrent: 100
   toleranceSliderUI: {fileID: 0}
+--- !u!114 &722274759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722274754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46c316ca7e421e4bb439cf1f54d8baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubblePrefab: {fileID: 7753055891094819943, guid: 9db29af48dd7e67428e95163d03ce201,
+    type: 3}
+  strong: {fileID: 21300000, guid: 17c3909cbb7c01545a5afd23af6f4c34, type: 3}
+  sugar: {fileID: 21300000, guid: 432109c0c0d050c4299993f41d05bd3a, type: 3}
+  spicy: {fileID: 21300000, guid: 5ec21631d3bc1e94c9e42a0baa033f35, type: 3}
+  fatal: {fileID: 21300000, guid: 27ae3746687e83e4da3619216ba98cf8, type: 3}
+  bubbleLifetime: 1
+  bubbleSpeed: 5
+  bubbleScaleSpeed: 1
 --- !u!1 &914257644
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +877,7 @@ GameObject:
   - component: {fileID: 968090275}
   - component: {fileID: 968090274}
   - component: {fileID: 968090273}
+  - component: {fileID: 968090276}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -920,6 +943,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &968090276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968090272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1152, y: 648}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
 --- !u!1 &991453438
 GameObject:
   m_ObjectHideFlags: 0
