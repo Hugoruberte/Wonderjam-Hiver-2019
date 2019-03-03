@@ -46,7 +46,6 @@ public class BubbleManager : Singleton<BubbleManager>
 
 		position += Vector3.right * -5.25f;
 		obj.GetComponent<RectTransform>().anchoredPosition = Vector2Extension.WorldPositionToScreenPosition(position, canvasRectTr, cam);
-		Debug.Log(obj.GetComponent<RectTransform>().anchoredPosition);
 
 		StartCoroutine(SpawnBubbleCoroutine(script, obj.transform));
 	}

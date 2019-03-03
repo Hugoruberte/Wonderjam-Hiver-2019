@@ -59,11 +59,8 @@ public class RecipeController : Singleton<RecipeController>
 
 	public void AddElementToCocktail(ChemicalElement element)
 	{
-		if(combo.Exists(x => x == element)) {
-			Debug.LogWarning($"WARNING : Element {element} already in combo !");
-			return;
-		} else if(combo.Count == maxComboLength) {
-			Debug.Log("Reached max combo length !");
+		Debug.Log(element);
+		if(combo.Exists(x => x == element) || combo.Count == maxComboLength) {
 			return;
 		}
 
@@ -74,6 +71,8 @@ public class RecipeController : Singleton<RecipeController>
 	private void RemoveElementFromCocktail(OnMouseController click)
 	{
 		int index = click.transform.GetSiblingIndex();
+
+		CameraEffect.Shake(0.1f);
 
 		this.shelfController.RemovedElementFromCombo(this.combo[index]);
 
@@ -86,6 +85,8 @@ public class RecipeController : Singleton<RecipeController>
 		this.combo.Clear();
 
 		this.UpdateCocktail();
+
+		this.shelfController.ClearUsedIngredient();
 	}
 	public void MakeCocktail()
 	{
@@ -94,6 +95,8 @@ public class RecipeController : Singleton<RecipeController>
 		}
 
 		ChemicalElement element = cocktail.type;
+
+		CameraEffect.Shake(0.5f);
 
 		this.barmanController.HoldCocktail(cocktail);
 
@@ -121,7 +124,7 @@ public class RecipeController : Singleton<RecipeController>
 	}
 	private void UpdateDisplay(ChemicalElementEntity result)
 	{
-		this.height = mainTransform.localScale.y;
+		this.height = mainTransform.localScale.y - 0.35f;
 		this.length = (this.combo.Count > 0) ? ((this.combo.Count + 1) * (DISTANCE_BETWEEN_INGREDIENT + widthOfSlot) +  DISTANCE_BEFORE_RESULT) :(2 * DISTANCE_BETWEEN_INGREDIENT + widthOfSlot);
 		this.left = mainTransform.position.x - (this.length / 2f);
 
@@ -174,6 +177,7 @@ public class RecipeController : Singleton<RecipeController>
 		{
 			resultTransform.position = new Vector3(0f, resultTransform.position.y, resultTransform.position.z);
 			resultArrowObject.SetActive(false);
+			resultIcon.sprite = null;
 		}
 	}
 

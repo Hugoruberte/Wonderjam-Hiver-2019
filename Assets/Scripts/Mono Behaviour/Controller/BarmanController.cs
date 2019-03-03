@@ -65,7 +65,8 @@ public class BarmanController : Singleton<BarmanController>
 
 	public void ReleaseCocktail()
 	{
-		// only does that
+		CameraEffect.Shake(0.2f);
+
 		tray.sprite = null;
 	}
 

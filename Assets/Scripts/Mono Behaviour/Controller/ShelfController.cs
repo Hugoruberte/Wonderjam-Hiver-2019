@@ -12,13 +12,16 @@ public class ShelfController : Singleton<ShelfController>
 	public Transform mainTransform;
 	public Transform firstSlotsTransform;
 	public Transform secondSlotsTransform;
-    public Transform triggerTransform;
+	public Transform triggerTransform;
 
-    [Header("Shader")]
+	private Quaternion triggerTransformStandardRotation;
+
+	[Header("Shader")]
 	public Shader lightedShader;
 	public Shader grayscaleShader;
 
 	private IEnumerator switchCoroutine = null;
+	private IEnumerator leverCoroutine = null;
 
 	private float shelfSpeed = 5f;
 	public Vector3 outerShelfPosition = Vector3.zero;
@@ -37,6 +40,8 @@ public class ShelfController : Singleton<ShelfController>
 	protected override void Start()
 	{
 		base.Start();
+
+		this.triggerTransformStandardRotation = this.triggerTransform.rotation;
 		
 		this.recipeController = RecipeController.instance;
 		this.ingredientDatabase = InteractiveEngine.instance.ingredientDatabase;
@@ -98,16 +103,21 @@ public class ShelfController : Singleton<ShelfController>
 			outer = firstSlotsTransform;
 			currentShelf = secondSlotsTransform;
 			shelfIndex = 1;
-
-            triggerTransform.Rotate(0, 0, -50);
-        } else {
+		} else {
 			inner = firstSlotsTransform;
 			outer = secondSlotsTransform;
 			currentShelf = firstSlotsTransform;
 			shelfIndex = 0;
+		}
 
-            triggerTransform.Rotate(0, 0, 50);
-        }
+		if(leverCoroutine != null) {
+			StopCoroutine(leverCoroutine);
+		}
+		leverCoroutine = LeverCoroutine();
+		StartCoroutine(leverCoroutine);
+
+
+		CameraEffect.Shake(0.5f);
 
 		inner.gameObject.SetActive(true);
 		this.UpdateShelfDisplay();
@@ -138,6 +148,31 @@ public class ShelfController : Singleton<ShelfController>
 
 		outer.gameObject.SetActive(false);
 	}
+	private IEnumerator LeverCoroutine()
+	{
+		Quaternion from, to;
+		float step = 0f;
+		float speed = 7.5f;
+
+		from = triggerTransformStandardRotation;
+		to = from * Quaternion.Euler(0, 0, -75);
+		while(step < 1f) {
+			step += speed * Time.deltaTime;
+			triggerTransform.rotation = Quaternion.Slerp(from, to, step);
+
+			yield return null;
+		}
+
+		step = 0f;
+		from = triggerTransform.rotation;
+		to = triggerTransformStandardRotation;
+		while(step < 1f) {
+			step += speed * Time.deltaTime;
+			triggerTransform.rotation = Quaternion.Slerp(from, to, step);
+
+			yield return null;
+		}
+	}
 
 	public void RemovedElementFromCombo(ChemicalElement element)
 	{
@@ -149,12 +184,27 @@ public class ShelfController : Singleton<ShelfController>
 
 	public void MadeCocktail(ChemicalElement element)
 	{
-		for(int i = 0; i < this.ingredientDatabase.ingredients.Count - 1; i++) {
-			this.ingredientDatabase.ingredients[i] = new Ingredient(this.ingredientDatabase.ingredients[i], false);
+		if(this.ingredientDatabase == null) {
+			return;
 		}
+
+		this.ClearUsedIngredient();
 
 		int index = this.ingredientDatabase.ingredients.FindIndex(x => x.element == element);
 		this.ingredientDatabase.ingredients[index] = new Ingredient(true, this.ingredientDatabase.ingredients[index]);
+
+		this.UpdateShelfDisplay();
+	}
+
+	public void ClearUsedIngredient()
+	{
+		if(this.ingredientDatabase == null) {
+			return;
+		}
+
+		for(int i = 0; i < this.ingredientDatabase.ingredients.Count - 1; i++) {
+			this.ingredientDatabase.ingredients[i] = new Ingredient(this.ingredientDatabase.ingredients[i], false);
+		}
 
 		this.UpdateShelfDisplay();
 	}
@@ -174,9 +224,11 @@ public class ShelfController : Singleton<ShelfController>
 		this.ingredientDatabase.ingredients[index] = new Ingredient(ingredient, true);
 
 		if(ingredient.isUnlocked) {
+			CameraEffect.Shake(0.1f);
 			this.recipeController.AddElementToCocktail(ingredient.element);
 			click.GetComponent<Animator>().SetTrigger("Select");
 		} else {
+			CameraEffect.Shake(0.05f);
 			click.GetComponent<Animator>().SetTrigger("Giggle");
 		}
 	}
