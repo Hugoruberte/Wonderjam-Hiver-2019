@@ -45,6 +45,7 @@ public class BubbleManager : Singleton<BubbleManager>
 		obj.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = s;
 
 		obj.GetComponent<RectTransform>().anchoredPosition = Vector2Extension.WorldPositionToScreenPosition(position, canvasRectTr, cam);
+		Debug.Log(obj.GetComponent<RectTransform>().anchoredPosition);
 
 		StartCoroutine(SpawnBubbleCoroutine(obj.transform));
 	}
