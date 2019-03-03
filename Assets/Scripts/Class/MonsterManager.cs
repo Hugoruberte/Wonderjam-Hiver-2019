@@ -16,17 +16,18 @@ public class MonsterManager : Singleton<MonsterManager>
 
     public float OverTimePoints = 10;
 
-    private const int MAX_MONSTER_NUMBER = 8;
+    private const int MAX_MONSTER_NUMBER = 7;
 	[HideInInspector] public MonsterScript[] monsters;
 
-	public GameObject[] monstersPrefab;
+	public MonsterScript[] monstersPrefab;
 
 	public MonsterScript _tmp_prefabMonster;
 
     private float timeToIncreaseCategory;
     private float timeToCreateMonster;
 	private List<int> freeIndex = new List<int>();
-	private float[] xAnchor = new float[] {-6.5f, -4.8f, -2.95f, -1.35f, 0.25f, 2f, 4.25f, 6.5f};
+	private float[] xAnchor = new float[MAX_MONSTER_NUMBER];
+    private float xMin = -2.75f;
 
 
 	protected override void Awake()
@@ -47,13 +48,20 @@ public class MonsterManager : Singleton<MonsterManager>
 		GameObject fold = new GameObject();
 		fold.name = "Monster Folder";
 		folder = fold.transform;
+
+
+        float spaceBetweenX = ((xMin * -2) + 1) / xAnchor.Length;
+        for(int i = 0; i < xAnchor.Length; ++i)
+        {
+            xAnchor[i] = xMin + spaceBetweenX * i;
+        }
 	}
 
 	void Update()
 	{
 		if(freeIndex.Count > 0 && Time.time >= timeToCreateMonster)
 		{
-			this.CreateMonster();
+            this.CreateMonster();
 			timeToCreateMonster = Time.time + timeBetweenMonster;
             timeBetweenMonster /= coefBetweenMonster;
 		}
@@ -74,19 +82,19 @@ public class MonsterManager : Singleton<MonsterManager>
 		int monsterIndex = freeIndex[indexInFreeIndice];
 		freeIndex.RemoveAt(indexInFreeIndice);
 
+        int monsterArchetypeRandom = Random.Range(0, monstersPrefab.Length);
 		// instantiate monster
-		MonsterScript obj = null;
-		obj = Instantiate(_tmp_prefabMonster);
+		MonsterScript obj = Instantiate(monstersPrefab[monsterArchetypeRandom]);
 
 		// set monster position
 		obj.indexInMonsterArray = monsterIndex;
 		obj.transform.parent = folder;
 		obj.transform.position = new Vector3(
-			xAnchor[monsterIndex] + Random.Range(-0.25f, 0.25f),
-			Random.Range(-3.25f, -2.75f),
-			0f);
+	    xAnchor[monsterIndex] + Random.Range(-0.25f, 0.25f),
+		Random.Range(-2.25f, -2f),
+		 	-7f);
 
-		//fill the array of monsters    
+		// //fill the array of monsters    
 		this.monsters[monsterIndex] = obj;
 	}
 

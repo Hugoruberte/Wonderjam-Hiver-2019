@@ -83,6 +83,7 @@ public class BarmanController : Singleton<BarmanController>
 		int vert, down;
 		float threshold;
 		MonsterScript monster;
+        float xTarget = myTransform.position.x;
 
 		while(true) {
 
@@ -101,7 +102,7 @@ public class BarmanController : Singleton<BarmanController>
 				threshold = float.MinValue;
 				for(int i = 0; i < this.monsters.Length; i++) {
 					if(this.monsters[i] != null
-						&& this.monsters[i].transform.position.x < myTransform.position.x - 0.1f
+						&& this.monsters[i].transform.position.x < xTarget - 0.1f
 						&& this.monsters[i].transform.position.x > threshold)
 					{
 						threshold = this.monsters[i].transform.position.x;
@@ -114,7 +115,7 @@ public class BarmanController : Singleton<BarmanController>
 				threshold = float.MaxValue;
 				for(int i = 0; i < this.monsters.Length; i++) {
 					if(this.monsters[i] != null
-						&& this.monsters[i].transform.position.x > myTransform.position.x + 0.1f
+						&& this.monsters[i].transform.position.x > xTarget + 0.1f
 						&& this.monsters[i].transform.position.x < threshold)
 					{
 						threshold = this.monsters[i].transform.position.x;
@@ -130,10 +131,11 @@ public class BarmanController : Singleton<BarmanController>
 
 				yield return waitAfterService;
 			}
-
+            Debug.Log("is Moving:" + isMoving);
+            Debug.Log("monster" + monster);
 			if(monster != null && currentMonster != monster && !isMoving) {
 				this.currentMonster = monster;
-
+                xTarget = currentMonster.transform.position.x;
 				if(moveCoroutine != null) {
 					StopCoroutine(moveCoroutine);
 				}
@@ -143,10 +145,20 @@ public class BarmanController : Singleton<BarmanController>
 		}
 	}
 
+    private float getXPoint(Vector3 monsterPosition)
+    {
+        Vector3 directionVector = (monsterPosition - Camera.main.transform.position);
+        float directionCoeff = directionVector.x / directionVector.z;
+
+        return directionCoeff * (transform.position.z - Camera.main.transform.position.z);
+    }
+
 	private IEnumerator MoveCoroutine(MonsterScript currentMonster)
 	{
+        float xPosition = getXPoint(currentMonster.transform.position);
+
 		this.isMoving = true;
-		Vector3 target = new Vector3(currentMonster.transform.position.x, myTransform.position.y, myTransform.position.z);
+		Vector3 target = new Vector3(xPosition, myTransform.position.y, myTransform.position.z);
 
 		while(Vector3.Distance(myTransform.position, target) > 0.1f)
 		{

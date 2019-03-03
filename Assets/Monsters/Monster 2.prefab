@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1300870085449511117}
+  - component: {fileID: 4303061777832686250}
   m_Layer: 0
   m_Name: Monster 2
   m_TagString: Untagged
@@ -62,6 +63,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4303061777832686250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453157309445391770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73f611fad272c348a8c2178edc457c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterAspect: 0
+  smooth: 0.25
+  indexInMonsterArray: 0
 --- !u!1001 &8254977893213191012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69,10 +85,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8557959683801767152}
     m_Modifications:
-    - target: {fileID: 1000010402951368, guid: 5bcbf31ded2e353449622ec74f8954da, type: 3}
-      propertyPath: m_Name
-      value: Monster
-      objectReference: {fileID: 0}
     - target: {fileID: 4000012531979720, guid: 5bcbf31ded2e353449622ec74f8954da, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -128,6 +140,10 @@ PrefabInstance:
     - target: {fileID: 4000012531979720, guid: 5bcbf31ded2e353449622ec74f8954da, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010402951368, guid: 5bcbf31ded2e353449622ec74f8954da, type: 3}
+      propertyPath: m_Name
+      value: Monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bcbf31ded2e353449622ec74f8954da, type: 3}
