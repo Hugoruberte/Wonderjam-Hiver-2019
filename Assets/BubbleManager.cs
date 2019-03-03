@@ -30,7 +30,7 @@ public class BubbleManager : Singleton<BubbleManager>
 		cam = Camera.main;
 	}
 
-	public void SpawnBubble(Vector3 position, Order order)
+	public void SpawnBubble(MonsterScript script, Vector3 position, Order order)
 	{
 		GameObject obj = Instantiate(bubblePrefab, position, Quaternion.identity);
 		obj.transform.SetParent(canvasRectTr, false);
@@ -44,10 +44,11 @@ public class BubbleManager : Singleton<BubbleManager>
 		s = s ?? GetSpriteWithAttribute(Attribute.Strong);
 		obj.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = s;
 
+		position += Vector3.right * -5.25f;
 		obj.GetComponent<RectTransform>().anchoredPosition = Vector2Extension.WorldPositionToScreenPosition(position, canvasRectTr, cam);
 		Debug.Log(obj.GetComponent<RectTransform>().anchoredPosition);
 
-		StartCoroutine(SpawnBubbleCoroutine(obj.transform));
+		StartCoroutine(SpawnBubbleCoroutine(script, obj.transform));
 	}
 
 	private Sprite GetSpriteWithAttribute(Attribute a)
@@ -68,7 +69,7 @@ public class BubbleManager : Singleton<BubbleManager>
 		}
 	}
 
-	private IEnumerator SpawnBubbleCoroutine(Transform bubble)
+	private IEnumerator SpawnBubbleCoroutine(MonsterScript script, Transform bubble)
 	{
 		float clock = 0f;
 		float step = 0f;
@@ -88,6 +89,8 @@ public class BubbleManager : Singleton<BubbleManager>
 			bubble.localScale = Vector3.Lerp(from, to, step);
 			yield return null;
 		}
+
+		script.OnEndSpawnBubble();
 
 		Destroy(bubble.gameObject);
 	}

@@ -60,9 +60,22 @@ public class MonsterScript : MonoBehaviour
 			yield return null;
 		}
 
-		// Ask
-		BubbleManager.instance.SpawnBubble(myTransform.position, myOrder);
+		// Ask + spawn Clock
+		BubbleManager.instance.SpawnBubble(this, myTransform.position, myOrder);
+	}
 
+	public void OnEndSpawnBubble()
+	{
+		// only does that
+		ClockManager.instance.SpawnClock(this, myTransform.position, willBeWaiting);
+
+		StopCoroutine(waitForCocktailCoroutine);
+		waitForCocktailCoroutine = ContinueWaitForCocktailCoroutine();
+		StartCoroutine(waitForCocktailCoroutine);
+	}
+
+	private IEnumerator ContinueWaitForCocktailCoroutine()
+	{
 		// Wait
 		yield return waitBeforeLeaving;
 

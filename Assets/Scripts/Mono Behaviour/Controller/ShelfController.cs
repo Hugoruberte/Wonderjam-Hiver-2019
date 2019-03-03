@@ -78,7 +78,7 @@ public class ShelfController : Singleton<ShelfController>
 		for(int i = 0; i < NUMBER_INGREDIENT_BY_SHELF; i++) {
 			index = i + shelfIndex * NUMBER_INGREDIENT_BY_SHELF;
 
-			if(index < this.ingredientDatabase.ingredients.Count) {
+			if(index < this.ingredientDatabase.ingredients.Count - 1) {
 				ingredient = this.ingredientDatabase.ingredients[index];
 				rend = currentShelf.GetChild(i).GetChild(0).GetComponent<SpriteRenderer>();
 				rend.sprite = ingredient.sprite;
@@ -147,11 +147,14 @@ public class ShelfController : Singleton<ShelfController>
 		this.UpdateShelfDisplay();
 	}
 
-	public void MadeCocktail()
+	public void MadeCocktail(ChemicalElement element)
 	{
-		for(int i = 0; i < this.ingredientDatabase.ingredients.Count; i++) {
+		for(int i = 0; i < this.ingredientDatabase.ingredients.Count - 1; i++) {
 			this.ingredientDatabase.ingredients[i] = new Ingredient(this.ingredientDatabase.ingredients[i], false);
 		}
+
+		int index = this.ingredientDatabase.ingredients.FindIndex(x => x.element == element);
+		this.ingredientDatabase.ingredients[index] = new Ingredient(true, this.ingredientDatabase.ingredients[index]);
 
 		this.UpdateShelfDisplay();
 	}
@@ -162,7 +165,7 @@ public class ShelfController : Singleton<ShelfController>
 
 		index = click.transform.GetSiblingIndex() + NUMBER_INGREDIENT_BY_SHELF * shelfIndex;
 
-		if(index > this.ingredientDatabase.ingredients.Count) {
+		if(index >= this.ingredientDatabase.ingredients.Count - 1) {
 			return;
 		}
 
@@ -182,7 +185,7 @@ public class ShelfController : Singleton<ShelfController>
 	{
 		int index = click.transform.GetSiblingIndex() + NUMBER_INGREDIENT_BY_SHELF * shelfIndex;
 
-		if(index > this.ingredientDatabase.ingredients.Count) {
+		if(index >= this.ingredientDatabase.ingredients.Count - 1) {
 			return;
 		}
 

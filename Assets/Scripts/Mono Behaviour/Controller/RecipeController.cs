@@ -93,11 +93,13 @@ public class RecipeController : Singleton<RecipeController>
 			return;
 		}
 
+		ChemicalElement element = cocktail.type;
+
 		this.barmanController.HoldCocktail(cocktail);
 
 		this.ClearCocktail();
 
-		this.shelfController.MadeCocktail();
+		this.shelfController.MadeCocktail(element);
 		
 		this.UpdateResultDisplay(cocktail);
 	}

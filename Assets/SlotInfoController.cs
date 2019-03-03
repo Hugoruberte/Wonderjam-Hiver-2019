@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,8 +45,6 @@ public class SlotInfoController : Singleton<SlotInfoController>
 		main.sizeDelta = new Vector2(main.sizeDelta.x, 25f * _ent.attributes.Length + 120f);
 		main.anchoredPosition = Vector2Extension.WorldPositionToScreenPosition(position, canvasRectTr, cam);
 
-		Debug.Log(main.anchoredPosition);
-
 		stringBuilder.Clear();
 		foreach(AlcoholAttribute a in _ent.attributes) {
 			stringBuilder.Append(a);
@@ -59,6 +58,8 @@ public class SlotInfoController : Singleton<SlotInfoController>
 		for(int i = _ent.colors.Length; i < colorsFolder.childCount; i++) {
 			colorsFolder.GetChild(i).GetComponent<Image>().color = Color.clear;
 		}
+
+		nameText.text = Regex.Replace(_ent.type.ToString(), @"([a-z])([A-Z])", "$1 $2");
 
 		background.SetActive(true);
 	}
