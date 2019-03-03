@@ -4,11 +4,13 @@ using UnityEngine;
 using Interactive.Engine;
 
 
-public class Unicorn : MonsterScript { 
-
+public class Unicorn : MonsterScript
+{
     public float stayingTime;
     public float minSpawnInterval, maxSpawnInterval;
     public float gaugeBonus;
+
+    private Animator myAnim;
 
     [HideInInspector] public bool isHere = false;
 
@@ -19,6 +21,8 @@ public class Unicorn : MonsterScript {
     // Start is called before the first frame update
     protected override void Start()
     {
+    	myAnim = GetComponent<Animator>();
+
         cocktail = ChemicalElement.BigIsland;
         _ChemicalElementEntity ent = InteractiveEngine.instance.interactiveEngineData.GetChemicalElementDataWithEnum(cocktail);
         myOrder = new Order(ent.attributes, ent.colors[0]);

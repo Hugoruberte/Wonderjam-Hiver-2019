@@ -18,7 +18,7 @@ public class BarmanController : Singleton<BarmanController>
 
 	public SpriteRenderer tray;
 
-    public Unicorn unicorn;
+	public Unicorn unicorn;
 
 	private Transform myTransform;
 
@@ -39,7 +39,7 @@ public class BarmanController : Singleton<BarmanController>
 
 	private ChemicalElementEntity currentCocktail = null;
 
-    
+	
 
 
 	protected override void Awake()
@@ -87,7 +87,7 @@ public class BarmanController : Singleton<BarmanController>
 		int vert, down;
 		float threshold;
 		MonsterScript monster;
-        float xTarget = myTransform.position.x;
+		float xTarget = myTransform.position.x;
 
 		while(true) {
 
@@ -125,11 +125,12 @@ public class BarmanController : Singleton<BarmanController>
 						threshold = this.monsters[i].transform.position.x;
 						monster = this.monsters[i];
 					}
-                    else if (unicorn.isHere && currentCocktail != null)
-                    {
-                        monster = unicorn;
-                        unicorn.receiveCocktail(currentCocktail);
-                    }
+					else if(unicorn.isHere && currentCocktail != null)
+					{
+						Debug.Log("hooh");
+						monster = unicorn;
+						unicorn.receiveCocktail(currentCocktail);
+					}
 				}
 			}
 			else if(currentCocktail != null && currentMonster != null)
@@ -140,11 +141,10 @@ public class BarmanController : Singleton<BarmanController>
 
 				yield return waitAfterService;
 			}
-            Debug.Log("is Moving:" + isMoving);
-            Debug.Log("monster" + monster);
+			
 			if(monster != null && currentMonster != monster && !isMoving) {
 				this.currentMonster = monster;
-                xTarget = currentMonster.transform.position.x;
+				xTarget = currentMonster.transform.position.x;
 				if(moveCoroutine != null) {
 					StopCoroutine(moveCoroutine);
 				}
@@ -154,17 +154,17 @@ public class BarmanController : Singleton<BarmanController>
 		}
 	}
 
-    private float getXPoint(Vector3 monsterPosition)
-    {
-        Vector3 directionVector = (monsterPosition - Camera.main.transform.position);
-        float directionCoeff = directionVector.x / directionVector.z;
+	private float getXPoint(Vector3 monsterPosition)
+	{
+		Vector3 directionVector = (monsterPosition - Camera.main.transform.position);
+		float directionCoeff = directionVector.x / directionVector.z;
 
-        return directionCoeff * (transform.position.z - Camera.main.transform.position.z);
-    }
+		return directionCoeff * (transform.position.z - Camera.main.transform.position.z);
+	}
 
 	private IEnumerator MoveCoroutine(MonsterScript currentMonster)
 	{
-        float xPosition = getXPoint(currentMonster.transform.position);
+		float xPosition = getXPoint(currentMonster.transform.position);
 
 		this.isMoving = true;
 		Vector3 target = new Vector3(xPosition, myTransform.position.y, myTransform.position.z);
