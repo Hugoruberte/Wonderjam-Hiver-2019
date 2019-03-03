@@ -177,24 +177,25 @@ public class MonsterScript : MonoBehaviour
 			IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
 		}
 
-
-		//for all cocktailAttributes
-		for (int i = 0; i < cocktailAttributes.Length; ++i)
-		{
-			AlcoholAttribute tmpAttribute = cocktailAttributes[i];
-			//if the attributes is also in the order
-			if (IntensityForAttribute.ContainsKey(tmpAttribute.attribute))
-			{
-				//the tolerance point is the difference between the wantedValue and the givenValue
-				IntensityForAttribute[tmpAttribute.attribute] -= tmpAttribute.intensity;
-			}
-			/*else
-			{
-				//else the category was not wanted, all points in this category are false.
-				IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
-			}*/
-		}
-
+        if (cocktailAttributes != null)
+        {
+            //for all cocktailAttributes
+            for (int i = 0; i < cocktailAttributes.Length; ++i)
+            {
+                AlcoholAttribute tmpAttribute = cocktailAttributes[i];
+                //if the attributes is also in the order
+                if (IntensityForAttribute.ContainsKey(tmpAttribute.attribute))
+                {
+                    //the tolerance point is the difference between the wantedValue and the givenValue
+                    IntensityForAttribute[tmpAttribute.attribute] -= tmpAttribute.intensity;
+                }
+                /*else
+                {
+                    //else the category was not wanted, all points in this category are false.
+                    IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
+                }*/
+            }
+        }
 		//calculate toleranceValue
 		float toleranceCategoryPoints = 0;
 
