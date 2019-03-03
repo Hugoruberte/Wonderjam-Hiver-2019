@@ -366,9 +366,8 @@ MonoBehaviour:
   timeBetweenIncreaseCategory: 120
   leaveTime: 30
   OverTimePoints: 10
-  prefabMonster: {fileID: 3389642435966470415, guid: 8d4079b859124cc488d5030083ec2454,
-    type: 3}
   monsters: []
+  monstersPrefab: []
 --- !u!114 &595264768
 MonoBehaviour:
   m_ObjectHideFlags: 0
