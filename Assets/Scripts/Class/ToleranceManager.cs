@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ToleranceManager : Singleton<ToleranceManager>
@@ -24,8 +25,7 @@ public class ToleranceManager : Singleton<ToleranceManager>
         toleranceGaugeCurrent += value;
         if(toleranceGaugeCurrent <= toleranceGaugeMin)
         {
-            // YOU LOSE
-            Debug.Log("You Lose !");
+            SceneManager.LoadScene("Menu");
         }
         else if(toleranceGaugeCurrent >= toleranceGaugeMax)
         {
