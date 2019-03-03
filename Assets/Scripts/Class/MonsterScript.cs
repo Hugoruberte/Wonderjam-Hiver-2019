@@ -34,7 +34,7 @@ public class MonsterScript : MonoBehaviour
 		myTransform = transform;
 	}
 
-	void Start()
+	protected virtual void Start()
 	{
 		monsterManager = MonsterManager.instance;
 
@@ -66,6 +66,11 @@ public class MonsterScript : MonoBehaviour
 
 	public void OnEndSpawnBubble()
 	{
+        if(this is Unicorn)
+        {
+            return;
+        }
+
 		// only does that
 		ClockManager.instance.SpawnClock(this, myTransform.position, willBeWaiting);
 

@@ -18,6 +18,8 @@ public class BarmanController : Singleton<BarmanController>
 
 	public SpriteRenderer tray;
 
+    public Unicorn unicorn;
+
 	private Transform myTransform;
 
 	private Aspect aspect;
@@ -36,6 +38,8 @@ public class BarmanController : Singleton<BarmanController>
 	private WaitForSeconds waitAfterService = new WaitForSeconds(0.1f);
 
 	private ChemicalElementEntity currentCocktail = null;
+
+    
 
 
 	protected override void Awake()
@@ -120,6 +124,11 @@ public class BarmanController : Singleton<BarmanController>
 						threshold = this.monsters[i].transform.position.x;
 						monster = this.monsters[i];
 					}
+                    else if (unicorn.isHere && currentCocktail != null)
+                    {
+                        monster = unicorn;
+                        unicorn.receiveCocktail(currentCocktail);
+                    }
 				}
 			}
 			else if(currentCocktail != null && currentMonster != null)
