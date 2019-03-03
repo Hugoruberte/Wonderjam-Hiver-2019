@@ -40,7 +40,7 @@ public class ClockManager : Singleton<ClockManager>
 		GameObject obj = Instantiate(clockPrefab);
 		obj.transform.SetParent(canvasRectTr, false);
 
-		position -= (Vector3.right * 5.25f + Vector3.up * 6f);
+		position -= Vector3.up * 0.5f;
 		obj.GetComponent<RectTransform>().anchoredPosition = Vector2Extension.WorldPositionToScreenPosition(position, canvasRectTr, cam);
 
 		IEnumerator co = ClockCoroutine(obj.transform, duration);

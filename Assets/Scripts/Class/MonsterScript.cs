@@ -15,7 +15,7 @@ public class MonsterScript : MonoBehaviour
 	private float willBeWaiting;
 	private float timeCoeff = 5;
 	private float timeLimit = 0.25f;
-	private float colorCoeff = 5;
+	private float colorCoeff = 2;
 	private float categoryCoeff = 2;
 
 	private bool iHaveNotBeenServed = true;
@@ -34,7 +34,7 @@ public class MonsterScript : MonoBehaviour
 		myTransform = transform;
 	}
 
-	void Start()
+	protected virtual void Start()
 	{
 		monsterManager = MonsterManager.instance;
 
@@ -71,6 +71,11 @@ public class MonsterScript : MonoBehaviour
 
 	public void OnEndSpawnBubble()
 	{
+        if(this is Unicorn)
+        {
+            return;
+        }
+
 		// only does that
 		ClockManager.instance.SpawnClock(this, myTransform.position, willBeWaiting);
 
