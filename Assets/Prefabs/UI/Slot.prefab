@@ -196,10 +196,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2965038994753850672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fcf4036f60e8a4d99d0ace824f4be6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ee40ea98eb6a194b81bd761cb4b17eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onExit:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,

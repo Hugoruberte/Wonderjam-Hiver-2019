@@ -166,7 +166,7 @@ public class MonsterScript : MonoBehaviour
 	}
 
 	//category points
-	private float CalculateCategoryTolerancePoint(AlcoholAttribute [] orderAttributes, AlcoholAttribute []cocktailAttributes)
+	private float CalculateCategoryTolerancePoint(AlcoholAttribute[] orderAttributes, AlcoholAttribute[] cocktailAttributes)
 	{
 		//create Map Order Attributes
 		Dictionary<Attribute, float> IntensityForAttribute = new Dictionary<Attribute, float>();

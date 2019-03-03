@@ -69,7 +69,7 @@ public class RecipeController : Singleton<RecipeController>
 
 		this.UpdateCocktail();
 	}
-	private void RemoveElementFromCocktail(OnClickController click)
+	private void RemoveElementFromCocktail(OnMouseController click)
 	{
 		int index = click.transform.GetSiblingIndex();
 
@@ -138,7 +138,7 @@ public class RecipeController : Singleton<RecipeController>
 		Transform tr;
 		for(int i = 0; i < this.combo.Count; i++) {
 			obj = Instantiate(this.slotPrefab, recipeSlotsTransform.position, Quaternion.identity);
-			obj.GetComponentInChildren<OnClickController>().onClickWithReference.AddListener(RemoveElementFromCocktail);
+			obj.GetComponentInChildren<OnMouseController>().onClickWithReference.AddListener(RemoveElementFromCocktail);
 			tr = obj.transform;
 
 			tr.parent = recipeSlotsTransform;
