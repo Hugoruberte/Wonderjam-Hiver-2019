@@ -48,13 +48,18 @@ public class MonsterScript : MonoBehaviour
 		StartCoroutine(waitForCocktailCoroutine);
 	}
 
-	private IEnumerator WaitForCocktailCoroutine()
+    private void Update()
+    {
+        transform.LookAt(BarmanController.instance.transform);
+    }
+
+    private IEnumerator WaitForCocktailCoroutine()
 	{
 		Vector3 target;
 		Vector3 reference = Vector3.zero;
 
 		// Walk in
-		target = myTransform.position + Vector3.up;
+		target = myTransform.position + Vector3.up + Vector3.forward;
 		while(Vector3.Distance(myTransform.position, target) > 0.05f) {
 			myTransform.position = Vector3.SmoothDamp(myTransform.position, target, ref reference, smooth);
 			yield return null;
@@ -74,11 +79,12 @@ public class MonsterScript : MonoBehaviour
 		Vector3 target;
 		Vector3 reference = Vector3.zero;
 
+        Debug.Log("Leave" + name);
 		// Leaving
 		monsterManager.MonsterStartLeaving(this.indexInMonsterArray);
 
 		// Walk out
-		target = myTransform.position - Vector3.up * 3f;
+		target = myTransform.position - Vector3.up * 2f - Vector3.forward * 2f;
 		while(Vector3.Distance(myTransform.position, target) > 0.05f) {
 			myTransform.position = Vector3.SmoothDamp(myTransform.position, target, ref reference, smooth);
 			yield return null;
