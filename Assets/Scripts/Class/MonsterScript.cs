@@ -90,7 +90,7 @@ public class MonsterScript : MonoBehaviour
 	public void ReceiveCocktail(ChemicalElementEntity Cocktail)
 	{
 		// Appelez la fonction de Luc de satisfaction et renvoyez au MonsterManager la valeur a ajouter à la satisfaction globale
-		float tolerancePoint = CalculateTolerancePoint(myOrder, Cocktail);
+		float tolerancePoint = CalculateTolerancePoint(myOrder, Cocktail, false);
 
 		this.iHaveNotBeenServed = false;
 
@@ -109,7 +109,7 @@ public class MonsterScript : MonoBehaviour
 
 
 	//calculateTolerancePoint
-	private float CalculateTolerancePoint(ChemicalElementEntity Order, ChemicalElementEntity Cocktail)
+	private float CalculateTolerancePoint(ChemicalElementEntity Order, ChemicalElementEntity Cocktail, bool orderIsACocktail)
 	{
 		//time points
 		float toleranceTimePoints = CalculateTimeTolerancePoint();
@@ -118,7 +118,7 @@ public class MonsterScript : MonoBehaviour
 		float toleranceColorPoints = CalculateColorTolerancePoints(myOrder.colors, Cocktail.colors);
 
 		//category Points
-		float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attributes, Cocktail.attributes);
+		float toleranceCategoryPoints = CalculateCategoryTolerancePoint(myOrder.attributes, Cocktail.attributes, orderIsACocktail);
 
 		return toleranceTimePoints + toleranceColorPoints + toleranceCategoryPoints;
 
@@ -166,7 +166,7 @@ public class MonsterScript : MonoBehaviour
 	}
 
 	//category points
-	private float CalculateCategoryTolerancePoint(AlcoholAttribute[] orderAttributes, AlcoholAttribute[] cocktailAttributes)
+	private float CalculateCategoryTolerancePoint(AlcoholAttribute[] orderAttributes, AlcoholAttribute[] cocktailAttributes, bool orderIsACocktail)
 	{
 		//create Map Order Attributes
 		Dictionary<Attribute, float> IntensityForAttribute = new Dictionary<Attribute, float>();
@@ -177,6 +177,7 @@ public class MonsterScript : MonoBehaviour
 			IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
 		}
         float toleranceCategoryPositivePoints = 0;
+        float toleranceCategoryNegativePoints = 0;
         if (cocktailAttributes != null)
         {
             
@@ -191,15 +192,15 @@ public class MonsterScript : MonoBehaviour
                     //the tolerance point is the difference between the wantedValue and the givenValue
                     IntensityForAttribute[tmpAttribute.attribute] -= tmpAttribute.intensity;
                 }
-                /*else
+                else if(orderIsACocktail)
                 {
                     //else the category was not wanted, all points in this category are false.
-                    IntensityForAttribute.Add(tmpAttribute.attribute, tmpAttribute.intensity);
-                }*/
+                    toleranceCategoryNegativePoints += tmpAttribute.intensity;
+                }
             }
         }
 
-        float toleranceCategoryNegativePoints = 0;
+        
 		foreach (Attribute attribute in IntensityForAttribute.Keys)
 		{
             toleranceCategoryNegativePoints += Mathf.Abs(IntensityForAttribute[attribute]);
