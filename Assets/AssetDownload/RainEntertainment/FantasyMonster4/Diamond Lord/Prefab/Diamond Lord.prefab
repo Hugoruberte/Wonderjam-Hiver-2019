@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4771539243664184}
   - component: {fileID: 95602941718411856}
   - component: {fileID: 64430158276844176}
+  - component: {fileID: 608062752032323974}
   m_Layer: 0
   m_Name: Diamond Lord
   m_TagString: Untagged
@@ -97,6 +98,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!114 &608062752032323974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091251281215608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73f611fad272c348a8c2178edc457c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterAspect: 4
+  smooth: 0.25
+  indexInMonsterArray: 0
 --- !u!1 &1093214205047682
 GameObject:
   m_ObjectHideFlags: 0

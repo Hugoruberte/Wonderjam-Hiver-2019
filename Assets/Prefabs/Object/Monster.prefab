@@ -75,10 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73f611fad272c348a8c2178edc457c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
   monsterAspect: 0
-  waiting: 2
-  walking: 1
+  smooth: 0.25
+  indexInMonsterArray: 0
 --- !u!1 &6543271142708576495
 GameObject:
   m_ObjectHideFlags: 0

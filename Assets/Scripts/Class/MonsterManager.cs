@@ -20,7 +20,7 @@ public class MonsterManager : Singleton<MonsterManager>
 	public MonsterScript prefabMonster;
 	[HideInInspector] public MonsterScript[] monsters;
 
-
+	public List<GameObject> graphicAsset;
 
     private float timeToIncreaseCategory;
     private float timeToCreateMonster;
