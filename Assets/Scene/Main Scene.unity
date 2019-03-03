@@ -1849,7 +1849,7 @@ Light:
   m_Color: {r: 1, g: 0.88453466, b: 0.504717, a: 1}
   m_Intensity: 4
   m_Range: 25
-  m_SpotAngle: 100
+  m_SpotAngle: 95
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -2035,6 +2035,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3273088419137946118, guid: 5f5e0fc164cd9b74bbe1a162b9ed95f4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3273088419137946118, guid: 5f5e0fc164cd9b74bbe1a162b9ed95f4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bb1ee7fbe2f1554784a72112c22392c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f5e0fc164cd9b74bbe1a162b9ed95f4, type: 3}
 --- !u!1001 &4615624469791092994
