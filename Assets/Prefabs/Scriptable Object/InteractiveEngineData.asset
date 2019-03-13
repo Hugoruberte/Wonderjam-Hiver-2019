@@ -12,8 +12,1617 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df127cdf71816414ea9c57d4d5390b82, type: 3}
   m_Name: InteractiveEngineData
   m_EditorClassIdentifier: 
-  chemicalElementPoolList: 
-  primaries: []
-  weaknesses: []
-  couples: []
-  winners: []
+  primaries:
+  - element: 1
+    array: 01000000
+  - element: 2
+    array: 02000000
+  - element: 4
+    array: 04000000
+  - element: 8
+    array: 08000000
+  - element: 16
+    array: 10000000
+  - element: 32
+    array: 20000000
+  - element: 64
+    array: 40000000
+  - element: 128
+    array: 0200000004000000
+  - element: 256
+    array: 0200000010000000
+  - element: 512
+    array: 1000000040000000
+  - element: 1024
+    array: 020000000400000008000000100000002000000040000000
+  - element: 2048
+    array: 020000000400000020000000
+  - element: 4096
+    array: 100000004000000020000000
+  - element: 8192
+    array: 0400000008000000
+  - element: 16384
+    array: 100000004000000002000000
+  - element: 32768
+    array: 080000002000000040000000
+  - element: 48576
+    array: 0400000020000000
+  - element: 65536
+    array: 040000001000000040000000
+  - element: 131072
+    array: 0200000008000000
+  - element: 262144
+    array: 0200000040000000
+  - element: 524288
+    array: 0400000010000000
+  - element: 2097152
+    array: 0800000010000000
+  - element: 4194304
+    array: 0800000020000000
+  - element: 8388608
+    array: 020000000800000040000000
+  - element: 16777216
+    array: 040000000800000020000000
+  - element: 33554432
+    array: 020000000800000020000000
+  - element: 67108864
+    array: 040000001000000020000000
+  - element: 134217728
+    array: 080000001000000020000000
+  - element: 268435456
+    array: 02000000040000000800000020000000
+  - element: 536870912
+    array: 02000000040000000800000010000000
+  - element: 1073741824
+    array: 0200000004000000080000001000000020000000
+  attributes:
+  - element: 1
+    array: []
+  - element: 2
+    array:
+    - intensity: 3
+      attribute: 4
+  - element: 4
+    array:
+    - intensity: 3
+      attribute: 1
+  - element: 8
+    array:
+    - intensity: 3
+      attribute: 3
+  - element: 16
+    array:
+    - intensity: 3
+      attribute: 2
+  - element: 32
+    array:
+    - intensity: 1
+      attribute: 3
+    - intensity: 1
+      attribute: 1
+  - element: 64
+    array:
+    - intensity: 1
+      attribute: 4
+    - intensity: 1
+      attribute: 2
+  - element: 128
+    array:
+    - intensity: 3
+      attribute: 4
+    - intensity: 3
+      attribute: 1
+  - element: 256
+    array:
+    - intensity: 3
+      attribute: 4
+    - intensity: 3
+      attribute: 2
+  - element: 512
+    array:
+    - intensity: 1
+      attribute: 4
+    - intensity: 2
+      attribute: 2
+  - element: 1024
+    array:
+    - intensity: 2
+      attribute: 3
+    - intensity: 2
+      attribute: 1
+    - intensity: 2
+      attribute: 4
+    - intensity: 2
+      attribute: 2
+  - element: 2048
+    array:
+    - intensity: 3
+      attribute: 4
+    - intensity: 1
+      attribute: 3
+    - intensity: 2
+      attribute: 1
+  - element: 4096
+    array:
+    - intensity: 1
+      attribute: 4
+    - intensity: 2
+      attribute: 2
+    - intensity: 1
+      attribute: 3
+    - intensity: 1
+      attribute: 1
+  - element: 8192
+    array:
+    - intensity: 3
+      attribute: 1
+    - intensity: 3
+      attribute: 3
+  - element: 16384
+    array:
+    - intensity: 2
+      attribute: 2
+    - intensity: 2
+      attribute: 4
+  - element: 32768
+    array:
+    - intensity: 2
+      attribute: 3
+    - intensity: 1
+      attribute: 1
+    - intensity: 1
+      attribute: 4
+    - intensity: 1
+      attribute: 2
+  - element: 48576
+    array:
+    - intensity: 1
+      attribute: 3
+    - intensity: 2
+      attribute: 1
+  - element: 65536
+    array:
+    - intensity: 3
+      attribute: 1
+    - intensity: 1
+      attribute: 4
+    - intensity: 2
+      attribute: 2
+  - element: 131072
+    array:
+    - intensity: 3
+      attribute: 4
+    - intensity: 3
+      attribute: 3
+  - element: 262144
+    array:
+    - intensity: 2
+      attribute: 4
+    - intensity: 1
+      attribute: 2
+  - element: 524288
+    array:
+    - intensity: 3
+      attribute: 1
+    - intensity: 3
+      attribute: 2
+  - element: 2097152
+    array:
+    - intensity: 3
+      attribute: 3
+    - intensity: 3
+      attribute: 2
+  - element: 4194304
+    array:
+    - intensity: 2
+      attribute: 3
+    - intensity: 1
+      attribute: 1
+  - element: 8388608
+    array:
+    - intensity: 3
+      attribute: 3
+    - intensity: 2
+      attribute: 4
+    - intensity: 1
+      attribute: 2
+  - element: 16777216
+    array:
+    - intensity: 2
+      attribute: 3
+    - intensity: 2
+      attribute: 1
+  - element: 33554432
+    array:
+    - intensity: 3
+      attribute: 4
+    - intensity: 2
+      attribute: 3
+    - intensity: 1
+      attribute: 1
+  - element: 67108864
+    array:
+    - intensity: 3
+      attribute: 2
+    - intensity: 1
+      attribute: 3
+    - intensity: 2
+      attribute: 1
+  - element: 134217728
+    array:
+    - intensity: 3
+      attribute: 2
+    - intensity: 2
+      attribute: 3
+    - intensity: 1
+      attribute: 1
+  - element: 268435456
+    array:
+    - intensity: 2
+      attribute: 3
+    - intensity: 1
+      attribute: 1
+  - element: 536870912
+    array:
+    - intensity: 3
+      attribute: 3
+    - intensity: 3
+      attribute: 2
+  - element: 1073741824
+    array:
+    - intensity: 3
+      attribute: 4
+    - intensity: 3
+      attribute: 2
+    - intensity: 2
+      attribute: 3
+    - intensity: 2
+      attribute: 1
+  colors:
+  - element: 1
+    array: 00000000
+  - element: 2
+    array: 01000000
+  - element: 4
+    array: 03000000
+  - element: 8
+    array: 05000000
+  - element: 16
+    array: 02000000
+  - element: 32
+    array: 06000000
+  - element: 64
+    array: 07000000
+  - element: 128
+    array: 0100000003000000
+  - element: 256
+    array: 0100000002000000
+  - element: 512
+    array: 0200000007000000
+  - element: 1024
+    array: 010000000300000005000000020000000600000007000000
+  - element: 2048
+    array: 010000000300000006000000
+  - element: 4096
+    array: 0200000007000000020000000700000006000000
+  - element: 8192
+    array: 0300000005000000
+  - element: 16384
+    array: 0200000007000000020000000700000001000000
+  - element: 32768
+    array: 050000000600000007000000
+  - element: 48576
+    array: 0300000006000000
+  - element: 65536
+    array: 030000000200000007000000
+  - element: 131072
+    array: 0100000005000000
+  - element: 262144
+    array: 0100000007000000
+  - element: 524288
+    array: 0300000002000000
+  - element: 2097152
+    array: 0500000002000000
+  - element: 4194304
+    array: 0500000006000000
+  - element: 8388608
+    array: 0100000005000000010000000500000007000000
+  - element: 16777216
+    array: 0300000005000000030000000500000006000000
+  - element: 33554432
+    array: 0100000005000000010000000500000006000000
+  - element: 67108864
+    array: 0300000002000000030000000200000006000000
+  - element: 134217728
+    array: 0500000002000000050000000200000006000000
+  - element: 268435456
+    array: 05000000060000000500000006000000
+  - element: 536870912
+    array: 05000000020000000500000002000000
+  - element: 1073741824
+    array: 0100000003000000050000000200000006000000
+  couples:
+  - couple: 6
+    type: 128
+    empty: 0
+  - couple: 10
+    type: 131072
+    empty: 0
+  - couple: 18
+    type: 256
+    empty: 0
+  - couple: 34
+    type: 1
+    empty: 1
+  - couple: 66
+    type: 262144
+    empty: 0
+  - couple: 130
+    type: 1
+    empty: 1
+  - couple: 131074
+    type: 1
+    empty: 1
+  - couple: 258
+    type: 1
+    empty: 1
+  - couple: 262146
+    type: 1
+    empty: 1
+  - couple: 524290
+    type: 1
+    empty: 1
+  - couple: 48578
+    type: 2048
+    empty: 0
+  - couple: 514
+    type: 16384
+    empty: 0
+  - couple: 2097154
+    type: 1
+    empty: 1
+  - couple: 4194306
+    type: 33554432
+    empty: 0
+  - couple: 8388610
+    type: 1
+    empty: 1
+  - couple: 16777218
+    type: 268435456
+    empty: 0
+  - couple: 33554434
+    type: 1
+    empty: 1
+  - couple: 67108866
+    type: 1
+    empty: 1
+  - couple: 536870914
+    type: 1
+    empty: 1
+  - couple: 268435458
+    type: 1
+    empty: 1
+  - couple: 134217730
+    type: 1
+    empty: 1
+  - couple: 1073741826
+    type: 1
+    empty: 1
+  - couple: 1026
+    type: 1
+    empty: 1
+  - couple: 2050
+    type: 1
+    empty: 1
+  - couple: 4098
+    type: 1
+    empty: 1
+  - couple: 8194
+    type: 1
+    empty: 1
+  - couple: 16386
+    type: 1
+    empty: 1
+  - couple: 32770
+    type: 1
+    empty: 1
+  - couple: 65538
+    type: 1
+    empty: 1
+  - couple: 12
+    type: 8192
+    empty: 0
+  - couple: 20
+    type: 524288
+    empty: 0
+  - couple: 36
+    type: 48576
+    empty: 0
+  - couple: 68
+    type: 1
+    empty: 1
+  - couple: 132
+    type: 1
+    empty: 1
+  - couple: 131076
+    type: 1
+    empty: 1
+  - couple: 260
+    type: 1
+    empty: 1
+  - couple: 262148
+    type: 1
+    empty: 1
+  - couple: 524292
+    type: 1
+    empty: 1
+  - couple: 48580
+    type: 1
+    empty: 1
+  - couple: 516
+    type: 65536
+    empty: 0
+  - couple: 2097156
+    type: 1
+    empty: 1
+  - couple: 4194308
+    type: 16777216
+    empty: 0
+  - couple: 8388612
+    type: 1
+    empty: 1
+  - couple: 16777220
+    type: 1
+    empty: 1
+  - couple: 33554436
+    type: 268435456
+    empty: 0
+  - couple: 67108868
+    type: 1
+    empty: 1
+  - couple: 536870916
+    type: 1
+    empty: 1
+  - couple: 268435460
+    type: 1
+    empty: 1
+  - couple: 134217732
+    type: 1
+    empty: 1
+  - couple: 1073741828
+    type: 1
+    empty: 1
+  - couple: 1028
+    type: 1
+    empty: 1
+  - couple: 2052
+    type: 1
+    empty: 1
+  - couple: 4100
+    type: 1
+    empty: 1
+  - couple: 8196
+    type: 1
+    empty: 1
+  - couple: 16388
+    type: 1
+    empty: 1
+  - couple: 32772
+    type: 1
+    empty: 1
+  - couple: 65540
+    type: 1
+    empty: 1
+  - couple: 24
+    type: 2097152
+    empty: 0
+  - couple: 40
+    type: 4194304
+    empty: 0
+  - couple: 72
+    type: 1
+    empty: 1
+  - couple: 136
+    type: 1
+    empty: 1
+  - couple: 131080
+    type: 1
+    empty: 1
+  - couple: 264
+    type: 1
+    empty: 1
+  - couple: 262152
+    type: 8388608
+    empty: 0
+  - couple: 524296
+    type: 1
+    empty: 1
+  - couple: 48584
+    type: 16777216
+    empty: 0
+  - couple: 520
+    type: 1
+    empty: 1
+  - couple: 2097160
+    type: 1
+    empty: 1
+  - couple: 4194312
+    type: 1
+    empty: 1
+  - couple: 8388616
+    type: 1
+    empty: 1
+  - couple: 16777224
+    type: 1
+    empty: 1
+  - couple: 33554440
+    type: 1
+    empty: 1
+  - couple: 67108872
+    type: 1
+    empty: 1
+  - couple: 536870920
+    type: 1
+    empty: 1
+  - couple: 268435464
+    type: 1
+    empty: 1
+  - couple: 134217736
+    type: 1
+    empty: 1
+  - couple: 1073741832
+    type: 1
+    empty: 1
+  - couple: 1032
+    type: 1
+    empty: 1
+  - couple: 2056
+    type: 268435456
+    empty: 0
+  - couple: 4104
+    type: 1
+    empty: 1
+  - couple: 8200
+    type: 1
+    empty: 1
+  - couple: 16392
+    type: 1
+    empty: 1
+  - couple: 32776
+    type: 1
+    empty: 1
+  - couple: 65544
+    type: 1
+    empty: 1
+  - couple: 48
+    type: 1
+    empty: 1
+  - couple: 80
+    type: 512
+    empty: 0
+  - couple: 144
+    type: 1
+    empty: 1
+  - couple: 131088
+    type: 1
+    empty: 1
+  - couple: 272
+    type: 1
+    empty: 1
+  - couple: 262160
+    type: 16384
+    empty: 0
+  - couple: 524304
+    type: 1
+    empty: 1
+  - couple: 48592
+    type: 67108864
+    empty: 0
+  - couple: 528
+    type: 1
+    empty: 1
+  - couple: 2097168
+    type: 1
+    empty: 1
+  - couple: 4194320
+    type: 134217728
+    empty: 0
+  - couple: 8388624
+    type: 1
+    empty: 1
+  - couple: 16777232
+    type: 1
+    empty: 1
+  - couple: 33554448
+    type: 1
+    empty: 1
+  - couple: 67108880
+    type: 1
+    empty: 1
+  - couple: 536870928
+    type: 1
+    empty: 1
+  - couple: 268435472
+    type: 1073741824
+    empty: 0
+  - couple: 134217744
+    type: 1
+    empty: 1
+  - couple: 1073741840
+    type: 1
+    empty: 1
+  - couple: 1040
+    type: 1
+    empty: 1
+  - couple: 2064
+    type: 1
+    empty: 1
+  - couple: 4112
+    type: 1
+    empty: 1
+  - couple: 8208
+    type: 1
+    empty: 1
+  - couple: 16400
+    type: 1
+    empty: 1
+  - couple: 32784
+    type: 1
+    empty: 1
+  - couple: 65552
+    type: 1
+    empty: 1
+  - couple: 96
+    type: 1
+    empty: 1
+  - couple: 160
+    type: 2048
+    empty: 0
+  - couple: 131104
+    type: 33554432
+    empty: 0
+  - couple: 288
+    type: 1
+    empty: 1
+  - couple: 262176
+    type: 1
+    empty: 1
+  - couple: 524320
+    type: 67108864
+    empty: 0
+  - couple: 48608
+    type: 1
+    empty: 1
+  - couple: 544
+    type: 4096
+    empty: 0
+  - couple: 2097184
+    type: 134217728
+    empty: 0
+  - couple: 4194336
+    type: 1
+    empty: 1
+  - couple: 8388640
+    type: 1
+    empty: 1
+  - couple: 16777248
+    type: 1
+    empty: 1
+  - couple: 33554464
+    type: 1
+    empty: 1
+  - couple: 67108896
+    type: 1
+    empty: 1
+  - couple: 536870944
+    type: 1073741824
+    empty: 0
+  - couple: 268435488
+    type: 1
+    empty: 1
+  - couple: 134217760
+    type: 1
+    empty: 1
+  - couple: 1073741856
+    type: 1
+    empty: 1
+  - couple: 1056
+    type: 1
+    empty: 1
+  - couple: 2080
+    type: 1
+    empty: 1
+  - couple: 4128
+    type: 1
+    empty: 1
+  - couple: 8224
+    type: 16777216
+    empty: 0
+  - couple: 16416
+    type: 1
+    empty: 1
+  - couple: 32800
+    type: 1
+    empty: 1
+  - couple: 65568
+    type: 1
+    empty: 1
+  - couple: 192
+    type: 1
+    empty: 1
+  - couple: 131136
+    type: 8388608
+    empty: 0
+  - couple: 320
+    type: 16384
+    empty: 0
+  - couple: 262208
+    type: 1
+    empty: 1
+  - couple: 524352
+    type: 65536
+    empty: 0
+  - couple: 48576
+    type: 1
+    empty: 1
+  - couple: 576
+    type: 1
+    empty: 1
+  - couple: 2097216
+    type: 1
+    empty: 1
+  - couple: 4194368
+    type: 32768
+    empty: 0
+  - couple: 8388672
+    type: 1
+    empty: 1
+  - couple: 16777280
+    type: 1
+    empty: 1
+  - couple: 33554496
+    type: 1
+    empty: 1
+  - couple: 67108928
+    type: 1
+    empty: 1
+  - couple: 536870976
+    type: 1
+    empty: 1
+  - couple: 268435520
+    type: 1
+    empty: 1
+  - couple: 134217792
+    type: 1
+    empty: 1
+  - couple: 1073741888
+    type: 1024
+    empty: 0
+  - couple: 1088
+    type: 1
+    empty: 1
+  - couple: 2112
+    type: 1
+    empty: 1
+  - couple: 4160
+    type: 1
+    empty: 1
+  - couple: 8256
+    type: 1
+    empty: 1
+  - couple: 16448
+    type: 1
+    empty: 1
+  - couple: 32832
+    type: 1
+    empty: 1
+  - couple: 65600
+    type: 1
+    empty: 1
+  - couple: 131200
+    type: 1
+    empty: 1
+  - couple: 384
+    type: 1
+    empty: 1
+  - couple: 262272
+    type: 1
+    empty: 1
+  - couple: 524416
+    type: 1
+    empty: 1
+  - couple: 640
+    type: 1
+    empty: 1
+  - couple: 2097280
+    type: 536870912
+    empty: 0
+  - couple: 4194432
+    type: 268435456
+    empty: 0
+  - couple: 8388736
+    type: 1
+    empty: 1
+  - couple: 16777344
+    type: 1
+    empty: 1
+  - couple: 33554560
+    type: 1
+    empty: 1
+  - couple: 67108992
+    type: 1
+    empty: 1
+  - couple: 536871040
+    type: 1
+    empty: 1
+  - couple: 268435584
+    type: 1
+    empty: 1
+  - couple: 134217856
+    type: 1073741824
+    empty: 0
+  - couple: 1073741952
+    type: 1
+    empty: 1
+  - couple: 1152
+    type: 1
+    empty: 1
+  - couple: 2176
+    type: 1
+    empty: 1
+  - couple: 4224
+    type: 1
+    empty: 1
+  - couple: 8320
+    type: 1
+    empty: 1
+  - couple: 16512
+    type: 1
+    empty: 1
+  - couple: 32896
+    type: 1
+    empty: 1
+  - couple: 65664
+    type: 1
+    empty: 1
+  - couple: 131328
+    type: 1
+    empty: 1
+  - couple: 393216
+    type: 1
+    empty: 1
+  - couple: 655360
+    type: 536870912
+    empty: 0
+  - couple: 179648
+    type: 268435456
+    empty: 0
+  - couple: 131584
+    type: 1
+    empty: 1
+  - couple: 2228224
+    type: 1
+    empty: 1
+  - couple: 4325376
+    type: 1
+    empty: 1
+  - couple: 8519680
+    type: 1
+    empty: 1
+  - couple: 16908288
+    type: 1
+    empty: 1
+  - couple: 33685504
+    type: 1
+    empty: 1
+  - couple: 67239936
+    type: 1073741824
+    empty: 0
+  - couple: 537001984
+    type: 1
+    empty: 1
+  - couple: 268566528
+    type: 1
+    empty: 1
+  - couple: 134348800
+    type: 1
+    empty: 1
+  - couple: 1073872896
+    type: 1
+    empty: 1
+  - couple: 132096
+    type: 1
+    empty: 1
+  - couple: 133120
+    type: 1
+    empty: 1
+  - couple: 135168
+    type: 1
+    empty: 1
+  - couple: 139264
+    type: 1
+    empty: 1
+  - couple: 147456
+    type: 1
+    empty: 1
+  - couple: 163840
+    type: 1
+    empty: 1
+  - couple: 196608
+    type: 1
+    empty: 1
+  - couple: 262400
+    type: 1
+    empty: 1
+  - couple: 524544
+    type: 1
+    empty: 1
+  - couple: 768
+    type: 1
+    empty: 1
+  - couple: 2097408
+    type: 1
+    empty: 1
+  - couple: 4194560
+    type: 1
+    empty: 1
+  - couple: 8388864
+    type: 1
+    empty: 1
+  - couple: 16777472
+    type: 1073741824
+    empty: 0
+  - couple: 33554688
+    type: 1
+    empty: 1
+  - couple: 67109120
+    type: 1
+    empty: 1
+  - couple: 536871168
+    type: 1
+    empty: 1
+  - couple: 268435712
+    type: 1
+    empty: 1
+  - couple: 134217984
+    type: 1
+    empty: 1
+  - couple: 1073742080
+    type: 1
+    empty: 1
+  - couple: 1280
+    type: 1
+    empty: 1
+  - couple: 2304
+    type: 1
+    empty: 1
+  - couple: 4352
+    type: 1
+    empty: 1
+  - couple: 8448
+    type: 536870912
+    empty: 0
+  - couple: 16640
+    type: 1
+    empty: 1
+  - couple: 33024
+    type: 1
+    empty: 1
+  - couple: 65792
+    type: 1
+    empty: 1
+  - couple: 786432
+    type: 1
+    empty: 1
+  - couple: 310720
+    type: 1
+    empty: 1
+  - couple: 262656
+    type: 1
+    empty: 1
+  - couple: 2359296
+    type: 1
+    empty: 1
+  - couple: 4456448
+    type: 1
+    empty: 1
+  - couple: 8650752
+    type: 1
+    empty: 1
+  - couple: 17039360
+    type: 1
+    empty: 1
+  - couple: 33816576
+    type: 1
+    empty: 1
+  - couple: 67371008
+    type: 1
+    empty: 1
+  - couple: 537133056
+    type: 1
+    empty: 1
+  - couple: 268697600
+    type: 1
+    empty: 1
+  - couple: 134479872
+    type: 1
+    empty: 1
+  - couple: 1074003968
+    type: 1
+    empty: 1
+  - couple: 263168
+    type: 1
+    empty: 1
+  - couple: 264192
+    type: 1
+    empty: 1
+  - couple: 266240
+    type: 1
+    empty: 1
+  - couple: 270336
+    type: 1
+    empty: 1
+  - couple: 278528
+    type: 1
+    empty: 1
+  - couple: 294912
+    type: 1
+    empty: 1
+  - couple: 327680
+    type: 1
+    empty: 1
+  - couple: 572864
+    type: 1
+    empty: 1
+  - couple: 524800
+    type: 1
+    empty: 1
+  - couple: 2621440
+    type: 1
+    empty: 1
+  - couple: 4718592
+    type: 1
+    empty: 1
+  - couple: 8912896
+    type: 1
+    empty: 1
+  - couple: 17301504
+    type: 1
+    empty: 1
+  - couple: 34078720
+    type: 1073741824
+    empty: 0
+  - couple: 67633152
+    type: 1
+    empty: 1
+  - couple: 537395200
+    type: 1
+    empty: 1
+  - couple: 268959744
+    type: 1
+    empty: 1
+  - couple: 134742016
+    type: 1
+    empty: 1
+  - couple: 1074266112
+    type: 1
+    empty: 1
+  - couple: 525312
+    type: 1
+    empty: 1
+  - couple: 526336
+    type: 1
+    empty: 1
+  - couple: 528384
+    type: 1
+    empty: 1
+  - couple: 532480
+    type: 1
+    empty: 1
+  - couple: 540672
+    type: 1
+    empty: 1
+  - couple: 557056
+    type: 1
+    empty: 1
+  - couple: 589824
+    type: 1
+    empty: 1
+  - couple: 49088
+    type: 1
+    empty: 1
+  - couple: 2145728
+    type: 1
+    empty: 1
+  - couple: 4242880
+    type: 1
+    empty: 1
+  - couple: 8437184
+    type: 1
+    empty: 1
+  - couple: 16825792
+    type: 1
+    empty: 1
+  - couple: 33603008
+    type: 1
+    empty: 1
+  - couple: 67157440
+    type: 1
+    empty: 1
+  - couple: 536919488
+    type: 1
+    empty: 1
+  - couple: 268484032
+    type: 1
+    empty: 1
+  - couple: 134266304
+    type: 1
+    empty: 1
+  - couple: 1073790400
+    type: 1
+    empty: 1
+  - couple: 64960
+    type: 1
+    empty: 1
+  - couple: 114112
+    type: 1
+    empty: 1
+  - couple: 2097664
+    type: 1
+    empty: 1
+  - couple: 4194816
+    type: 1
+    empty: 1
+  - couple: 8389120
+    type: 1
+    empty: 1
+  - couple: 16777728
+    type: 1
+    empty: 1
+  - couple: 33554944
+    type: 1
+    empty: 1
+  - couple: 67109376
+    type: 1
+    empty: 1
+  - couple: 536871424
+    type: 1
+    empty: 1
+  - couple: 268435968
+    type: 1024
+    empty: 0
+  - couple: 134218240
+    type: 1
+    empty: 1
+  - couple: 1073742336
+    type: 1
+    empty: 1
+  - couple: 1536
+    type: 1
+    empty: 1
+  - couple: 2560
+    type: 1
+    empty: 1
+  - couple: 4608
+    type: 1
+    empty: 1
+  - couple: 8704
+    type: 1
+    empty: 1
+  - couple: 16896
+    type: 1
+    empty: 1
+  - couple: 33280
+    type: 1
+    empty: 1
+  - couple: 66048
+    type: 1
+    empty: 1
+  - couple: 6291456
+    type: 1
+    empty: 1
+  - couple: 10485760
+    type: 1
+    empty: 1
+  - couple: 18874368
+    type: 1
+    empty: 1
+  - couple: 35651584
+    type: 1
+    empty: 1
+  - couple: 69206016
+    type: 1
+    empty: 1
+  - couple: 538968064
+    type: 1
+    empty: 1
+  - couple: 270532608
+    type: 1
+    empty: 1
+  - couple: 136314880
+    type: 1
+    empty: 1
+  - couple: 1075838976
+    type: 1
+    empty: 1
+  - couple: 2098176
+    type: 1
+    empty: 1
+  - couple: 2099200
+    type: 1073741824
+    empty: 0
+  - couple: 2101248
+    type: 1
+    empty: 1
+  - couple: 2105344
+    type: 1
+    empty: 1
+  - couple: 2113536
+    type: 1
+    empty: 1
+  - couple: 2129920
+    type: 1
+    empty: 1
+  - couple: 2162688
+    type: 1
+    empty: 1
+  - couple: 12582912
+    type: 1
+    empty: 1
+  - couple: 20971520
+    type: 1
+    empty: 1
+  - couple: 37748736
+    type: 1
+    empty: 1
+  - couple: 71303168
+    type: 1
+    empty: 1
+  - couple: 541065216
+    type: 1
+    empty: 1
+  - couple: 272629760
+    type: 1
+    empty: 1
+  - couple: 138412032
+    type: 1
+    empty: 1
+  - couple: 1077936128
+    type: 1
+    empty: 1
+  - couple: 4195328
+    type: 1
+    empty: 1
+  - couple: 4196352
+    type: 1
+    empty: 1
+  - couple: 4198400
+    type: 1
+    empty: 1
+  - couple: 4202496
+    type: 1
+    empty: 1
+  - couple: 4210688
+    type: 1
+    empty: 1
+  - couple: 4227072
+    type: 1
+    empty: 1
+  - couple: 4259840
+    type: 1
+    empty: 1
+  - couple: 25165824
+    type: 1
+    empty: 1
+  - couple: 41943040
+    type: 1
+    empty: 1
+  - couple: 75497472
+    type: 1024
+    empty: 0
+  - couple: 545259520
+    type: 1
+    empty: 1
+  - couple: 276824064
+    type: 1
+    empty: 1
+  - couple: 142606336
+    type: 1
+    empty: 1
+  - couple: 1082130432
+    type: 1
+    empty: 1
+  - couple: 8389632
+    type: 1
+    empty: 1
+  - couple: 8390656
+    type: 1
+    empty: 1
+  - couple: 8392704
+    type: 1
+    empty: 1
+  - couple: 8396800
+    type: 1
+    empty: 1
+  - couple: 8404992
+    type: 1
+    empty: 1
+  - couple: 8421376
+    type: 1
+    empty: 1
+  - couple: 8454144
+    type: 1
+    empty: 1
+  - couple: 50331648
+    type: 1
+    empty: 1
+  - couple: 83886080
+    type: 1
+    empty: 1
+  - couple: 553648128
+    type: 1
+    empty: 1
+  - couple: 285212672
+    type: 1
+    empty: 1
+  - couple: 150994944
+    type: 1
+    empty: 1
+  - couple: 1090519040
+    type: 1
+    empty: 1
+  - couple: 16778240
+    type: 1
+    empty: 1
+  - couple: 16779264
+    type: 1
+    empty: 1
+  - couple: 16781312
+    type: 1
+    empty: 1
+  - couple: 16785408
+    type: 1
+    empty: 1
+  - couple: 16793600
+    type: 1024
+    empty: 0
+  - couple: 16809984
+    type: 1
+    empty: 1
+  - couple: 16842752
+    type: 1
+    empty: 1
+  - couple: 100663296
+    type: 1
+    empty: 1
+  - couple: 570425344
+    type: 1
+    empty: 1
+  - couple: 301989888
+    type: 1
+    empty: 1
+  - couple: 167772160
+    type: 1
+    empty: 1
+  - couple: 1107296256
+    type: 1
+    empty: 1
+  - couple: 33555456
+    type: 1
+    empty: 1
+  - couple: 33556480
+    type: 1
+    empty: 1
+  - couple: 33558528
+    type: 1
+    empty: 1
+  - couple: 33562624
+    type: 1
+    empty: 1
+  - couple: 33570816
+    type: 1
+    empty: 1
+  - couple: 33587200
+    type: 1
+    empty: 1
+  - couple: 33619968
+    type: 1024
+    empty: 0
+  - couple: 603979776
+    type: 1
+    empty: 1
+  - couple: 335544320
+    type: 1
+    empty: 1
+  - couple: 201326592
+    type: 1
+    empty: 1
+  - couple: 1140850688
+    type: 1
+    empty: 1
+  - couple: 67109888
+    type: 1
+    empty: 1
+  - couple: 67110912
+    type: 1
+    empty: 1
+  - couple: 67112960
+    type: 1
+    empty: 1
+  - couple: 67117056
+    type: 1
+    empty: 1
+  - couple: 67125248
+    type: 1
+    empty: 1
+  - couple: 67141632
+    type: 1
+    empty: 1
+  - couple: 67174400
+    type: 1
+    empty: 1
+  - couple: 805306368
+    type: 1
+    empty: 1
+  - couple: 671088640
+    type: 1
+    empty: 1
+  - couple: 1610612736
+    type: 1
+    empty: 1
+  - couple: 536871936
+    type: 1
+    empty: 1
+  - couple: 536872960
+    type: 1
+    empty: 1
+  - couple: 536875008
+    type: 1
+    empty: 1
+  - couple: 536879104
+    type: 1
+    empty: 1
+  - couple: 536887296
+    type: 1
+    empty: 1
+  - couple: 536903680
+    type: 1
+    empty: 1
+  - couple: 536936448
+    type: 1
+    empty: 1
+  - couple: 402653184
+    type: 1
+    empty: 1
+  - couple: 1342177280
+    type: 1
+    empty: 1
+  - couple: 268436480
+    type: 1
+    empty: 1
+  - couple: 268437504
+    type: 1
+    empty: 1
+  - couple: 268439552
+    type: 1
+    empty: 1
+  - couple: 268443648
+    type: 1
+    empty: 1
+  - couple: 268451840
+    type: 1
+    empty: 1
+  - couple: 268468224
+    type: 1
+    empty: 1
+  - couple: 268500992
+    type: 1
+    empty: 1
+  - couple: 1207959552
+    type: 1
+    empty: 1
+  - couple: 134218752
+    type: 1
+    empty: 1
+  - couple: 134219776
+    type: 1
+    empty: 1
+  - couple: 134221824
+    type: 1
+    empty: 1
+  - couple: 134225920
+    type: 1
+    empty: 1
+  - couple: 134234112
+    type: 1
+    empty: 1
+  - couple: 134250496
+    type: 1
+    empty: 1
+  - couple: 134283264
+    type: 1
+    empty: 1
+  - couple: 1073742848
+    type: 1
+    empty: 1
+  - couple: 1073743872
+    type: 1
+    empty: 1
+  - couple: 1073745920
+    type: 1
+    empty: 1
+  - couple: 1073750016
+    type: 1
+    empty: 1
+  - couple: 1073758208
+    type: 1
+    empty: 1
+  - couple: 1073774592
+    type: 1
+    empty: 1
+  - couple: 1073807360
+    type: 1
+    empty: 1
+  - couple: 3072
+    type: 1
+    empty: 1
+  - couple: 5120
+    type: 1
+    empty: 1
+  - couple: 9216
+    type: 1
+    empty: 1
+  - couple: 17408
+    type: 1
+    empty: 1
+  - couple: 33792
+    type: 1
+    empty: 1
+  - couple: 66560
+    type: 1
+    empty: 1
+  - couple: 6144
+    type: 1
+    empty: 1
+  - couple: 10240
+    type: 1
+    empty: 1
+  - couple: 18432
+    type: 1
+    empty: 1
+  - couple: 34816
+    type: 1
+    empty: 1
+  - couple: 67584
+    type: 1
+    empty: 1
+  - couple: 12288
+    type: 1
+    empty: 1
+  - couple: 20480
+    type: 1
+    empty: 1
+  - couple: 36864
+    type: 1
+    empty: 1
+  - couple: 69632
+    type: 1
+    empty: 1
+  - couple: 24576
+    type: 1
+    empty: 1
+  - couple: 40960
+    type: 1
+    empty: 1
+  - couple: 73728
+    type: 1
+    empty: 1
+  - couple: 49152
+    type: 1
+    empty: 1
+  - couple: 81920
+    type: 1
+    empty: 1
+  - couple: 98304
+    type: 1
+    empty: 1

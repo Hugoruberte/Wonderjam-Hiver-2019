@@ -8,7 +8,7 @@ namespace Interactive.Engine
 		public ChemicalElementEntity InteractionBetween(InteractiveEntity main, InteractiveEntity other)
 		{
 			// only does that
-			return (main.chemical * other.chemical) * main.material;
+			return main.chemical * other.chemical;
 		}
 	}
 }

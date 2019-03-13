@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Linq;
+using System.Reflection;
 
 namespace Interactive.Engine
 {
 	public class InteractiveEngine : Singleton<InteractiveEngine>
 	{
 		public InteractiveEngineData interactiveEngineData;
+		public IngredientDatabase ingredientDatabase;
 		
-		private static List<InteractiveExtensionEngine> extensions = new List<InteractiveExtensionEngine>();
-
 		private static ChemistryEngine chemistry = new ChemistryEngine();
-		private static PhysicEngine physic = new PhysicEngine();
 
 		protected override void Awake()
 		{
@@ -20,58 +21,36 @@ namespace Interactive.Engine
 			if(interactiveEngineData == null) {
 				Debug.LogWarning("WARNING : You forgot to add an 'InteractiveEngineData' scriptable object to the InteractiveEngine !", transform);
 			}
-
-			// Add extension engine :
-			extensions.Add(new FoodChainEngine());
 		}
 
-		public static void InteractionBetween(InteractiveEntity main, InteractiveEntity other, Collision collision)
+		public static void InteractionBetween(InteractiveEntity main, InteractiveEntity other)
 		{
-			// declaration
-			PhysicalInteractionEntity physicalInteraction;
-			ChemicalElementEntity chemicalInteraction;
+			main.chemical = chemistry.InteractionBetween(main, other);
+		}
 
-			// interactions
-			chemicalInteraction = chemistry.InteractionBetween(main, other);
-			physicalInteraction = physic.InteractionBetween(main, other, collision);
-			
-			// reaction
-			Reaction(main, chemicalInteraction, physicalInteraction);
-			
-			// extensions interaction + reaction
-			foreach(InteractiveExtensionEngine ext in extensions) {
-				ext.InteractionBetween(main, other);
+		public static ChemicalElementEntity[] GetAllChemicalEntity()
+		{
+			int i;
+			Type t;
+			Type[] ts;
+			ChemicalElementEntity[] res;
+
+			t = typeof(ChemicalElementEntity);
+			ts = Assembly.GetAssembly(t).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(t) && myType != typeof(Order)).ToArray();
+			res = new ChemicalElementEntity[ts.Length];
+			i = 0;
+
+			foreach(Type type in ts) {
+				res[i++] = Activator.CreateInstance(type) as ChemicalElementEntity;
 			}
+
+			return res;
 		}
 
-		public static void Reaction(InteractiveEntity main, ChemicalElementEntity element, PhysicalInteractionEntity interaction)
+		public static ChemicalElementEntity GetCocktailFrom(List<ChemicalElement> combo)
 		{
-			InteractiveStatus status;
-
-			// Calculate reaction :
-			// 1. Result between 'current physical state' and 'possible element' 
-			// For example : Frozen * Fire = Neutral; Water
-			status = main.physical * element;
-			
-			// Update entity interactive status
-			main.physical = status.state;
-			main.chemical = status.element;
-
-			// main manage its new status && the interaction with the unknown entity
-			main.InteractWith(status, interaction);
+			return ChemicalElementMixEntity.MixSeveralElement(combo);
 		}
-	}
-
-	public struct InteractiveStatus {
-		public PhysicalStateEntity state;
-		public ChemicalElementEntity element;
-		
-		public InteractiveStatus(PhysicalStateEntity s, ChemicalElementEntity e) {
-			this.state = s;
-			this.element = e;
-		}
-
-		public override string ToString() => $"{state}; {element}";
 	}
 }
 
